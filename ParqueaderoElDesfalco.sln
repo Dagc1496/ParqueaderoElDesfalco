@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParqueaderoElDesfalco.Core", "ParqueaderoElDesfalco.Core\ParqueaderoElDesfalco.Core.csproj", "{836997A5-DAF3-4C6D-9E4F-37BA164C8A15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParqueaderoElDesfalco.Core.Test", "ParqueaderoElDesfalco.Core.Test\ParqueaderoElDesfalco.Core.Test.csproj", "{FEFDE5E7-C358-4EAA-A9B4-551415D4DCDA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{836997A5-DAF3-4C6D-9E4F-37BA164C8A15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{836997A5-DAF3-4C6D-9E4F-37BA164C8A15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{836997A5-DAF3-4C6D-9E4F-37BA164C8A15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{836997A5-DAF3-4C6D-9E4F-37BA164C8A15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEFDE5E7-C358-4EAA-A9B4-551415D4DCDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEFDE5E7-C358-4EAA-A9B4-551415D4DCDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEFDE5E7-C358-4EAA-A9B4-551415D4DCDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEFDE5E7-C358-4EAA-A9B4-551415D4DCDA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
