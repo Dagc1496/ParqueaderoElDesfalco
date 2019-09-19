@@ -1,0 +1,40 @@
+﻿<Properties StartupConfiguration="{FEFDE5E7-C358-4EAA-A9B4-551415D4DCDA}|Default">
+  <MonoDevelop.Ide.ItemProperties.ParqueaderoElDesfalco.Core FirstBuild="True" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ParqueaderoElDesfalco.Droid/Resources/layout/content_main.xml">
+    <Files>
+      <File FileName="ParqueaderoElDesfalco.Droid/MainActivity.cs" Line="1" Column="1" />
+      <File FileName="ParqueaderoElDesfalco.Droid/Resources/layout/activity_main.xml" Line="1" Column="1" />
+      <File FileName="ParqueaderoElDesfalco.Droid/Resources/layout/content_main.xml" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ParqueaderoElDesfalco" expanded="True">
+            <Node name="ParqueaderoElDesfalco.Core" expanded="True" />
+            <Node name="ParqueaderoElDesfalco.Core.Test" expanded="True" />
+            <Node name="ParqueaderoElDesfalco.Droid" expanded="True">
+              <Node name="Resources" expanded="True">
+                <Node name="layout" expanded="True">
+                  <Node name="content_main.xml" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State name="__root__">
+          <Node name="ParqueaderoElDesfalco" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.ParqueaderoElDesfalco.Core.Test FirstBuild="True" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.ParqueaderoElDesfalco.Droid AndroidDesignerPreferredTheme="AppTheme" AndroidDesignerPreferredDevice="Nexus 4" FirstBuild="True" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

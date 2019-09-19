@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParqueaderoElDesfalco.Core"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParqueaderoElDesfalco.Core.Test", "ParqueaderoElDesfalco.Core.Test\ParqueaderoElDesfalco.Core.Test.csproj", "{FEFDE5E7-C358-4EAA-A9B4-551415D4DCDA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParqueaderoElDesfalco.Droid", "ParqueaderoElDesfalco.Droid\ParqueaderoElDesfalco.Droid.csproj", "{079BFE64-7966-42B6-BA5F-273B885F5FA4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,5 +21,9 @@ Global
 		{FEFDE5E7-C358-4EAA-A9B4-551415D4DCDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEFDE5E7-C358-4EAA-A9B4-551415D4DCDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEFDE5E7-C358-4EAA-A9B4-551415D4DCDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{079BFE64-7966-42B6-BA5F-273B885F5FA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{079BFE64-7966-42B6-BA5F-273B885F5FA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{079BFE64-7966-42B6-BA5F-273B885F5FA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{079BFE64-7966-42B6-BA5F-273B885F5FA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
