@@ -9,20 +9,25 @@ namespace ParqueaderoElDesfalco.Core.validators
 
         public bool IsAllowedToPark(string vehicleId, DateTimeOffset dateOfEntry)
         {
-            bool canPark = false;
+            bool canPark = true;
             string vehicleIdUpperLetters = vehicleId.ToUpper();
             if (vehicleIdUpperLetters.StartsWith(notAllowedLetter))
             {
-                for(int i = 0; i < allowedDays.Length; i++)
-                {
-                    if (dateOfEntry.DayOfWeek == allowedDays[i])
-                    {
-                        canPark = true;
-                        break;
-                    }
-                }
+                canPark = checkDaysForNotAllowedVehicleId(dateOfEntry);           
             }
             return canPark;
+        }
+
+        private bool checkDaysForNotAllowedVehicleId(DateTimeOffset dateToCheck)
+        {
+            for (int i = 0; i < allowedDays.Length; i++)
+            {
+                if (dateToCheck.DayOfWeek == allowedDays[i])
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
