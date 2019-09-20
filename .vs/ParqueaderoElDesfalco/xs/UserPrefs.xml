@@ -6,7 +6,7 @@
       <File FileName="ParqueaderoElDesfalco.Droid/Resources/layout/content_main.xml" />
       <File FileName="ParqueaderoElDesfalco.Droid/Resources/Resource.designer.cs" />
       <File FileName="ParqueaderoElDesfalco.Droid/Resources/AboutResources.txt" />
-      <File FileName="ParqueaderoElDesfalco.Core.Test/UnitTest1.cs" Line="10" Column="10" />
+      <File FileName="ParqueaderoElDesfalco.Core.Test/UnitTest1.cs" Line="11" Column="30" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,14 +14,25 @@
           <Node name="ParqueaderoElDesfalco" expanded="True">
             <Node name="ParqueaderoElDesfalco.Core" expanded="True" />
             <Node name="ParqueaderoElDesfalco.Core.Test" expanded="True">
-              <Node name="UnitTest1.cs" selected="True" />
+              <Node name="Dependencies" expanded="True" selected="True">
+                <Node name="PackageDependencies" expanded="True" />
+                <Node name="SdkDependencies" expanded="True" />
+              </Node>
             </Node>
           </Node>
         </State>
       </Pad>
       <Pad Id="ClassPad">
         <State name="__root__">
-          <Node name="ParqueaderoElDesfalco" selected="True" />
+          <Node name="ParqueaderoElDesfalco" expanded="True" selected="True">
+            <Node name="ParqueaderoElDesfalco.Core" expanded="True" />
+            <Node name="ParqueaderoElDesfalco.Core.Test" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="ParqueaderoElDesfalco" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
