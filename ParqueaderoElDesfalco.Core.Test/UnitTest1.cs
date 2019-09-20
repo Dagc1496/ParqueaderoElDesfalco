@@ -6,9 +6,9 @@ namespace ParqueaderoElDesfalco.Core.Test
     public class UnitTest1
     {
         [Fact]
-        public void Test1()
+        public void Test1ForExample()
         {
-            
+            Assert.Equal(1, 1);
         }
     }
 }
