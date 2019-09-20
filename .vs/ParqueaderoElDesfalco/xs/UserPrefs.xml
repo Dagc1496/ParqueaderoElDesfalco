@@ -6,7 +6,7 @@
       <File FileName="ParqueaderoElDesfalco.Droid/Resources/layout/content_main.xml" />
       <File FileName="ParqueaderoElDesfalco.Droid/Resources/Resource.designer.cs" />
       <File FileName="ParqueaderoElDesfalco.Droid/Resources/AboutResources.txt" />
-      <File FileName="ParqueaderoElDesfalco.Core.Test/UnitTest1.cs" Line="11" Column="37" />
+      <File FileName="ParqueaderoElDesfalco.Core.Test/UnitTest1.cs" Line="10" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
