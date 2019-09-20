@@ -39,11 +39,23 @@
       "frameworks": {
         "netstandard2.0": {
           "dependencies": {
+            "Acr.UserDialogs": {
+              "target": "Package",
+              "version": "[7.0.30, )"
+            },
+            "Autofac": {
+              "target": "Package",
+              "version": "[4.9.4, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            },
+            "Realm": {
+              "target": "Package",
+              "version": "[4.1.0, )"
             }
           },
           "imports": [

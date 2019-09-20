@@ -37,7 +37,7 @@ namespace ParqueaderoElDesfalco.Droid
             int id = item.ItemId;
             if (id == Resource.Id.action_settings)
             {
-                return true;
+                
             }
 
             return base.OnOptionsItemSelected(item);

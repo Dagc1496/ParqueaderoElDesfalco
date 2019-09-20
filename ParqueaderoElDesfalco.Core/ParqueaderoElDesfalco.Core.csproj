@@ -4,4 +4,13 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="models\" />
+    <Folder Include="validators\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Realm" Version="4.1.0" />
+    <PackageReference Include="Acr.UserDialogs" Version="7.0.30" />
+    <PackageReference Include="Autofac" Version="4.9.4" />
+  </ItemGroup>
 </Project>
