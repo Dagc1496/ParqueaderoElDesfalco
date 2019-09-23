@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using ParqueaderoElDesfalco.Core.models.entities;
+using ParqueaderoElDesfalco.Core.Persistence.Entities;
 
-namespace ParqueaderoElDesfalco.Core.models.daos
+namespace ParqueaderoElDesfalco.Core.Persistence.Daos
 {
     public interface IMotorcycleDao
     {

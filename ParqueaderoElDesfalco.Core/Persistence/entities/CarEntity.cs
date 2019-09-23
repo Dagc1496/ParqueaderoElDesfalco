@@ -1,7 +1,7 @@
 ﻿using System;
 using Realms;
 
-namespace ParqueaderoElDesfalco.Core.models.entities
+namespace ParqueaderoElDesfalco.Core.Persistence.Entities
 {
     public class CarEntity : RealmObject
     {
