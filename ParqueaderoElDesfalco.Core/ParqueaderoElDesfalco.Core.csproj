@@ -5,8 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="models\" />
     <Folder Include="validators\" />
+    <Folder Include="models\entities\" />
+    <Folder Include="models\daos\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Realm" Version="4.1.0" />

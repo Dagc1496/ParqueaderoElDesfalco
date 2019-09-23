@@ -27,7 +27,11 @@
         },
         "frameworks": {
           "netcoreapp2.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "/Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Core/ParqueaderoElDesfalco.Core.csproj": {
+                "projectPath": "/Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Core/ParqueaderoElDesfalco.Core.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -62,6 +66,68 @@
             "xunit.runner.visualstudio": {
               "target": "Package",
               "version": "[2.4.0, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "/Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Core/ParqueaderoElDesfalco.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Core/ParqueaderoElDesfalco.Core.csproj",
+        "projectName": "ParqueaderoElDesfalco.Core",
+        "projectPath": "/Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Core/ParqueaderoElDesfalco.Core.csproj",
+        "packagesPath": "/Users/david.gomez/.nuget/packages/",
+        "outputPath": "/Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Core/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/david.gomez/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Acr.UserDialogs": {
+              "target": "Package",
+              "version": "[7.0.30, )"
+            },
+            "Autofac": {
+              "target": "Package",
+              "version": "[4.9.4, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Realm": {
+              "target": "Package",
+              "version": "[4.1.0, )"
             }
           },
           "imports": [

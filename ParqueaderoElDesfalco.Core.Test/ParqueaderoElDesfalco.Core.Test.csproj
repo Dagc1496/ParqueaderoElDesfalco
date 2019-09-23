@@ -16,4 +16,7 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ParqueaderoElDesfalco.Core\ParqueaderoElDesfalco.Core.csproj" />
+  </ItemGroup>
 </Project>

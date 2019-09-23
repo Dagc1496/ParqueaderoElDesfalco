@@ -1,7 +1,7 @@
 ﻿using System;
 using Realms;
 
-namespace ParqueaderoElDesfalco.Core.models
+namespace ParqueaderoElDesfalco.Core.models.entities
 {
     public class MotorcycleEntity : RealmObject
     {
@@ -9,6 +9,5 @@ namespace ParqueaderoElDesfalco.Core.models
         public string MotorcycleId { get; set; }
         public int Cilindraje { get; set; }
         public DateTimeOffset DateOfEntry { get; set; }
-        public DateTimeOffset? DepartureDate { get; set; }
     }
 }

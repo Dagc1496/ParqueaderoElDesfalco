@@ -1,5 +1,6 @@
 ﻿using System;
 using Xunit;
+using ParqueaderoElDesfalco.Core.validators;
 
 namespace ParqueaderoElDesfalco.Core.Test
 {
@@ -9,7 +10,7 @@ namespace ParqueaderoElDesfalco.Core.Test
         public void TestAllowedVechicleId()
         {
             //Arrange
-            //VehicleIdParkingDayValidator vehicleIdParkingDayValidator = new VehicleIdParkingDayValidator();
+            VehicleIdParkingDayValidator vehicleIdParkingDayValidator = new VehicleIdParkingDayValidator();
         }
     }
 }
