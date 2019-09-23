@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using ParqueaderoElDesfalco.Core.Persistence.Entities;
 using Realms;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ParqueaderoElDesfalco.Core.Persistence
 {
     public class DatabaseManager
     {
-
         private Realm realm;
 
         public DatabaseManager()
@@ -26,49 +27,55 @@ namespace ParqueaderoElDesfalco.Core.Persistence
             }
         }
 
-        public void SaveOnDB(MotorcycleEntity motorcycleEntity)
+        public async Task SaveOnDB(MotorcycleEntity motorcycleEntity)
         {
-            realm.Write(() =>
+            await realm.WriteAsync(tempAsyncRealm =>
                 {
-                    realm.Add(motorcycleEntity);
+                    tempAsyncRealm.Add(motorcycleEntity);
                 });
         }
 
-        public void SaveOnDB(CarEntity carEntity)
+        public async Task SaveOnDB(CarEntity carEntity)
         {
-            realm.Write(() =>
+            await realm.WriteAsync(tempAsyncRealm =>
             {
-                realm.Add(carEntity);
+                tempAsyncRealm.Add(carEntity);
             });
         }
 
-        public void RemoveFromDB(MotorcycleEntity motorcycleEntity)
+        public async Task RemoveFromDB(MotorcycleEntity motorcycleEntity)
         {
-            realm.Write(() =>
+            await realm.WriteAsync(tempAsyncRealm =>
             {
-                realm.Remove(motorcycleEntity);
+                tempAsyncRealm.Remove(motorcycleEntity);
             });
         }
 
-        public void RemoveFromDB(CarEntity carEntity)
+        public async Task RemoveFromDB(CarEntity carEntity)
         {
-            realm.Write(() =>
+            await realm.WriteAsync(tempAsyncRealm =>
             {
-                realm.Remove(carEntity);
+                tempAsyncRealm.Remove(carEntity);
             });
         }
 
-        public List<CarEntity> GetAllCars()
+        //no estoy seguro de esta implementacion, revisar en debug posibles errores, tales como que los datos no carguen en la vista
+        public async Task<List<CarEntity>> GetAllCars()
         {
             List<CarEntity> cars = new List<CarEntity>();
-            cars = (List<CarEntity>) realm.All<CarEntity>();
+            await realm.WriteAsync(tempAsyncRealm => {
+                cars = tempAsyncRealm.All<CarEntity>().ToList();
+            });
             return cars;
         }
 
-        public List<MotorcycleEntity> GetAllMotorcycles()
+        //Implementar Asyncronicamente
+        public async Task<List<MotorcycleEntity>> GetAllMotorcycles()
         {
             List<MotorcycleEntity> motorcycles = new List<MotorcycleEntity>();
-            motorcycles = (List<MotorcycleEntity>)realm.All<MotorcycleEntity>();
+            await realm.WriteAsync(tempAsyncRealm => {
+                motorcycles = tempAsyncRealm.All<MotorcycleEntity>().ToList();
+            });
             return motorcycles;
         }
     }

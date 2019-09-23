@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using ParqueaderoElDesfalco.Core.Persistence.Entities;
+using System.Threading.Tasks;
+using ParqueaderoElDesfalco.Core.Domain;
 
 namespace ParqueaderoElDesfalco.Core.Persistence.Daos
 {
     public interface IMotorcycleDao
     {
-        void CreateMotorcycle(MotorcycleEntity motorcycle);
-        MotorcycleEntity GetMotorcycle(string motorcycleId);
-        List<MotorcycleEntity> GetAllMotorcycles();
+        Task CreateMotorcycle(Motorcycle motorcycle);
+        Task RemoveMotorcycle(Motorcycle motorcycleId);
+        List<Motorcycle> GetAllMotorcycles();
     }
 }

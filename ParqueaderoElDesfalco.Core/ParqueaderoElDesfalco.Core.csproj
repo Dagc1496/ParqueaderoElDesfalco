@@ -8,6 +8,8 @@
     <Folder Include="Validators\" />
     <Folder Include="Persistence\Entities\" />
     <Folder Include="Persistence\Daos\" />
+    <Folder Include="Mappers\" />
+    <Folder Include="Domain\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Realm" Version="4.1.0" />

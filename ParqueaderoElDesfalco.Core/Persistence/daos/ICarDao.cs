@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using ParqueaderoElDesfalco.Core.Persistence.Entities;
+using System.Threading.Tasks;
+using ParqueaderoElDesfalco.Core.Domain;
 
 namespace ParqueaderoElDesfalco.Core.Persistence.Daos
 {
     public interface ICarDao
     {
-        void CreateCar(CarEntity car);
-        CarEntity GetCar(string carId);
-        List<CarEntity> GetAllCars();
+        Task CreateCar(Car car);
+        Task RemoveCar(Car car);
+        List<Car> GetAllCars();
     }
 }

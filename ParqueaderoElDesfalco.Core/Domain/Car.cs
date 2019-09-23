@@ -1,10 +1,14 @@
 ﻿using System;
-namespace ParqueaderoElDesfalco.Core.Models
+namespace ParqueaderoElDesfalco.Core.Domain
 {
-    public class Car
+    public class Car : Vehicle
     {
-        public Car()
+        private int CostPerHour = 1000;
+        private int CostPerDay = 8000;
+
+        public override double CalculateParkingPrice(DateTimeOffset dateOfEntry, DateTimeOffset dateOfDeparture)
         {
+            throw new NotImplementedException();
         }
     }
 }

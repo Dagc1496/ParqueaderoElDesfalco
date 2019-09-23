@@ -10,5 +10,5 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Entities
         [PrimaryKey]
         public string CarId { get; set; }
         public DateTimeOffset DateOfEntry { get; set; }
-    }
+    }           
 }
