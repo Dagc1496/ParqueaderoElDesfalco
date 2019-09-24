@@ -19,4 +19,8 @@
   <ItemGroup>
     <ProjectReference Include="..\ParqueaderoElDesfalco.Core\ParqueaderoElDesfalco.Core.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ValidatorTests\" />
+    <Folder Include="DomainTests\" />
+  </ItemGroup>
 </Project>

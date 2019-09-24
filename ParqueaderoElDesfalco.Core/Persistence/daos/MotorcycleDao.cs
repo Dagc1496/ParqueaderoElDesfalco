@@ -6,7 +6,6 @@ using ParqueaderoElDesfalco.Core.Mappers;
 using ParqueaderoElDesfalco.Core.Persistence.Entities;
 
 namespace ParqueaderoElDesfalco.Core.Persistence.Daos
-
 {
     public class MotorcycleDao : IMotorcycleDao
     {
