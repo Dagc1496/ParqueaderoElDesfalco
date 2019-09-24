@@ -1,13 +1,14 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "4af4a51491daf1ef2df504da74b3bd2005b85683"
+    "signature": ""
   },
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.1": {
       "ParqueaderoElDesfalco.Core.Test/1.0.0": {
         "dependencies": {
+          "JustMock": "2019.3.910.4",
           "Microsoft.NET.Test.Sdk": "16.3.0",
           "ParqueaderoElDesfalco.Core": "1.0.0",
           "xunit": "2.4.0",
@@ -36,6 +37,17 @@
       },
       "Fody/4.0.2": {},
       "FodyHelpers/4.0.2": {},
+      "JustMock/2019.3.910.4": {
+        "dependencies": {
+          "System.Security.Permissions": "4.5.0"
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/Telerik.JustMock.dll": {
+            "assemblyVersion": "2019.3.910.4",
+            "fileVersion": "2019.3.910.4"
+          }
+        }
+      },
       "Microsoft.CodeCoverage/16.3.0": {
         "runtime": {
           "lib/netcoreapp1.0/Microsoft.VisualStudio.CodeCoverage.Shim.dll": {
@@ -590,6 +602,17 @@
           "System.Security.Principal.Windows": "4.5.0"
         }
       },
+      "System.Security.Permissions/4.5.0": {
+        "dependencies": {
+          "System.Security.AccessControl": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Security.Permissions.dll": {
+            "assemblyVersion": "4.0.1.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        }
+      },
       "System.Security.Principal.Windows/4.5.0": {},
       "System.Text.Encoding/4.3.0": {
         "dependencies": {
@@ -710,6 +733,13 @@
       "sha512": "sha512-M8bT+J+ZVlBtg2yD9gs1t+w7fzJ1wt6ANXS75SqfjVO5IIsjC4nWIdkKpTEtZyrVggjIxn8i1fnBNpjE7CgKZQ==",
       "path": "fodyhelpers/4.0.2",
       "hashPath": "fodyhelpers.4.0.2.nupkg.sha512"
+    },
+    "JustMock/2019.3.910.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UV54Hlr0YioF6OZ82Hvh24oAP92BgvxxG99DUMZA92iVJX/DeuaVejQXAHH4ycztbSWY2JqE1BHuGqH2UWb92A==",
+      "path": "justmock/2019.3.910.4",
+      "hashPath": "justmock.2019.3.910.4.nupkg.sha512"
     },
     "Microsoft.CodeCoverage/16.3.0": {
       "type": "package",
@@ -969,6 +999,13 @@
       "sha512": "sha512-vW8Eoq0TMyz5vAG/6ce483x/CP83fgm4SJe5P8Tb1tZaobcvPrbMEL7rhH1DRdrYbbb6F0vq3OlzmK0Pkwks5A==",
       "path": "system.security.accesscontrol/4.5.0",
       "hashPath": "system.security.accesscontrol.4.5.0.nupkg.sha512"
+    },
+    "System.Security.Permissions/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9gdyuARhUR7H+p5CjyUB/zPk7/Xut3wUSP8NJQB6iZr8L3XUXTMdoLeVAg9N4rqF8oIpE7MpdqHdDHQ7XgJe0g==",
+      "path": "system.security.permissions/4.5.0",
+      "hashPath": "system.security.permissions.4.5.0.nupkg.sha512"
     },
     "System.Security.Principal.Windows/4.5.0": {
       "type": "package",

@@ -2,27 +2,24 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="ParqueaderoElDesfalco.Core.Test/DomainTests/CarParkingPriceTest.cs">
     <Files>
       <File FileName="ParqueaderoElDesfalco.Core/Persistence/Daos/CarDao.cs" Line="35" Column="14" />
-      <File FileName="ParqueaderoElDesfalco.Core/Persistence/Daos/MotorcycleDao.cs" Line="36" Column="17" />
-      <File FileName="ParqueaderoElDesfalco.Core/Domain/Car.cs" Line="15" Column="30" />
-      <File FileName="ParqueaderoElDesfalco.Core/Domain/Motorcycle.cs" Line="1" Column="1" />
-      <File FileName="ParqueaderoElDesfalco.Core/Domain/Vehicle.cs" Line="1" Column="1" />
-      <File FileName="ParqueaderoElDesfalco.Core.Test/DomainTests/CarParkingPriceTest.cs" Line="11" Column="1" />
-      <File FileName="ParqueaderoElDesfalco.Core.Test/DomainTests/MotorcycleParkingPriceTest.cs" Line="10" Column="2" />
-      <File FileName="ParqueaderoElDesfalco.Core.Test/ValidatorTests/VehicleIdValidatorTest.cs" Line="1" Column="1" />
+      <File FileName="ParqueaderoElDesfalco.Core/Persistence/Daos/MotorcycleDao.cs" />
+      <File FileName="ParqueaderoElDesfalco.Core/Domain/Car.cs" />
+      <File FileName="ParqueaderoElDesfalco.Core/Domain/Motorcycle.cs" />
+      <File FileName="ParqueaderoElDesfalco.Core/Domain/Vehicle.cs" />
+      <File FileName="ParqueaderoElDesfalco.Core.Test/DomainTests/CarParkingPriceTest.cs" Line="3" Column="1" />
+      <File FileName="ParqueaderoElDesfalco.Core.Test/DomainTests/MotorcycleParkingPriceTest.cs" Line="119" Column="2" />
+      <File FileName="ParqueaderoElDesfalco.Core.Test/ValidatorTests/VehicleIdValidatorTest.cs" Line="3" Column="45" />
+      <File FileName="ParqueaderoElDesfalco.Core/Validators/VehicleIdParkingDayValidator.cs" Line="20" Column="20" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ParqueaderoElDesfalco" expanded="True">
             <Node name="ParqueaderoElDesfalco.Core" expanded="True">
-              <Node name="Domain" expanded="True" />
-              <Node name="Mappers" expanded="True" />
-              <Node name="Persistence" expanded="True">
-                <Node name="Daos" expanded="True" />
-              </Node>
               <Node name="Validators" expanded="True" />
             </Node>
             <Node name="ParqueaderoElDesfalco.Core.Test" expanded="True">
+              <Node name="Dependencies" expanded="True" />
               <Node name="DomainTests" expanded="True">
                 <Node name="CarParkingPriceTest.cs" selected="True" />
               </Node>
@@ -42,7 +39,16 @@
         <State name="__root__">
           <Node name="ParqueaderoElDesfalco" expanded="True">
             <Node name="ParqueaderoElDesfalco.Core.Test" expanded="True">
-              <Node name="ParqueaderoElDesfalco" selected="True" />
+              <Node name="ParqueaderoElDesfalco" expanded="True">
+                <Node name="Core" expanded="True">
+                  <Node name="Test" expanded="True">
+                    <Node name="DomainTests" expanded="True" />
+                    <Node name="VehicleIdValidatorTest" expanded="True">
+                      <Node name="TestNotAllowedVechicleIdNotAllowedDate" selected="True" />
+                    </Node>
+                  </Node>
+                </Node>
+              </Node>
             </Node>
           </Node>
         </State>

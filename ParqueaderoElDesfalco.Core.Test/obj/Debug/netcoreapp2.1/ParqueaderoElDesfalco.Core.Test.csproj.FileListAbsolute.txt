@@ -9,7 +9,6 @@
 /Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Core.Test/bin/Debug/netcoreapp2.1/ParqueaderoElDesfalco.Core.dll
 /Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Core.Test/bin/Debug/netcoreapp2.1/ParqueaderoElDesfalco.Core.pdb
 /Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Core.Test/obj/Debug/netcoreapp2.1/ParqueaderoElDesfalco.Core.Test.csprojAssemblyReference.cache
-/Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Core.Test/obj/Debug/netcoreapp2.1/ParqueaderoElDesfalco.Core.Test.csproj.CoreCompileInputs.cache
 /Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Core.Test/obj/Debug/netcoreapp2.1/ParqueaderoElDesfalco.Core.Test.AssemblyInfoInputs.cache
 /Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Core.Test/obj/Debug/netcoreapp2.1/ParqueaderoElDesfalco.Core.Test.AssemblyInfo.cs
 /Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Core.Test/obj/Debug/netcoreapp2.1/ParqueaderoElDesfalco.Core.Test.csproj.CopyComplete

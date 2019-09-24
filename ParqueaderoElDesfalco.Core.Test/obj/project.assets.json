@@ -38,6 +38,18 @@
           "build/_._": {}
         }
       },
+      "JustMock/2019.3.910.4": {
+        "type": "package",
+        "dependencies": {
+          "System.Security.Permissions": "4.5.0"
+        },
+        "compile": {
+          "lib/netcoreapp2.0/Telerik.JustMock.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/Telerik.JustMock.dll": {}
+        }
+      },
       "Microsoft.CodeCoverage/16.3.0": {
         "type": "package",
         "compile": {
@@ -986,16 +998,28 @@
           "System.Security.Principal.Windows": "4.5.0"
         },
         "compile": {
-          "ref/netstandard2.0/_._": {}
+          "ref/netstandard2.0/System.Security.AccessControl.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/_._": {}
+          "lib/netstandard2.0/System.Security.AccessControl.dll": {}
         },
         "runtimeTargets": {
-          "runtimes/win/lib/netcoreapp2.0/_._": {
+          "runtimes/win/lib/netcoreapp2.0/System.Security.AccessControl.dll": {
             "assetType": "runtime",
             "rid": "win"
           }
+        }
+      },
+      "System.Security.Permissions/4.5.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Security.AccessControl": "4.5.0"
+        },
+        "compile": {
+          "ref/netstandard2.0/System.Security.Permissions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Security.Permissions.dll": {}
         }
       },
       "System.Security.Principal.Windows/4.5.0": {
@@ -1004,13 +1028,17 @@
           "Microsoft.NETCore.Platforms": "2.0.0"
         },
         "compile": {
-          "ref/netstandard2.0/_._": {}
+          "ref/netstandard2.0/System.Security.Principal.Windows.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/_._": {}
+          "lib/netstandard2.0/System.Security.Principal.Windows.dll": {}
         },
         "runtimeTargets": {
-          "runtimes/win/lib/netcoreapp2.0/_._": {
+          "runtimes/unix/lib/netcoreapp2.0/System.Security.Principal.Windows.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/netcoreapp2.0/System.Security.Principal.Windows.dll": {
             "assetType": "runtime",
             "rid": "win"
           }
@@ -1280,6 +1308,29 @@
         "lib/netstandard2.0/Mono.Cecil.Rocks.pdb",
         "lib/netstandard2.0/Mono.Cecil.dll",
         "lib/netstandard2.0/Mono.Cecil.pdb"
+      ]
+    },
+    "JustMock/2019.3.910.4": {
+      "sha512": "UV54Hlr0YioF6OZ82Hvh24oAP92BgvxxG99DUMZA92iVJX/DeuaVejQXAHH4ycztbSWY2JqE1BHuGqH2UWb92A==",
+      "type": "package",
+      "path": "justmock/2019.3.910.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LicenseAgreements/License.rtf",
+        "LicenseAgreements/ThirdParty/Castle Project License.txt",
+        "LicenseAgreements/ThirdParty/Entity Framework License.txt",
+        "LicenseAgreements/ThirdParty/IQToolkit.txt",
+        "LicenseAgreements/ThirdParty/JustMock Lite - Notices.txt",
+        "LicenseAgreements/ThirdParty/Ninject.txt",
+        "LicenseAgreements/ThirdParty/sigparse.txt",
+        "LicenseAgreements/ThirdParty/sparsehash.txt",
+        "justmock.2019.3.910.4.nupkg.sha512",
+        "justmock.nuspec",
+        "lib/net45/Telerik.JustMock.dll",
+        "lib/net45/Telerik.JustMock.xml",
+        "lib/netcoreapp2.0/Telerik.JustMock.dll",
+        "lib/netcoreapp2.0/Telerik.JustMock.xml"
       ]
     },
     "Microsoft.CodeCoverage/16.3.0": {
@@ -3602,6 +3653,27 @@
         "version.txt"
       ]
     },
+    "System.Security.Permissions/4.5.0": {
+      "sha512": "9gdyuARhUR7H+p5CjyUB/zPk7/Xut3wUSP8NJQB6iZr8L3XUXTMdoLeVAg9N4rqF8oIpE7MpdqHdDHQ7XgJe0g==",
+      "type": "package",
+      "path": "system.security.permissions/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Security.Permissions.dll",
+        "lib/netstandard2.0/System.Security.Permissions.dll",
+        "ref/net461/System.Security.Permissions.dll",
+        "ref/net461/System.Security.Permissions.xml",
+        "ref/netstandard2.0/System.Security.Permissions.dll",
+        "ref/netstandard2.0/System.Security.Permissions.xml",
+        "system.security.permissions.4.5.0.nupkg.sha512",
+        "system.security.permissions.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "System.Security.Principal.Windows/4.5.0": {
       "sha512": "U77HfRXlZlOeIXd//Yoj6Jnk8AXlbeisf1oq1os+hxOGVnuG+lGSfGqTwTZBoORFF6j/0q7HXIl8cqwQ9aUGqQ==",
       "type": "package",
@@ -4075,6 +4147,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
+      "JustMock >= 2019.3.910.4",
       "Microsoft.NET.Test.Sdk >= 16.3.0",
       "Microsoft.NETCore.App >= 2.1.0",
       "ParqueaderoElDesfalco.Core >= 1.0.0",
@@ -4126,6 +4199,10 @@
     "frameworks": {
       "netcoreapp2.1": {
         "dependencies": {
+          "JustMock": {
+            "target": "Package",
+            "version": "[2019.3.910.4, )"
+          },
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",
             "version": "[16.3.0, )"
@@ -4152,10 +4229,16 @@
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -30,7 +30,6 @@
 /Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Droid/obj/Debug/flata/compiled.flata
 /Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Droid/obj/Debug/R.txt
 /Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Droid/obj/Debug/R.cs.flag
-/Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Droid/obj/Debug/ParqueaderoElDesfalco.Droid.csproj.CoreCompileInputs.cache
 /Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Droid/obj/Debug/ParqueaderoElDesfalco.Droid.dll
 /Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Droid/obj/Debug/ParqueaderoElDesfalco.Droid.pdb
 /Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Droid/obj/Debug/android/bin/co.com.ceiba.el_desfalco.apk
