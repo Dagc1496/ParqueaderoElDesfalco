@@ -11,6 +11,22 @@ namespace ParqueaderoElDesfalco.Core.Test.DomainTests
         private readonly int PriceOfDay = 8000;
 
         [Fact]
+        public void CarParkingInvalidDateTest()
+        {
+            //Arrange
+            Car car = new Car();
+            DateTimeOffset dateOfEntry = new DateTimeOffset(2019, 09, 23, 8, 0, 0, new TimeSpan(0, 0, 0));
+            DateTimeOffset dateOfDeparture = new DateTimeOffset(2000, 09, 23, 8, 0, 0, new TimeSpan(0, 0, 0));
+            int expectedPriceOfParking = 0;
+
+            //Act
+            car.CalculateParkingPrice(dateOfEntry, dateOfDeparture);
+
+            //Assert
+            Assert.Equal(expectedPriceOfParking, car.ParkingPrice);
+        }
+
+        [Fact]
         public void CarParkingHourPriceTest()
         {
             //Arrange

@@ -4,7 +4,7 @@ using ParqueaderoElDesfalco.Core.Persistence.Daos;
 
 namespace ParqueaderoElDesfalco.Core.Validators
 {
-    public class ParkingSpace : IParkingSpace
+    public class ParkingSpaceValidator : IParkingSpaceValidator
     {
         private ICarDao _carDao;
         private IMotorcycleDao _motorcycleDao;
@@ -12,12 +12,12 @@ namespace ParqueaderoElDesfalco.Core.Validators
         private readonly int LimitOfCars = 20;
         private readonly int LimitOfMotorcycle = 10;
 
-        public ParkingSpace(ICarDao carDao)
+        public ParkingSpaceValidator(ICarDao carDao)
         {
             _carDao = carDao;
         }
 
-        public ParkingSpace(IMotorcycleDao motorcycleDao)
+        public ParkingSpaceValidator(IMotorcycleDao motorcycleDao)
         {
             _motorcycleDao = motorcycleDao;
         }

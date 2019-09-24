@@ -12,6 +12,22 @@ namespace ParqueaderoElDesfalco.Core.Test.DomainTests
         private readonly int PriceExtraCilindraje = 2000;
 
         [Fact]
+        public void MotorcycleParkingInvalidDateTest()
+        {
+            //Arrange
+            Motorcycle motorcycle = new Motorcycle();
+            DateTimeOffset dateOfEntry = new DateTimeOffset(2019, 09, 23, 8, 0, 0, new TimeSpan(0, 0, 0));
+            DateTimeOffset dateOfDeparture = new DateTimeOffset(2000, 09, 23, 8, 0, 0, new TimeSpan(0, 0, 0));
+            int expectedPriceOfParking = 0;
+
+            //Act
+            motorcycle.CalculateParkingPrice(dateOfEntry, dateOfDeparture);
+
+            //Assert
+            Assert.Equal(expectedPriceOfParking, motorcycle.ParkingPrice);
+        }
+
+        [Fact]
         public void MotorcycleParkingHourPriceTest()
         {
             //Arrange
