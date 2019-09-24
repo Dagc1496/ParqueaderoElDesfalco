@@ -1,9 +1,0 @@
-/Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Core/bin/Debug/netstandard2.0/ParqueaderoElDesfalco.Core.deps.json
-/Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Core/bin/Debug/netstandard2.0/ParqueaderoElDesfalco.Core.dll
-/Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Core/bin/Debug/netstandard2.0/ParqueaderoElDesfalco.Core.pdb
-/Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Core/obj/Debug/netstandard2.0/ParqueaderoElDesfalco.Core.AssemblyInfoInputs.cache
-/Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Core/obj/Debug/netstandard2.0/ParqueaderoElDesfalco.Core.AssemblyInfo.cs
-/Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Core/obj/Debug/netstandard2.0/ParqueaderoElDesfalco.Core.csproj.Fody.CopyLocal.cache
-/Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Core/obj/Debug/netstandard2.0/ParqueaderoElDesfalco.Core.dll
-/Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Core/obj/Debug/netstandard2.0/ParqueaderoElDesfalco.Core.pdb
-/Users/david.gomez/Desktop/Proyectos/ParqueaderoElDesfalco/ParqueaderoElDesfalco.Core/obj/Debug/netstandard2.0/ParqueaderoElDesfalco.Core.csprojAssemblyReference.cache
