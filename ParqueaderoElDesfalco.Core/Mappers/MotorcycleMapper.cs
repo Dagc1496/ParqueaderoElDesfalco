@@ -1,13 +1,10 @@
-﻿using System;
-using ParqueaderoElDesfalco.Core.Domain;
+﻿using ParqueaderoElDesfalco.Core.Domain;
 using ParqueaderoElDesfalco.Core.Persistence.Entities;
 
 namespace ParqueaderoElDesfalco.Core.Mappers
 {
     public class MotorcycleMapper
     {
-        public MotorcycleMapper() { }
-
         public Motorcycle MapEntityToMotorcycle(MotorcycleEntity motorcycleEntity)
         {
             Motorcycle motorcycle = new Motorcycle();

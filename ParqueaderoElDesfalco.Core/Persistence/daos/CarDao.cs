@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using ParqueaderoElDesfalco.Core.Domain;
 using ParqueaderoElDesfalco.Core.Mappers;
@@ -31,7 +30,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos
             List<Car> cars = new List<Car>();
             if (carEntities == null || carEntities.Count == 0)
             {
-                //recordar poner Exeption
+                return cars;
             }
             else
             {
@@ -41,8 +40,8 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos
                     Car car = carMapper.MapEntityToCar(carEntity);
                     cars.Add(car);
                 }
+                return cars;
             }
-            return cars;  
         }
 
         public async Task RemoveCar(Car car)

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ParqueaderoElDesfalco.Core.Persistence.Entities;
 using Realms;
 using System.Linq;
@@ -9,27 +8,27 @@ namespace ParqueaderoElDesfalco.Core.Persistence
 {
     public class DatabaseManager
     {
-        private Realm realm;
+        private Realm _realm;
 
-        public DatabaseManager()
+        public DatabaseManager(Realm realm)
         {
-            this.realm = InitilizeDB();
+            _realm = realm;
         }
 
         public Realm InitilizeDB()
         {
-            if(realm == null)
+            if(_realm == null)
             {
-                return realm = Realm.GetInstance();
+                return _realm = Realm.GetInstance();
             }else
             {
-                return realm;
+                return _realm;
             }
         }
 
         public async Task SaveOnDB(MotorcycleEntity motorcycleEntity)
         {
-            await realm.WriteAsync(tempAsyncRealm =>
+            await _realm.WriteAsync(tempAsyncRealm =>
                 {
                     tempAsyncRealm.Add(motorcycleEntity);
                 });
@@ -37,7 +36,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence
 
         public async Task SaveOnDB(CarEntity carEntity)
         {
-            await realm.WriteAsync(tempAsyncRealm =>
+            await _realm.WriteAsync(tempAsyncRealm =>
             {
                 tempAsyncRealm.Add(carEntity);
             });
@@ -45,7 +44,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence
 
         public async Task RemoveFromDB(MotorcycleEntity motorcycleEntity)
         {
-            await realm.WriteAsync(tempAsyncRealm =>
+            await _realm.WriteAsync(tempAsyncRealm =>
             {
                 tempAsyncRealm.Remove(motorcycleEntity);
             });
@@ -53,7 +52,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence
 
         public async Task RemoveFromDB(CarEntity carEntity)
         {
-            await realm.WriteAsync(tempAsyncRealm =>
+            await _realm.WriteAsync(tempAsyncRealm =>
             {
                 tempAsyncRealm.Remove(carEntity);
             });
@@ -63,17 +62,17 @@ namespace ParqueaderoElDesfalco.Core.Persistence
         public async Task<List<CarEntity>> GetAllCars()
         {
             List<CarEntity> cars = new List<CarEntity>();
-            await realm.WriteAsync(tempAsyncRealm => {
+            await _realm.WriteAsync(tempAsyncRealm => {
                 cars = tempAsyncRealm.All<CarEntity>().ToList();
             });
             return cars;
         }
 
-        //Implementar Asyncronicamente
+        //Same as Upper Method
         public async Task<List<MotorcycleEntity>> GetAllMotorcycles()
         {
             List<MotorcycleEntity> motorcycles = new List<MotorcycleEntity>();
-            await realm.WriteAsync(tempAsyncRealm => {
+            await _realm.WriteAsync(tempAsyncRealm => {
                 motorcycles = tempAsyncRealm.All<MotorcycleEntity>().ToList();
             });
             return motorcycles;

@@ -24,6 +24,7 @@ namespace ParqueaderoElDesfalco.Core.Domain
 
         private int GetHoursOfParking(DateTimeOffset dateOfEntry, DateTimeOffset dateOfDeparture)
         {
+            if (dateOfDeparture <= dateOfEntry) return 0;
             long timeOfEntryInSeconds = dateOfEntry.ToUnixTimeSeconds();
             long timeOfDepartureInSeconds = dateOfDeparture.ToUnixTimeSeconds();
             long secondsOfParking = timeOfDepartureInSeconds - timeOfEntryInSeconds;
