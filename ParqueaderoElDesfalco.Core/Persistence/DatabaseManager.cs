@@ -22,54 +22,53 @@ namespace ParqueaderoElDesfalco.Core.Persistence
             }
         }
 
-        public async Task SaveOnDB(MotorcycleEntity motorcycleEntity)
+        public void SaveOnDB(MotorcycleEntity motorcycleEntity)
         {
-            await RealmDatabase.WriteAsync(tempAsyncRealm =>
-                {
-                    tempAsyncRealm.Add(motorcycleEntity);
-                });
-        }
-
-        public async Task SaveOnDB(CarEntity carEntity)
-        {
-            await RealmDatabase.WriteAsync(tempAsyncRealm =>
+            RealmDatabase.Write(() =>
             {
-                tempAsyncRealm.Add(carEntity);
+                    RealmDatabase.Add(motorcycleEntity);
             });
         }
 
-        public async Task RemoveFromDB(MotorcycleEntity motorcycleEntity)
+        public void SaveOnDB(CarEntity carEntity)
         {
-            await RealmDatabase.WriteAsync(tempAsyncRealm =>
+            RealmDatabase.Write(() =>
             {
-                tempAsyncRealm.Remove(motorcycleEntity);
+                RealmDatabase.Add(carEntity);
             });
         }
 
-        public async Task RemoveFromDB(CarEntity carEntity)
+        public void RemoveFromDB(MotorcycleEntity motorcycleEntity)
         {
-            await RealmDatabase.WriteAsync(tempAsyncRealm =>
+            RealmDatabase.Write(() =>
             {
-                tempAsyncRealm.Remove(carEntity);
+                RealmDatabase.Remove(motorcycleEntity);
             });
         }
 
-        //no estoy seguro de esta implementacion, revisar en debug posibles errores, tales como que los datos no carguen en la vista
-        public async Task<List<CarEntity>> GetAllCars()
+        public void RemoveFromDB(CarEntity carEntity)
+        {
+            RealmDatabase.Write(() =>
+            {
+                RealmDatabase.Remove(carEntity);
+            });
+        }
+
+        public List<CarEntity> GetAllCars()
         {
             List<CarEntity> cars = new List<CarEntity>();
-            await RealmDatabase.WriteAsync(tempAsyncRealm => {
-                cars = tempAsyncRealm.All<CarEntity>().ToList();
+            RealmDatabase.Write(() => {
+                cars = RealmDatabase.All<CarEntity>().ToList();
             });
             return cars;
         }
 
         //Same as Upper Method
-        public async Task<List<MotorcycleEntity>> GetAllMotorcycles()
+        public List<MotorcycleEntity> GetAllMotorcycles()
         {
             List<MotorcycleEntity> motorcycles = new List<MotorcycleEntity>();
-            await RealmDatabase.WriteAsync(tempAsyncRealm => {
-                motorcycles = tempAsyncRealm.All<MotorcycleEntity>().ToList();
+            RealmDatabase.Write(() => {
+                motorcycles = RealmDatabase.All<MotorcycleEntity>().ToList();
             });
             return motorcycles;
         }

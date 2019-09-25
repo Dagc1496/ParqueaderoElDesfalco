@@ -6,8 +6,8 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos
 {
     public interface IMotorcycleDao
     {
-        Task CreateMotorcycle(Motorcycle motorcycle);
-        Task RemoveMotorcycle(Motorcycle motorcycleId);
-        Task<List<Motorcycle>> GetAllMotorcycles();
+        void CreateMotorcycle(Motorcycle motorcycle);
+        void RemoveMotorcycle(Motorcycle motorcycleId);
+        List<Motorcycle> GetAllMotorcycles();
     }
 }

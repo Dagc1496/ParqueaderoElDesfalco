@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace ParqueaderoElDesfalco.Core.validators
 {
     public interface IVehicleIdParkingDayValidator

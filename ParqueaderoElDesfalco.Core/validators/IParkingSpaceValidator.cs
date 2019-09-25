@@ -1,11 +1,9 @@
-﻿using System.Threading.Tasks;
-
-namespace ParqueaderoElDesfalco.Core.Validators
+﻿namespace ParqueaderoElDesfalco.Core.Validators
 {
     public interface IParkingSpaceValidator
     {
-        Task<bool> IsCarSpaceInParkingLot();
+        bool IsCarSpaceInParkingLot();
 
-        Task<bool> IsMotorcycleSpaceInParkingLot();
+        bool IsMotorcycleSpaceInParkingLot();
     }
 }

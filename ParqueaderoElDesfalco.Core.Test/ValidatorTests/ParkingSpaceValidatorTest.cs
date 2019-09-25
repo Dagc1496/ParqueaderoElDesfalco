@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ParqueaderoElDesfalco.Core.Domain;
 using ParqueaderoElDesfalco.Core.Persistence.Daos;
 using ParqueaderoElDesfalco.Core.Validators;
@@ -9,8 +10,11 @@ namespace ParqueaderoElDesfalco.Core.Test.ValidatorTests
 {
     public class ParkingSpaceValidatorTest
     {
-        //refactorizar estos test para adaptarlos al nuevo modelo.
-        /* 
+
+        private readonly DateTimeOffset defaultDate = DateTimeOffset.Now;
+        private readonly string defaultVehicleId = "onevehicleid";
+        private const int defaultMotorcycleCilindraje = 300;
+
         [Fact]
         public void CarsParkingLotHaveSpaceTest()
         {
@@ -35,7 +39,8 @@ namespace ParqueaderoElDesfalco.Core.Test.ValidatorTests
             List<Car> cars = new List<Car>();
             for (int i = 0; i < 20; i++)
             {
-                Car car = new Car();
+                string carId = defaultVehicleId + i.ToString();
+                Car car = new Car(carId, defaultDate);
                 cars.Add(car);
             }
             Mock.Arrange(() => carsPakingLot.GetAllCars()).Returns(cars);
@@ -72,7 +77,8 @@ namespace ParqueaderoElDesfalco.Core.Test.ValidatorTests
             List<Motorcycle> motorcycles = new List<Motorcycle>();
             for (int i = 0; i < 10; i++)
             {
-                Motorcycle motorcycle = new Motorcycle();
+                string motorcycleId = defaultVehicleId + i.ToString();
+                Motorcycle motorcycle = new Motorcycle(motorcycleId, defaultDate, defaultMotorcycleCilindraje);
                 motorcycles.Add(motorcycle);
             }
             Mock.Arrange(() => motorcyclesPakingLot.GetAllMotorcycles()).Returns(motorcycles);
@@ -84,7 +90,5 @@ namespace ParqueaderoElDesfalco.Core.Test.ValidatorTests
             //Assert
             Assert.False(isSpaceInParkingLot);
         }
-        */
-
     }
 }

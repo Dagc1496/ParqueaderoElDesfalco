@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using ParqueaderoElDesfalco.Core.Domain;
 using ParqueaderoElDesfalco.Core.Mappers;
 using ParqueaderoElDesfalco.Core.Persistence.Entities;
@@ -19,15 +18,15 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos
             MotorcycleMapperObject = new MotorcycleMapper();
         }
 
-        public async Task CreateMotorcycle(Motorcycle motorcycle)
+        public void CreateMotorcycle(Motorcycle motorcycle)
         {
             MotorcycleEntity motorcycleEntity = MotorcycleMapperObject.MapMotorcycleToEntity(motorcycle);
-            await DatabaseManagerObject.SaveOnDB(motorcycleEntity);
+            DatabaseManagerObject.SaveOnDB(motorcycleEntity);
         }
 
-        public async Task<List<Motorcycle>> GetAllMotorcycles()
+        public List<Motorcycle> GetAllMotorcycles()
         {
-            List<MotorcycleEntity> motorcycleEntities = await DatabaseManagerObject.GetAllMotorcycles();
+            List<MotorcycleEntity> motorcycleEntities = DatabaseManagerObject.GetAllMotorcycles();
             List<Motorcycle> motorcycles = new List<Motorcycle>();
             if (motorcycleEntities == null || motorcycleEntities.Count == 0)
             {
@@ -41,10 +40,10 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos
             return motorcycles; 
         }
 
-        public async Task RemoveMotorcycle(Motorcycle motorcycle)
+        public void RemoveMotorcycle(Motorcycle motorcycle)
         {
             MotorcycleEntity motorcycleEntity = MotorcycleMapperObject.MapMotorcycleToEntity(motorcycle);
-            await DatabaseManagerObject.RemoveFromDB(motorcycleEntity);
+            DatabaseManagerObject.RemoveFromDB(motorcycleEntity);
         }
     }
 }

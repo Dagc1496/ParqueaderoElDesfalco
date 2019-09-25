@@ -19,15 +19,15 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos
             CarMapperObject = new CarMapper();
         }
 
-        public async Task CreateCar(Car car)
+        public void CreateCar(Car car)
         {
             CarEntity carEntity = CarMapperObject.MapCarToEntity(car);
-            await DatabaseManagerObject.SaveOnDB(carEntity);
+            DatabaseManagerObject.SaveOnDB(carEntity);
         }
-
-        public async Task<List<Car>> GetAllCars()
+         
+        public List<Car> GetAllCars()
         {
-            List<CarEntity> carEntities = await DatabaseManagerObject.GetAllCars();
+            List<CarEntity> carEntities = DatabaseManagerObject.GetAllCars();
             List<Car> cars = new List<Car>();
             if (carEntities == null || carEntities.Count == 0)
             {
@@ -41,10 +41,10 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos
             return cars;
         }
 
-        public async Task RemoveCar(Car car)
+        public void RemoveCar(Car car)
         {
             CarEntity carEntity = CarMapperObject.MapCarToEntity(car);
-            await DatabaseManagerObject.RemoveFromDB(carEntity);
+            DatabaseManagerObject.RemoveFromDB(carEntity);
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using ParqueaderoElDesfalco.Core.Domain;
 using ParqueaderoElDesfalco.Core.Persistence.Daos;
 
@@ -23,16 +22,16 @@ namespace ParqueaderoElDesfalco.Core.Validators
             MotorcycleDaoObject = motorcycleDao;
         }
 
-        public async Task<bool> IsCarSpaceInParkingLot()
+        public bool IsCarSpaceInParkingLot()
         {
-            List<Car> cars = await CarDaoObject.GetAllCars();
+            List<Car> cars = CarDaoObject.GetAllCars();
             if (cars.Count == LimitOfCars) return false;
             return true;
         }
 
-        public async Task<bool> IsMotorcycleSpaceInParkingLot()
+        public bool IsMotorcycleSpaceInParkingLot()
         {
-            List<Motorcycle> motorcycles = await MotorcycleDaoObject.GetAllMotorcycles();
+            List<Motorcycle> motorcycles = MotorcycleDaoObject.GetAllMotorcycles();
             if (motorcycles.Count == LimitOfMotorcycle) return false;
             return true;
         }
