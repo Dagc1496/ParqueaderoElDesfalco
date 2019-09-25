@@ -8,47 +8,43 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos
 {
     public class MotorcycleDao : IMotorcycleDao
     {
-        IDatabaseManager _databaseManager;
-        MotorcycleMapper motorcycleMapper;
+        DatabaseManager DatabaseManagerObject;
 
-        public MotorcycleDao(IDatabaseManager databaseManager)
+        MotorcycleMapper MotorcycleMapperObject;
+
+        public MotorcycleDao()
         {
-            _databaseManager = databaseManager;
-            _databaseManager.InitilizeDB();
+            DatabaseManagerObject = new DatabaseManager();
+            DatabaseManagerObject.InitilizeDB();
+            MotorcycleMapperObject = new MotorcycleMapper();
         }
 
         public async Task CreateMotorcycle(Motorcycle motorcycle)
         {
-            motorcycleMapper = new MotorcycleMapper();
-            MotorcycleEntity motorcycleEntity = motorcycleMapper.MapMotorcycleToEntity(motorcycle);
-            await _databaseManager.SaveOnDB(motorcycleEntity);
+            MotorcycleEntity motorcycleEntity = MotorcycleMapperObject.MapMotorcycleToEntity(motorcycle);
+            await DatabaseManagerObject.SaveOnDB(motorcycleEntity);
         }
 
-        public List<Motorcycle> GetAllMotorcycles()
+        public async Task<List<Motorcycle>> GetAllMotorcycles()
         {
-            List<MotorcycleEntity> motorcycleEntities = _databaseManager.GetAllMotorcycles();
+            List<MotorcycleEntity> motorcycleEntities = await DatabaseManagerObject.GetAllMotorcycles();
             List<Motorcycle> motorcycles = new List<Motorcycle>();
             if (motorcycleEntities == null || motorcycleEntities.Count == 0)
             {
-                //Recordar poner Exception
+                return motorcycles;
             }
-            else
+            foreach (MotorcycleEntity motorcycleEntity in motorcycleEntities)
             {
-                motorcycleMapper = new MotorcycleMapper();
-                foreach (MotorcycleEntity motorcycleEntity in motorcycleEntities)
-                {
-                    Motorcycle motorcycle = motorcycleMapper.MapEntityToMotorcycle(motorcycleEntity);
-                    motorcycles.Add(motorcycle);
-                }
+                Motorcycle motorcycle = MotorcycleMapperObject.MapEntityToMotorcycle(motorcycleEntity);
+                motorcycles.Add(motorcycle);
             }
-            return motorcycles;
+            return motorcycles; 
         }
 
         public async Task RemoveMotorcycle(Motorcycle motorcycle)
         {
-            motorcycleMapper = new MotorcycleMapper();
-            MotorcycleEntity motorcycleEntity = motorcycleMapper.MapMotorcycleToEntity(motorcycle);
-            await _databaseManager.RemoveFromDB(motorcycleEntity);
+            MotorcycleEntity motorcycleEntity = MotorcycleMapperObject.MapMotorcycleToEntity(motorcycle);
+            await DatabaseManagerObject.RemoveFromDB(motorcycleEntity);
         }
     }
 }

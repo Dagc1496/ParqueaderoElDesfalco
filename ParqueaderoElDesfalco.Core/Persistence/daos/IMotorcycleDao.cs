@@ -8,6 +8,6 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos
     {
         Task CreateMotorcycle(Motorcycle motorcycle);
         Task RemoveMotorcycle(Motorcycle motorcycleId);
-        List<Motorcycle> GetAllMotorcycles();
+        Task<List<Motorcycle>> GetAllMotorcycles();
     }
 }

@@ -7,9 +7,7 @@ namespace ParqueaderoElDesfalco.Core.Mappers
     {
         public Car MapEntityToCar(CarEntity carEntity)
         {
-            Car car = new Car();
-            car.VehicleId = carEntity.CarId;
-            car.DateOfEntry = carEntity.DateOfEntry;
+            Car car = new Car(carEntity.CarId,carEntity.DateOfEntry);
             return car;
         }
 

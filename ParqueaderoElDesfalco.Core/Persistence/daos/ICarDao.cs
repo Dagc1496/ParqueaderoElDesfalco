@@ -8,6 +8,6 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos
     {
         Task CreateCar(Car car);
         Task RemoveCar(Car car);
-        List<Car> GetAllCars();
+        Task<List<Car>> GetAllCars();
     }
 }

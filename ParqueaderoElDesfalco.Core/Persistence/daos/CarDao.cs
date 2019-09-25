@@ -8,47 +8,43 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos
 {
     public class CarDao : ICarDao
     {
-        private CarMapper carMapper;
-        private readonly IDatabaseManager _databaseManager;
+        private CarMapper CarMapperObject;
 
-        public CarDao(IDatabaseManager databaseManager)
+        private readonly DatabaseManager DatabaseManagerObject;
+
+        public CarDao()
         {
-            _databaseManager = databaseManager;
-            _databaseManager.InitilizeDB();
+            DatabaseManagerObject = new DatabaseManager();
+            DatabaseManagerObject.InitilizeDB();
+            CarMapperObject = new CarMapper();
         }
 
         public async Task CreateCar(Car car)
         {
-            carMapper = new CarMapper();
-            CarEntity carEntity = carMapper.MapCarToEntity(car);
-            await _databaseManager.SaveOnDB(carEntity);
+            CarEntity carEntity = CarMapperObject.MapCarToEntity(car);
+            await DatabaseManagerObject.SaveOnDB(carEntity);
         }
 
-        public List<Car> GetAllCars()
+        public async Task<List<Car>> GetAllCars()
         {
-            List<CarEntity> carEntities = _databaseManager.GetAllCars();
+            List<CarEntity> carEntities = await DatabaseManagerObject.GetAllCars();
             List<Car> cars = new List<Car>();
             if (carEntities == null || carEntities.Count == 0)
             {
                 return cars;
             }
-            else
+            foreach (CarEntity carEntity in carEntities)
             {
-                carMapper = new CarMapper();
-                foreach (CarEntity carEntity in carEntities)
-                {
-                    Car car = carMapper.MapEntityToCar(carEntity);
-                    cars.Add(car);
-                }
-                return cars;
+                Car car = CarMapperObject.MapEntityToCar(carEntity);
+                cars.Add(car);
             }
+            return cars;
         }
 
         public async Task RemoveCar(Car car)
         {
-            carMapper = new CarMapper();
-            CarEntity carEntity = carMapper.MapCarToEntity(car);
-            await _databaseManager.RemoveFromDB(carEntity);
+            CarEntity carEntity = CarMapperObject.MapCarToEntity(car);
+            await DatabaseManagerObject.RemoveFromDB(carEntity);
         }
     }
 }

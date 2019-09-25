@@ -7,21 +7,25 @@ namespace ParqueaderoElDesfalco.Core.Test.DomainTests
     public class MotorcycleParkingPriceTest
     {
 
-        private readonly int PriceOfHour = 500;
-        private readonly int PriceOfDay = 4000;
-        private readonly int PriceExtraCilindraje = 2000;
+        private const int priceOfHour = 500;
+        private const int priceOfDay = 4000;
+        private const int priceExtraCilindraje = 2000;
+        private const int defaultCilindraje = 300;
+
+        private readonly DateTimeOffset defaultDate = DateTimeOffset.Now;
+        private readonly string defaultMotorcycleId = "onecarid";
 
         [Fact]
         public void MotorcycleParkingInvalidDateTest()
         {
             //Arrange
-            Motorcycle motorcycle = new Motorcycle();
-            DateTimeOffset dateOfEntry = new DateTimeOffset(2019, 09, 23, 8, 0, 0, new TimeSpan(0, 0, 0));
-            DateTimeOffset dateOfDeparture = new DateTimeOffset(2000, 09, 23, 8, 0, 0, new TimeSpan(0, 0, 0));
+            DateTimeOffset InvalidDateOfEntry = new DateTimeOffset(2019, 09, 23, 8, 0, 0, new TimeSpan(0, 0, 0));
+            DateTimeOffset dateOfDeparture = new DateTimeOffset(2009, 09, 22, 8, 0, 0, new TimeSpan(0, 0, 0));
             int expectedPriceOfParking = 0;
+            Motorcycle motorcycle = new Motorcycle(defaultMotorcycleId, InvalidDateOfEntry, defaultCilindraje);
 
             //Act
-            motorcycle.CalculateParkingPrice(dateOfEntry, dateOfDeparture);
+            motorcycle.CalculateParkingPrice(dateOfDeparture);
 
             //Assert
             Assert.Equal(expectedPriceOfParking, motorcycle.ParkingPrice);
@@ -31,14 +35,13 @@ namespace ParqueaderoElDesfalco.Core.Test.DomainTests
         public void MotorcycleParkingHourPriceTest()
         {
             //Arrange
-            Motorcycle motorcycle = new Motorcycle();
-            DateTimeOffset dateOfEntry = DateTimeOffset.Now;
             int hoursParked = 6;
             DateTimeOffset dateOfDeparture = DateTimeOffset.Now.AddHours(hoursParked);
-            int expectedPriceOfParking = hoursParked * PriceOfHour;
+            int expectedPriceOfParking = hoursParked * priceOfHour;
+            Motorcycle motorcycle = new Motorcycle(defaultMotorcycleId, defaultDate, defaultCilindraje);
 
             //Act
-            motorcycle.CalculateParkingPrice(dateOfEntry, dateOfDeparture);
+            motorcycle.CalculateParkingPrice(dateOfDeparture);
 
             //Assert
             Assert.Equal(expectedPriceOfParking, motorcycle.ParkingPrice);
@@ -48,14 +51,13 @@ namespace ParqueaderoElDesfalco.Core.Test.DomainTests
         public void MotorcycleParkingDayPriceTest()
         {
             //Arrange
-            Motorcycle motorcycle = new Motorcycle();
-            DateTimeOffset dateOfEntry = DateTimeOffset.Now;
             int daysParked = 3;
             DateTimeOffset dateOfDeparture = DateTimeOffset.Now.AddDays(daysParked);
-            int expectedPriceOfParking = daysParked * PriceOfDay;
+            int expectedPriceOfParking = daysParked * priceOfDay;
+            Motorcycle motorcycle = new Motorcycle(defaultMotorcycleId, defaultDate, defaultCilindraje);
 
             //Act
-            motorcycle.CalculateParkingPrice(dateOfEntry, dateOfDeparture);
+            motorcycle.CalculateParkingPrice(dateOfDeparture);
 
             //Assert
             Assert.Equal(expectedPriceOfParking, motorcycle.ParkingPrice);
@@ -65,15 +67,14 @@ namespace ParqueaderoElDesfalco.Core.Test.DomainTests
         public void MotorcycleParkingHoursAndDaysPriceTest()
         {
             //Arrange
-            Motorcycle motorcycle = new Motorcycle();
-            DateTimeOffset dateOfEntry = DateTimeOffset.Now;
             int daysParked = 2;
             int hoursParked = 8;
             DateTimeOffset dateOfDeparture = DateTimeOffset.Now.AddHours(hoursParked).AddDays(daysParked);
-            int expectedPriceOfParking = (hoursParked * PriceOfHour) + (daysParked * PriceOfDay);
+            int expectedPriceOfParking = (hoursParked * priceOfHour) + (daysParked * priceOfDay);
+            Motorcycle motorcycle = new Motorcycle(defaultMotorcycleId, defaultDate, defaultCilindraje);
 
             //Act
-            motorcycle.CalculateParkingPrice(dateOfEntry, dateOfDeparture);
+            motorcycle.CalculateParkingPrice(dateOfDeparture);
 
             //Assert
             Assert.Equal(expectedPriceOfParking, motorcycle.ParkingPrice);
@@ -83,14 +84,13 @@ namespace ParqueaderoElDesfalco.Core.Test.DomainTests
         public void MotorcycleParkingHoursMixedPriceTest()
         {
             //Arrange
-            Motorcycle motorcycle = new Motorcycle();
-            DateTimeOffset dateOfEntry = DateTimeOffset.Now;
             int hoursParked = 17;
             DateTimeOffset dateOfDeparture = DateTimeOffset.Now.AddHours(hoursParked);
-            int expectedPriceOfParking = PriceOfDay;
+            int expectedPriceOfParking = priceOfDay;
+            Motorcycle motorcycle = new Motorcycle(defaultMotorcycleId, defaultDate, defaultCilindraje);
 
             //Act
-            motorcycle.CalculateParkingPrice(dateOfEntry, dateOfDeparture);
+            motorcycle.CalculateParkingPrice(dateOfDeparture);
 
             //Assert
             Assert.Equal(expectedPriceOfParking, motorcycle.ParkingPrice);
@@ -100,15 +100,14 @@ namespace ParqueaderoElDesfalco.Core.Test.DomainTests
         public void MotorcycleHighCilindrajeParkingHourPriceTest()
         {
             //Arrange
-            Motorcycle motorcycle = new Motorcycle();
-            motorcycle.Cilindraje = 550;
-            DateTimeOffset dateOfEntry = DateTimeOffset.Now;
+            int InvalidCilindraje = 550;
             int hoursParked = 6;
             DateTimeOffset dateOfDeparture = DateTimeOffset.Now.AddHours(hoursParked);
-            int expectedPriceOfParking = (hoursParked * PriceOfHour) + PriceExtraCilindraje;
+            int expectedPriceOfParking = (hoursParked * priceOfHour) + priceExtraCilindraje;
+            Motorcycle motorcycle = new Motorcycle(defaultMotorcycleId, defaultDate, InvalidCilindraje);
 
             //Act
-            motorcycle.CalculateParkingPrice(dateOfEntry, dateOfDeparture);
+            motorcycle.CalculateParkingPrice(dateOfDeparture);
 
             //Assert
             Assert.Equal(expectedPriceOfParking, motorcycle.ParkingPrice);
@@ -118,15 +117,14 @@ namespace ParqueaderoElDesfalco.Core.Test.DomainTests
         public void MotorcycleHighCilindrajeParkingDaysPriceTest()
         {
             //Arrange
-            Motorcycle motorcycle = new Motorcycle();
-            motorcycle.Cilindraje = 500;
-            DateTimeOffset dateOfEntry = DateTimeOffset.Now;
+            int InvalidCilindraje = 550;
             int daysParked = 3;
             DateTimeOffset dateOfDeparture = DateTimeOffset.Now.AddDays(daysParked);
-            int expectedPriceOfParking = (daysParked * PriceOfDay) + PriceExtraCilindraje;
+            int expectedPriceOfParking = (daysParked * priceOfDay) + priceExtraCilindraje;
+            Motorcycle motorcycle = new Motorcycle(defaultMotorcycleId, defaultDate, InvalidCilindraje);
 
             //Act
-            motorcycle.CalculateParkingPrice(dateOfEntry, dateOfDeparture);
+            motorcycle.CalculateParkingPrice(dateOfDeparture);
 
             //Assert
             Assert.Equal(expectedPriceOfParking, motorcycle.ParkingPrice);

@@ -7,9 +7,9 @@ namespace ParqueaderoElDesfalco.Core.Mappers
     {
         public Motorcycle MapEntityToMotorcycle(MotorcycleEntity motorcycleEntity)
         {
-            Motorcycle motorcycle = new Motorcycle();
-            motorcycle.VehicleId = motorcycleEntity.MotorcycleId;
-            motorcycle.DateOfEntry = motorcycleEntity.DateOfEntry;
+            Motorcycle motorcycle = new Motorcycle(motorcycleEntity.MotorcycleId,
+                                                    motorcycleEntity.DateOfEntry,
+                                                    motorcycleEntity.Cilindraje);
             return motorcycle;
         }
 
@@ -18,6 +18,7 @@ namespace ParqueaderoElDesfalco.Core.Mappers
             MotorcycleEntity motorcycleEntity = new MotorcycleEntity();
             motorcycleEntity.MotorcycleId = motorcycle.VehicleId;
             motorcycleEntity.DateOfEntry = motorcycle.DateOfEntry;
+            motorcycleEntity.Cilindraje = motorcycle.Cilindraje;
             return motorcycleEntity;
         }
     }
