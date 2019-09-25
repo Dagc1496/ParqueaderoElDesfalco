@@ -4,6 +4,9 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
+        
+    <ProjectGuid>{FEFDE5E7-C358-4EAA-A9B4-551415D4DCDA}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,7 +15,6 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
     <PackageReference Include="JustMock" Version="2019.3.910.4" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\ParqueaderoElDesfalco.Core\ParqueaderoElDesfalco.Core.csproj" />
   </ItemGroup>
