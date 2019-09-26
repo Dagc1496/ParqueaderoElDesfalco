@@ -2,23 +2,18 @@
 using ParqueaderoElDesfalco.Core.Persistence.Entities;
 using Realms;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ParqueaderoElDesfalco.Core.Persistence
 {
-    public class DatabaseManager
+    public class DatabaseManager : IDatabaseManager
     {
         private Realm RealmDatabase;
 
-        public Realm InitilizeDB()
+        public void InitilizeDB()
         {
             if(RealmDatabase == null)
             {
-                return RealmDatabase = Realm.GetInstance();
-            }
-            else
-            {
-                return RealmDatabase;
+                RealmDatabase = Realm.GetInstance();
             }
         }
 
@@ -63,7 +58,6 @@ namespace ParqueaderoElDesfalco.Core.Persistence
             return cars;
         }
 
-        //Same as Upper Method
         public List<MotorcycleEntity> GetAllMotorcycles()
         {
             List<MotorcycleEntity> motorcycles = new List<MotorcycleEntity>();

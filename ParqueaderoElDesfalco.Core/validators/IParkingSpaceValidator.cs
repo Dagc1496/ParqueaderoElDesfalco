@@ -1,9 +1,7 @@
 ﻿namespace ParqueaderoElDesfalco.Core.Validators
 {
-    public interface IParkingSpaceValidator
+    public interface IVehicleParkingSpaceValidator
     {
-        bool IsCarSpaceInParkingLot();
-
-        bool IsMotorcycleSpaceInParkingLot();
+        bool IsVehicleSpaceInParkingLot();
     }
 }

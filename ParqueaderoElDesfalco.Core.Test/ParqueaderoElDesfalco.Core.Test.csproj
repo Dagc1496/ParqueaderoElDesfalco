@@ -5,7 +5,6 @@
 
     <IsPackable>false</IsPackable>
         
-    <ProjectGuid>{FEFDE5E7-C358-4EAA-A9B4-551415D4DCDA}</ProjectGuid>
     <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
 
@@ -21,5 +20,6 @@
   <ItemGroup>
     <Folder Include="ValidatorTests\" />
     <Folder Include="DomainTests\" />
+    <Folder Include="DaoTests\" />
   </ItemGroup>
 </Project>

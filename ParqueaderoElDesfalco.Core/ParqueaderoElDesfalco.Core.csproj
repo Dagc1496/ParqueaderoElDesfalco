@@ -12,6 +12,7 @@
     <Folder Include="Persistence\Daos\" />
     <Folder Include="Mappers\" />
     <Folder Include="Domain\" />
+    <Folder Include="Domain\DomainTest\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Realm" Version="4.1.0" />

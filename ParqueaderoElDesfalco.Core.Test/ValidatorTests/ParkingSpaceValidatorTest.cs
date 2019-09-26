@@ -10,22 +10,34 @@ namespace ParqueaderoElDesfalco.Core.Test.ValidatorTests
 {
     public class ParkingSpaceValidatorTest
     {
+        #region Vars and const of TestClass
+
+        private string defaultVehicleId = "onevehicleid";
+        private const int defaultMotorcycleCilindraje = 300;
+        private const int limitOfCarsParkingLot = 20;
+        private const int limitOfMotorcyclesParkingLot = 10;
 
         private readonly DateTimeOffset defaultDate = DateTimeOffset.Now;
-        private readonly string defaultVehicleId = "onevehicleid";
-        private const int defaultMotorcycleCilindraje = 300;
+        private List<Car> cars;
+        private Car defaultCar;
+        private List<Motorcycle> motorcycles;
+        private Motorcycle defaultMotorcycle;
+
+        #endregion
+
+        #region Tests
 
         [Fact]
         public void CarsParkingLotHaveSpaceTest()
         {
             //Arrange
             var carsPakingLot = Mock.Create<ICarDao>();
-            List<Car> cars = new List<Car>();
+            cars = new List<Car>();
             Mock.Arrange(() => carsPakingLot.GetAllCars()).Returns(cars);
-            ParkingSpaceValidator parkingSpaceValidator = new ParkingSpaceValidator(carsPakingLot);
+            CarParkingSpaceValidator carParkingSpaceValidator = new CarParkingSpaceValidator(carsPakingLot);
 
             //Act
-            bool isSpaceInParkingLot = parkingSpaceValidator.IsCarSpaceInParkingLot();
+            bool isSpaceInParkingLot = carParkingSpaceValidator.IsVehicleSpaceInParkingLot();
 
             //Assert
             Assert.True(isSpaceInParkingLot);
@@ -36,18 +48,12 @@ namespace ParqueaderoElDesfalco.Core.Test.ValidatorTests
         {
             //Arrange
             var carsPakingLot = Mock.Create<ICarDao>();
-            List<Car> cars = new List<Car>();
-            for (int i = 0; i < 20; i++)
-            {
-                string carId = defaultVehicleId + i.ToString();
-                Car car = new Car(carId, defaultDate);
-                cars.Add(car);
-            }
+            PopulateCarsParkingLot(limitOfCarsParkingLot);
             Mock.Arrange(() => carsPakingLot.GetAllCars()).Returns(cars);
-            ParkingSpaceValidator parkingSpaceValidator = new ParkingSpaceValidator(carsPakingLot);
+            CarParkingSpaceValidator carParkingSpaceValidator = new CarParkingSpaceValidator(carsPakingLot);
 
             //Act
-            bool isSpaceInParkingLot = parkingSpaceValidator.IsCarSpaceInParkingLot();
+            bool isSpaceInParkingLot = carParkingSpaceValidator.IsVehicleSpaceInParkingLot();
 
             //Assert
             Assert.False(isSpaceInParkingLot);
@@ -58,12 +64,12 @@ namespace ParqueaderoElDesfalco.Core.Test.ValidatorTests
         {
             //Arrange
             var motorcyclesPakingLot = Mock.Create<IMotorcycleDao>();
-            List<Motorcycle> motorcycles = new List<Motorcycle>();
+            motorcycles = new List<Motorcycle>();
             Mock.Arrange(() => motorcyclesPakingLot.GetAllMotorcycles()).Returns(motorcycles);
-            ParkingSpaceValidator parkingSpaceValidator = new ParkingSpaceValidator(motorcyclesPakingLot);
+            MotorcycleParkingSpaceValidator motorcycleParkingSpaceValidator = new MotorcycleParkingSpaceValidator(motorcyclesPakingLot);
 
             //Act
-            bool isSpaceInParkingLot = parkingSpaceValidator.IsMotorcycleSpaceInParkingLot();
+            bool isSpaceInParkingLot = motorcycleParkingSpaceValidator.IsVehicleSpaceInParkingLot();
 
             //Assert
             Assert.True(isSpaceInParkingLot);
@@ -74,21 +80,44 @@ namespace ParqueaderoElDesfalco.Core.Test.ValidatorTests
         {
             //Arrange
             var motorcyclesPakingLot = Mock.Create<IMotorcycleDao>();
-            List<Motorcycle> motorcycles = new List<Motorcycle>();
-            for (int i = 0; i < 10; i++)
-            {
-                string motorcycleId = defaultVehicleId + i.ToString();
-                Motorcycle motorcycle = new Motorcycle(motorcycleId, defaultDate, defaultMotorcycleCilindraje);
-                motorcycles.Add(motorcycle);
-            }
+            PopulateMotorcycleParkingLot(limitOfMotorcyclesParkingLot);
             Mock.Arrange(() => motorcyclesPakingLot.GetAllMotorcycles()).Returns(motorcycles);
-            ParkingSpaceValidator parkingSpaceValidator = new ParkingSpaceValidator(motorcyclesPakingLot);
+            MotorcycleParkingSpaceValidator motorcycleParkingSpaceValidator = new MotorcycleParkingSpaceValidator(motorcyclesPakingLot);
 
             //Act
-            bool isSpaceInParkingLot = parkingSpaceValidator.IsMotorcycleSpaceInParkingLot();
+            bool isSpaceInParkingLot = motorcycleParkingSpaceValidator.IsVehicleSpaceInParkingLot();
 
             //Assert
             Assert.False(isSpaceInParkingLot);
         }
+
+        #endregion
+
+        #region Class Methods
+
+        private void PopulateCarsParkingLot(int numberOfCars)
+        {
+            cars = new List<Car>();
+            for (int i = 0; i < numberOfCars; i++)
+            {
+                defaultVehicleId += i.ToString();
+                defaultCar = new Car(defaultVehicleId,defaultDate);
+                cars.Add(defaultCar);
+            }
+        }
+
+        private void PopulateMotorcycleParkingLot(int numberOfMotorcycles)
+        {
+            motorcycles = new List<Motorcycle>();
+            for (int i = 0; i < numberOfMotorcycles; i++)
+            {
+                defaultVehicleId += i.ToString();
+                defaultMotorcycle = new Motorcycle(defaultVehicleId, defaultDate, defaultMotorcycleCilindraje);
+                motorcycles.Add(defaultMotorcycle);
+            }
+        }
+
+        #endregion
+
     }
 }

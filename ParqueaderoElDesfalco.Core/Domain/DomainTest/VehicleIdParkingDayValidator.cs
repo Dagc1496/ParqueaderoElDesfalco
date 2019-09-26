@@ -1,5 +1,6 @@
 ﻿using System;
-namespace ParqueaderoElDesfalco.Core.validators
+
+namespace ParqueaderoElDesfalco.Core.Domain.DomainTest
 {
     public class VehicleIdParkingDayValidator : IVehicleIdParkingDayValidator
     {

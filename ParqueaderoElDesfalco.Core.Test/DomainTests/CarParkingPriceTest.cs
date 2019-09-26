@@ -7,11 +7,17 @@ namespace ParqueaderoElDesfalco.Core.Test.DomainTests
 {
     public class CarParkingPriceTest
     {
+        #region Vars and const of TestClass
+
         private const int PriceOfHour = 1000;
         private const int PriceOfDay = 8000;
 
         private readonly DateTimeOffset defaultDate = DateTimeOffset.Now;
         private readonly string defaultCarId = "onecarid";
+
+        #endregion
+
+        #region Tests
 
         [Fact]
         public void CarParkingInvalidDateTest()
@@ -93,5 +99,7 @@ namespace ParqueaderoElDesfalco.Core.Test.DomainTests
             //Assert
             Assert.Equal(expectedPriceOfParking, car.ParkingPrice);
         }
+
+        #endregion
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using ParqueaderoElDesfalco.Core.Domain;
 using ParqueaderoElDesfalco.Core.Mappers;
 using ParqueaderoElDesfalco.Core.Persistence.Entities;
@@ -10,11 +9,11 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos
     {
         private CarMapper CarMapperObject;
 
-        private readonly DatabaseManager DatabaseManagerObject;
+        private readonly IDatabaseManager DatabaseManagerObject;
 
-        public CarDao()
+        public CarDao(IDatabaseManager DatabaseManager)
         {
-            DatabaseManagerObject = new DatabaseManager();
+            DatabaseManagerObject = DatabaseManager;
             DatabaseManagerObject.InitilizeDB();
             CarMapperObject = new CarMapper();
         }
