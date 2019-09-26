@@ -7,26 +7,26 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos
 {
     public class MotorcycleDao : IMotorcycleDao
     {
-        DatabaseManager DatabaseManagerObject;
+        private readonly IDatabaseManager DatabaseManager;
 
-        MotorcycleMapper MotorcycleMapperObject;
+        private MotorcycleMapper MotorcycleMapperObject;
 
-        public MotorcycleDao()
+        public MotorcycleDao(IDatabaseManager databaseManager)
         {
-            DatabaseManagerObject = new DatabaseManager();
-            DatabaseManagerObject.InitilizeDB();
+            DatabaseManager = databaseManager;
+            DatabaseManager.InitilizeDB();
             MotorcycleMapperObject = new MotorcycleMapper();
         }
 
         public void CreateMotorcycle(Motorcycle motorcycle)
         {
-            MotorcycleEntity motorcycleEntity = MotorcycleMapperObject.MapMotorcycleToEntity(motorcycle);
-            DatabaseManagerObject.SaveOnDB(motorcycleEntity);
+            MotorcycleEntity motorcycleEntity = MotorcycleMapperObject.MapObjectToEntity(motorcycle);
+            DatabaseManager.SaveOnDB(motorcycleEntity);
         }
 
         public List<Motorcycle> GetAllMotorcycles()
         {
-            List<MotorcycleEntity> motorcycleEntities = DatabaseManagerObject.GetAllMotorcycles();
+            List<MotorcycleEntity> motorcycleEntities = DatabaseManager.GetAllMotorcycles();
             List<Motorcycle> motorcycles = new List<Motorcycle>();
             if (motorcycleEntities == null || motorcycleEntities.Count == 0)
             {
@@ -34,7 +34,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos
             }
             foreach (MotorcycleEntity motorcycleEntity in motorcycleEntities)
             {
-                Motorcycle motorcycle = MotorcycleMapperObject.MapEntityToMotorcycle(motorcycleEntity);
+                Motorcycle motorcycle = MotorcycleMapperObject.MapEntityToObject(motorcycleEntity);
                 motorcycles.Add(motorcycle);
             }
             return motorcycles; 
@@ -42,8 +42,8 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos
 
         public void RemoveMotorcycle(Motorcycle motorcycle)
         {
-            MotorcycleEntity motorcycleEntity = MotorcycleMapperObject.MapMotorcycleToEntity(motorcycle);
-            DatabaseManagerObject.RemoveFromDB(motorcycleEntity);
+            MotorcycleEntity motorcycleEntity = MotorcycleMapperObject.MapObjectToEntity(motorcycle);
+            DatabaseManager.RemoveFromDB(motorcycleEntity);
         }
     }
 }

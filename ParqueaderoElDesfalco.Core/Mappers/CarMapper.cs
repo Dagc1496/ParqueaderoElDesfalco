@@ -3,15 +3,15 @@ using ParqueaderoElDesfalco.Core.Persistence.Entities;
 
 namespace ParqueaderoElDesfalco.Core.Mappers
 {
-    public class CarMapper
+    public class CarMapper : IGeneralMapper<Car,CarEntity>
     {
-        public Car MapEntityToCar(CarEntity carEntity)
+        public Car MapEntityToObject(CarEntity carEntity)
         {
             Car car = new Car(carEntity.CarId,carEntity.DateOfEntry);
             return car;
         }
 
-        public CarEntity MapCarToEntity(Car car)
+        public CarEntity MapObjectToEntity(Car car)
         {
             CarEntity carEntity = new CarEntity();
             carEntity.CarId = car.VehicleId;

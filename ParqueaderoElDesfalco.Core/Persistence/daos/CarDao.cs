@@ -7,23 +7,23 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos
 {
     public class CarDao : ICarDao
     {
-        private CarMapper CarMapperObject;
+        private CarMapper carMapper;
 
         private readonly IDatabaseManager DatabaseManagerObject;
 
-        public CarDao(IDatabaseManager DatabaseManager)
+        public CarDao(IDatabaseManager databaseManager)
         {
-            DatabaseManagerObject = DatabaseManager;
+            DatabaseManagerObject = databaseManager;
             DatabaseManagerObject.InitilizeDB();
-            CarMapperObject = new CarMapper();
+            carMapper = new CarMapper();
         }
 
         public void CreateCar(Car car)
         {
-            CarEntity carEntity = CarMapperObject.MapCarToEntity(car);
+            CarEntity carEntity = carMapper.MapObjectToEntity(car);
             DatabaseManagerObject.SaveOnDB(carEntity);
         }
-         
+
         public List<Car> GetAllCars()
         {
             List<CarEntity> carEntities = DatabaseManagerObject.GetAllCars();
@@ -34,7 +34,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos
             }
             foreach (CarEntity carEntity in carEntities)
             {
-                Car car = CarMapperObject.MapEntityToCar(carEntity);
+                Car car = carMapper.MapEntityToObject(carEntity);
                 cars.Add(car);
             }
             return cars;
@@ -42,7 +42,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos
 
         public void RemoveCar(Car car)
         {
-            CarEntity carEntity = CarMapperObject.MapCarToEntity(car);
+            CarEntity carEntity = carMapper.MapObjectToEntity(car);
             DatabaseManagerObject.RemoveFromDB(carEntity);
         }
     }

@@ -3,9 +3,9 @@ using ParqueaderoElDesfalco.Core.Persistence.Entities;
 
 namespace ParqueaderoElDesfalco.Core.Mappers
 {
-    public class MotorcycleMapper
+    public class MotorcycleMapper : IGeneralMapper<Motorcycle,MotorcycleEntity>
     {
-        public Motorcycle MapEntityToMotorcycle(MotorcycleEntity motorcycleEntity)
+        public Motorcycle MapEntityToObject(MotorcycleEntity motorcycleEntity)
         {
             Motorcycle motorcycle = new Motorcycle(motorcycleEntity.MotorcycleId,
                                                     motorcycleEntity.DateOfEntry,
@@ -13,7 +13,7 @@ namespace ParqueaderoElDesfalco.Core.Mappers
             return motorcycle;
         }
 
-        public MotorcycleEntity MapMotorcycleToEntity(Motorcycle motorcycle)
+        public MotorcycleEntity MapObjectToEntity(Motorcycle motorcycle)
         {
             MotorcycleEntity motorcycleEntity = new MotorcycleEntity();
             motorcycleEntity.MotorcycleId = motorcycle.VehicleId;

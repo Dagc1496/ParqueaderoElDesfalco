@@ -7,7 +7,7 @@ using ParqueaderoElDesfalco.Core.Persistence.Entities;
 using Telerik.JustMock;
 using Xunit;
 
-namespace ParqueaderoElDesfalco.Core.Test.DaoTests
+namespace ParqueaderoElDesfalco.Core.Test.DaoTest
 {
     public class CarDaoTests
     {
@@ -45,7 +45,7 @@ namespace ParqueaderoElDesfalco.Core.Test.DaoTests
         }
 
         [Fact]
-        public void GetCarsFromEmptyDB()
+        public void GetCarsFromEmptyDatabase()
         {
             //Arrange
             var mockedDb = Mock.Create<IDatabaseManager>();
@@ -64,12 +64,12 @@ namespace ParqueaderoElDesfalco.Core.Test.DaoTests
         }
 
         [Fact]
-        public void BataBaseReturnsNullList()
+        public void DataBaseReturnsNullList()
         {
             //Arrange
             var mockedDb = Mock.Create<IDatabaseManager>();
 
-            //We are not initilizing the carEntities List to Mock GetAllCars Method as null
+            //We are not initilizing the carEntities List to make GetAllCars Method return null
 
             Mock.Arrange(() => mockedDb.InitilizeDB()).DoNothing().MustBeCalled();
             Mock.Arrange(() => mockedDb.GetAllCars()).Returns(carEntities);
@@ -81,6 +81,40 @@ namespace ParqueaderoElDesfalco.Core.Test.DaoTests
 
             //Assert
             Assert.Equal(actualResult.Count, expectedResult);
+            Mock.Assert(mockedDb);
+        }
+
+        [Fact]
+        public void SaveCarOnDatabase()
+        {
+            //Arrange
+            var mockedDb = Mock.Create<IDatabaseManager>();
+            carEntities = new List<CarEntity>();
+            Car car = new Car(defaultVehicleId, defaultDateOfentry);
+            Mock.Arrange(() => mockedDb.SaveOnDB(defaultCarEntity)).IgnoreArguments().DoNothing().MustBeCalled();
+            CarDao carDao = new CarDao(mockedDb);
+
+            //Act
+            carDao.CreateCar(car);
+
+            //Assert
+            Mock.Assert(mockedDb);
+        }
+
+        [Fact]
+        public void RemoveCarFromDatabase()
+        {
+            //Arrange
+            var mockedDb = Mock.Create<IDatabaseManager>();
+            carEntities = new List<CarEntity>();
+            Car car = new Car(defaultVehicleId, defaultDateOfentry);
+            Mock.Arrange(() => mockedDb.RemoveFromDB(defaultCarEntity)).IgnoreArguments().DoNothing().MustBeCalled();
+            CarDao carDao = new CarDao(mockedDb);
+
+            //Act
+            carDao.RemoveCar(car);
+
+            //Assert
             Mock.Assert(mockedDb);
         }
 
