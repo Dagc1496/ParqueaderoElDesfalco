@@ -13,6 +13,7 @@
     <Folder Include="Mappers\" />
     <Folder Include="Domain\" />
     <Folder Include="Domain\DomainValidators\" />
+    <Folder Include="ServiceDomain\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Realm" Version="4.1.0" />

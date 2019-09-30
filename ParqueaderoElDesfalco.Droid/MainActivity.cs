@@ -24,6 +24,63 @@ namespace ParqueaderoElDesfalco.Droid
 
             FloatingActionButton fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
             fab.Click += FabOnClick;
+
+            name = (EditText)FindViewById(Resource.Id.edit_text_email);
+            name.SetText(Resource.String.prueba);
+            Log.Warn("Ciclo de vide", "onCreate");
+        }
+
+        protected override void OnSaveInstanceState(Bundle outState)
+        {
+            outState.PutString("name",name.Text);
+            base.OnSaveInstanceState(outState);
+            Log.Warn("Ciclo de vide","Guardando instancia");
+        }
+
+        protected override void OnRestoreInstanceState(Bundle savedInstanceState)
+        {
+            base.OnRestoreInstanceState(savedInstanceState);
+            string test = savedInstanceState.GetString("name");
+            Log.Warn("Ciclo de vide", "Restaurando instancia");
+            Log.Warn("Ciclo de vide", test);
+            name.Text = test;
+
+        }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+            Log.Warn("Ciclo de vide", "onStart");
+        }
+
+        protected override void OnPause()
+        {
+            base.OnPause();
+            Log.Warn("Ciclo de vide", "onPause");
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+            Log.Warn("Ciclo de vide", "onResume");
+        }
+
+        protected override void OnRestart()
+        {
+            base.OnRestart();
+            Log.Warn("Ciclo de vide", "onRestart");
+        }
+
+        protected override void OnStop()
+        {
+            base.OnStop();
+            Log.Warn("Ciclo de vide", "onPause");
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            Log.Warn("Ciclo de vide", "onDestroy");
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)

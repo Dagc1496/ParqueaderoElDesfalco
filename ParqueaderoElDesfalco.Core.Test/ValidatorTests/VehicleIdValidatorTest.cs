@@ -1,6 +1,6 @@
 ﻿using System;
 using Xunit;
-using ParqueaderoElDesfalco.Core.Domain.DomainTest;
+using ParqueaderoElDesfalco.Core.Domain.DomainValidators;
 
 namespace ParqueaderoElDesfalco.Core.Test
 {
