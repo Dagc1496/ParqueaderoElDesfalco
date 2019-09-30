@@ -3,7 +3,7 @@ using ParqueaderoElDesfalco.Core.Domain;
 using ParqueaderoElDesfalco.Core.Mappers;
 using ParqueaderoElDesfalco.Core.Persistence.Entities;
 
-namespace ParqueaderoElDesfalco.Core.Persistence.Daos
+namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Real
 {
     public class CarDao : ICarDao
     {

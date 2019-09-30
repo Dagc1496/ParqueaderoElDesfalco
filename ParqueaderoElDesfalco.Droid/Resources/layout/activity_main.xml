@@ -1,5 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent">
-    <include layout="@layout/content_main" />
-    <android.support.design.widget.FloatingActionButton android:id="@+id/fab" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="bottom|end" android:layout_margin="@dimen/fab_margin" app:srcCompat="@android:drawable/ic_dialog_email" />
-</android.support.design.widget.CoordinatorLayout>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/AppTheme"
+    android:orientation = "vertical">
+    
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Buttons_Layout"
+        android:gravity="center_horizontal"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="15dp">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Guardar Carro"
+            android:id="@+id/btn_park_car"
+            android:backgroundTint="@color/buttonsColor"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:background="@drawable/buttons_shape_corners"/>
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Guardar Moto"
+            android:id="@+id/btn_park_motorcycle"
+            android:backgroundTint="@color/buttonsColor"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:background="@drawable/buttons_shape_corners"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Carros en el parqueadero"
+        android:textStyle="bold"
+        android:textColor = "@color/colorPrimaryDark"
+        android:gravity="center"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cars_recyclerview"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Motos en el parqueadero"
+        android:textStyle="bold"
+        android:textColor = "@color/colorPrimaryDark"
+        android:gravity="center"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/motorcycles_recyclerview"/>
+
+</LinearLayout>

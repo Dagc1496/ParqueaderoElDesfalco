@@ -6,13 +6,14 @@ using ParqueaderoElDesfalco.Core.Domain.DomainValidators;
 using ParqueaderoElDesfalco.Core.Persistence.Daos;
 using ParqueaderoElDesfalco.Core.Validators;
 
-namespace ParqueaderoElDesfalco.Core.ServiceDomain.Implementations.Real
+namespace ParqueaderoElDesfalco.Core.ServiceDomain
 {
-    public class CarServiceDomain : IVehicleServiceDomain<Car>
+    public class CarServiceDomain
     {
         private readonly ICarDao CarDao;
         private VehicleIdParkingDayValidator vehicleIdParkingDayValidator;
         private CarParkingSpaceValidator carParkingSpaceValidator;
+        private readonly DateTimeOffset departureTime = DateTimeOffset.Now;
         private bool ParkingSpaceInParkingLot;
         private bool AllowedbyId;
 
@@ -21,7 +22,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain.Implementations.Real
             CarDao = carDao;
         }
 
-        public void CheckPermissionsToPark(Car vehicle)
+        private void CheckPermissionsToPark(Car vehicle)
         {
             ParkingSpaceInParkingLot = false;
             AllowedbyId = false;
@@ -33,6 +34,11 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain.Implementations.Real
             {
                 ParkingSpaceInParkingLot = true;
             }
+        }
+
+        public void GetPriceOfPark(Car car)
+        {
+            car.CalculateParkingPrice(departureTime);
         }
 
         public List<Car> GetAllVehicles()
@@ -50,6 +56,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain.Implementations.Real
         {
             vehicleIdParkingDayValidator = new VehicleIdParkingDayValidator();
             carParkingSpaceValidator = new CarParkingSpaceValidator(CarDao);
+            CheckPermissionsToPark(vehicle);
             if (!ParkingSpaceInParkingLot)
             {
                 throw (new ParkingLotException("No Space"));

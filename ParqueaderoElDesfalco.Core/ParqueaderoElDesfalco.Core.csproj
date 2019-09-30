@@ -6,6 +6,13 @@
     <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' " />
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' " />
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Mock|AnyCPU' ">
+    <IntermediateOutputPath>obj\Debug\netstandard2.0</IntermediateOutputPath>
+    <Optimize>false</Optimize>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
     <Folder Include="Validators\" />
     <Folder Include="Persistence\Entities\" />
@@ -15,10 +22,10 @@
     <Folder Include="Domain\DomainValidators\" />
     <Folder Include="ServiceDomain\" />
     <Folder Include="DependencyInjection\" />
-    <Folder Include="ServiceDomain\Implementations\" />
-    <Folder Include="ServiceDomain\Implementations\Real\" />
-    <Folder Include="ServiceDomain\Implementations\Mock\" />
     <Folder Include="Domain\DomainExeptions\" />
+    <Folder Include="Persistence\Daos\Implementations\" />
+    <Folder Include="Persistence\Daos\Implementations\Mock\" />
+    <Folder Include="Persistence\Daos\Implementations\Real\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Realm" Version="4.1.0" />

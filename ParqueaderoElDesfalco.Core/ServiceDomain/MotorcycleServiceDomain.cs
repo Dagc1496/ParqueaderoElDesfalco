@@ -6,9 +6,9 @@ using ParqueaderoElDesfalco.Core.Domain.DomainValidators;
 using ParqueaderoElDesfalco.Core.Persistence.Daos;
 using ParqueaderoElDesfalco.Core.Validators;
 
-namespace ParqueaderoElDesfalco.Core.ServiceDomain.Implementations.Real
-{
-    public class MotorcycleServiceDomain : IVehicleServiceDomain<Motorcycle>
+namespace ParqueaderoElDesfalco.Core.ServiceDomain
+{ 
+    public class MotorcycleServiceDomain
     {
 
         private readonly IMotorcycleDao MotorCycleDao;
@@ -52,7 +52,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain.Implementations.Real
             }
         }
 
-        public void CheckPermissionsToPark(Motorcycle vehicle)
+        private void CheckPermissionsToPark(Motorcycle vehicle)
         {
             ParkingSpaceInParkingLot = false;
             AllowedbyId = false;
