@@ -2,7 +2,7 @@
 
 namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
 {
-    public class VehicleIdParkingDayValidator : IVehicleIdParkingDayValidator
+    public class VehicleIdParkingDayValidator
     {
         private readonly string notAllowedLetter = "A";
         private readonly DayOfWeek[] allowedDays = {DayOfWeek.Monday, DayOfWeek.Sunday};

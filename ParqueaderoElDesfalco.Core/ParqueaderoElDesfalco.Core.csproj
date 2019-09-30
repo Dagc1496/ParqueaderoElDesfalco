@@ -14,6 +14,11 @@
     <Folder Include="Domain\" />
     <Folder Include="Domain\DomainValidators\" />
     <Folder Include="ServiceDomain\" />
+    <Folder Include="DependencyInjection\" />
+    <Folder Include="ServiceDomain\Implementations\" />
+    <Folder Include="ServiceDomain\Implementations\Real\" />
+    <Folder Include="ServiceDomain\Implementations\Mock\" />
+    <Folder Include="Domain\DomainExeptions\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Realm" Version="4.1.0" />

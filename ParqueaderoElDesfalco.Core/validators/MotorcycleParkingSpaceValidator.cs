@@ -4,7 +4,7 @@ using ParqueaderoElDesfalco.Core.Persistence.Daos;
 
 namespace ParqueaderoElDesfalco.Core.Validators
 {
-    public class MotorcycleParkingSpaceValidator : IVehicleParkingSpaceValidator
+    public class MotorcycleParkingSpaceValidator
     {
 
         private IMotorcycleDao MotorcycleDaoObject;
