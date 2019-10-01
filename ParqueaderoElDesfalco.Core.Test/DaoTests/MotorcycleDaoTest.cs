@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using ParqueaderoElDesfalco.Core.Domain;
 using ParqueaderoElDesfalco.Core.Persistence;
-using ParqueaderoElDesfalco.Core.Persistence.Daos.Real;
+using ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Real;
 using ParqueaderoElDesfalco.Core.Persistence.Entities;
 using Telerik.JustMock;
 using Xunit;

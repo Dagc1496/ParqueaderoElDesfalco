@@ -14,6 +14,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
         private readonly IMotorcycleDao MotorCycleDao;
         private VehicleIdParkingDayValidator vehicleIdParkingDayValidator;
         private MotorcycleParkingSpaceValidator motorcycleParkingSpaceValidator;
+        private readonly DateTimeOffset departureTime = DateTimeOffset.Now;
         private bool ParkingSpaceInParkingLot;
         private bool AllowedbyId;
 
@@ -26,6 +27,11 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
         {
             List<Motorcycle> motorcycles = MotorCycleDao.GetAllMotorcycles();
             return motorcycles;
+        }
+
+        public void GetPriceOfPark(Motorcycle motorcycle)
+        {
+            motorcycle.CalculateParkingPrice(departureTime);
         }
 
         public void RemoveVechielFromDB(Motorcycle vehicle)

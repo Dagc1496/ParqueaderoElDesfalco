@@ -3,7 +3,7 @@ using ParqueaderoElDesfalco.Core.Domain;
 using ParqueaderoElDesfalco.Core.Mappers;
 using ParqueaderoElDesfalco.Core.Persistence.Entities;
 
-namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Real
+namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Real
 {
     public class MotorcycleDao : IMotorcycleDao
     {
