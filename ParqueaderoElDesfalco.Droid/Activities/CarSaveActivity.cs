@@ -4,14 +4,16 @@ using Android.OS;
 using Android.Widget;
 using Autofac;
 using ParqueaderoElDesfalco.Core.Domain;
+using ParqueaderoElDesfalco.Core.Domain.DomainExeptions;
 using ParqueaderoElDesfalco.Core.ServiceDomain;
+using ParqueaderoElDesfalco.Droid.Services;
 
 namespace ParqueaderoElDesfalco.Droid.Activities
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme")]
     public class CarSaveActivity : BaseActivity
     {
-
+        private IDialogsService dialogsService;
         private Car car;
         private EditText CarIdEditText;
         private readonly DateTimeOffset dateOfEntryActual = DateTimeOffset.Now;
@@ -37,18 +39,38 @@ namespace ParqueaderoElDesfalco.Droid.Activities
             {
                 dateOfEntry = new DateTimeOffset(dateOfEntryActual.DateTime, TimeSpan.FromHours(0));
                 car = new Car(CarIdEditText.Text, dateOfEntry);
-                carServiceDomain.SaveVechicleOnDb(car);
-                Finish();
+                try
+                {
+                    carServiceDomain.SaveVechicleOnDb(car);
+                    Finish();
+                }
+                catch (ParkingLotException)
+                {
+                    dialogsService.ShowMessage("Ups", "El Parquedero se encuentra lleno actualmente");
+                }catch (VehicleIdException exceptionById)
+                {
+                    if(exceptionById.Message == "ByDay")
+                    {
+                        dialogsService.ShowMessage("Ups", "Hoy no te puedes quedar con nosotros, lo sentimos");
+                    }
+                    else
+                    {
+                        dialogsService.ShowMessage("Hmmm", "Algo esta mal con la Identificacion de tu Vehiculo");
+                    }
+                    
+                }
             }
             else
             {
-                Toast.MakeText(this, Resource.String.prueba, ToastLength.Short).Show();
+                CarIdEditText.Error = "Recordar poner strings";
             }
         }
 
         private void SetDependencies()
         {
             carServiceDomain = ConfigureDependencies().Resolve<CarServiceDomain>();
+            dialogsService = ConfigureDependencies().Resolve<IDialogsService>();
+            dialogsService.UserDialogsInit(this);
         }
 
         protected override void OnSaveInstanceState(Bundle outState)

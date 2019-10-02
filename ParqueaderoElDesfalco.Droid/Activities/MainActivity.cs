@@ -20,7 +20,6 @@ namespace ParqueaderoElDesfalco.Droid.Activities
         private RecyclerView carRecyclerView;
         private RecyclerView motorcyclesRecyclerView;
         private CarServiceDomain carServiceDomain;
-        private IDialogsService dialogsService;
         private Button NewCarButton;
         private Button NewMotorcycleButton;
         private MotorcycleServiceDomain motorcycleServiceDomain;
@@ -44,7 +43,6 @@ namespace ParqueaderoElDesfalco.Droid.Activities
             NewMotorcycleButton = FindViewById<Button>(Resource.Id.btn_park_new_motorcycle);
             NewMotorcycleButton.Click += btnNewMotorcycle_Click;
             ConfigGeneralRecyclerView();
-            dialogsService.UserDialogsInit(this);
         }
 
         private void ConfigGeneralRecyclerView()
@@ -85,7 +83,6 @@ namespace ParqueaderoElDesfalco.Droid.Activities
         {
             carServiceDomain = ConfigureDependencies().Resolve<CarServiceDomain>();
             motorcycleServiceDomain = ConfigureDependencies().Resolve<MotorcycleServiceDomain>();
-            dialogsService = ConfigureDependencies().Resolve<IDialogsService>();
         }
 
         private void ConfigCarRecyclerView(List<Car> cars)
@@ -132,4 +129,3 @@ namespace ParqueaderoElDesfalco.Droid.Activities
         }
     }
 }
-

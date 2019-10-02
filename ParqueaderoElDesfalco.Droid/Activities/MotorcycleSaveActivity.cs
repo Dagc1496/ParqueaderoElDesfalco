@@ -5,13 +5,16 @@ using Android.OS;
 using Android.Widget;
 using Autofac;
 using ParqueaderoElDesfalco.Core.Domain;
+using ParqueaderoElDesfalco.Core.Domain.DomainExeptions;
 using ParqueaderoElDesfalco.Core.ServiceDomain;
+using ParqueaderoElDesfalco.Droid.Services;
 
 namespace ParqueaderoElDesfalco.Droid.Activities
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme")]
     public class MotorcycleSaveActivity : BaseActivity
     {
+        private IDialogsService dialogsService;
         private Motorcycle motorcycle;
         private EditText MotorcycleIdEditText;
         private EditText MotorcycleCilindrajeEditText;
@@ -43,14 +46,34 @@ namespace ParqueaderoElDesfalco.Droid.Activities
             {
                 dateOfEntry = new DateTimeOffset(dateOfEntryActual.DateTime, TimeSpan.FromHours(0));
                 motorcycle = new Motorcycle(MotorcycleIdEditText.Text, dateOfEntry, Convert.ToInt32(MotorcycleCilindrajeEditText.Text));
-                motorcycleServiceDomain.SaveVechicleOnDb(motorcycle);
-                Finish();
+                try
+                {
+                    motorcycleServiceDomain.SaveVechicleOnDb(motorcycle);
+                    Finish();
+                }
+                catch (ParkingLotException)
+                {
+                    dialogsService.ShowMessage("Ups", "El Parquedero se encuentra lleno actualmente");
+                }
+                catch (VehicleIdException exceptionById)
+                {
+                    if (exceptionById.Message == "ByDay")
+                    {
+                        dialogsService.ShowMessage("Ups", "Hoy no te puedes quedar con nosotros, lo sentimos");
+                    }
+                    else
+                    {
+                        dialogsService.ShowMessage("Hmmm", "Algo esta mal con la Identificacion de tu Vehiculo");
+                    }
+                }
             }
         }
 
         private void SetDependencies()
         {
             motorcycleServiceDomain = ConfigureDependencies().Resolve<MotorcycleServiceDomain>();
+            dialogsService = ConfigureDependencies().Resolve<IDialogsService>();
+            dialogsService.UserDialogsInit(this);
         }
 
         protected override void OnSaveInstanceState(Bundle outState)

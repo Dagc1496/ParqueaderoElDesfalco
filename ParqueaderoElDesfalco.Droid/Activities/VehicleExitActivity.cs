@@ -53,7 +53,6 @@ namespace ParqueaderoElDesfalco.Droid.Activities
                 leavingCar = JsonConvert.DeserializeObject<Car>(Intent.Extras.GetString("car"));
                 SetDependencies(leavingCar);
                 SetLabels(leavingCar);
-                dialogsService.ShowMessage("algo", leavingCar.VehicleId);
             }
             if(Intent.Extras.GetString("motorcycle") != null)
             {
