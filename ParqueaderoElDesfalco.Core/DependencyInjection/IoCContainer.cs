@@ -3,12 +3,13 @@ using Autofac;
 
 namespace ParqueaderoElDesfalco.Core.DependencyInjection
 {
-    public class IoCContainer
+    public abstract class IoCContainer
     {
         public IContainer CreateContainer()
         {
             var containerBuilder = new ContainerBuilder();
             RegisterSharedDependencies(containerBuilder);
+            RegisterDependencies(containerBuilder);
             return containerBuilder.Build();
         }
 
@@ -17,5 +18,7 @@ namespace ParqueaderoElDesfalco.Core.DependencyInjection
             containerBuilder.RegisterModule<DomainModule>();
             containerBuilder.RegisterModule<DaoModule>();
         }
+
+        protected abstract void RegisterDependencies(ContainerBuilder containerBuilder);
     }
 }

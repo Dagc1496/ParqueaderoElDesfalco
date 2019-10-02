@@ -1,58 +1,73 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-    <LinearLayout
+<android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/AppTheme"
-    android:orientation = "vertical"
-    android:gravity="center">
+    android:theme="@style/AppTheme">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:orientation = "vertical"
+        android:gravity="center">
 
         <ImageView
-        android:id="@+id/vehicle_imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"
-        android:layout_margin="30dp"/>
+            android:id="@+id/vehicle_imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+            android:layout_margin="30dp"/>
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/car_id"
-            android:hint="poner pista"
-            android:inputType="textEmailAddress"
+            android:id="@+id/vehicle_id"
+            android:text="precio del parqueadero"
+            android:textSize="20sp"
             android:gravity="center"
             android:layout_marginHorizontal="30dp"/>
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/car_id"
-            android:hint="poner pista"
-            android:inputType="textEmailAddress"
+            android:id="@+id/vehicle_date_of_entry"
+            android:text="precio del parqueadero"
+            android:textSize="20sp"
             android:layout_margin="30dp"
             android:gravity="center"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/vehicle_date_of_departure"
             android:text="precio del parqueadero"
+            android:textSize="20sp"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="precio del parqueadero"
+            android:id="@+id/vehicle_price_of_park"
             android:textSize="30sp"
             android:textColor="@android:color/holo_red_dark"
             android:textStyle="bold"
+            android:layout_margin="30dp"
             android:gravity="center"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Pagar y Salir"
-            android:id="@+id/btn_park_motorcycle"
+            android:id="@+id/btn_pay_and_out"
             android:backgroundTint="@color/buttonsColor"
             android:textColor="@android:color/white"
             android:gravity="center"
             android:background="@drawable/buttons_shape_corners"
-            android:layout_marginHorizontal="60dp"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginHorizontal="60dp"/>
+    </LinearLayout>
 
-</LinearLayout>
+</android.support.v4.widget.NestedScrollView>

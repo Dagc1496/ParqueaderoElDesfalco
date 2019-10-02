@@ -7,8 +7,8 @@ namespace ParqueaderoElDesfalco.Core.Domain
         private const int costPerHour = 1000;
         private const int costPerDay = 8000;
 
-        public Car(string carId, DateTimeOffset dateOfEntry)
-            : base(carId, dateOfEntry) { }
+        public Car(string vehicleId, DateTimeOffset dateOfEntry)
+            : base(vehicleId, dateOfEntry) { }
 
         public override void CalculateParkingPrice(DateTimeOffset dateOfDeparture)
         {

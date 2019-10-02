@@ -15,7 +15,6 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
         private VehicleIdParkingDayValidator vehicleIdParkingDayValidator;
         private MotorcycleParkingSpaceValidator motorcycleParkingSpaceValidator;
         private UniqueVehicleIdValidator uniqueVehicleIdValidator;
-        private readonly DateTimeOffset departureTime = DateTimeOffset.Now;
         private bool ParkingSpaceInParkingLot;
         private bool AllowedbyId;
         private bool IsVehicleValidId;
@@ -31,9 +30,9 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
             return motorcycles;
         }
 
-        public void GetPriceOfPark(Motorcycle motorcycle)
+        public void CalculatePriceOfPark(Motorcycle motorcycle, DateTimeOffset vehicleDepartureTime)
         {
-            motorcycle.CalculateParkingPrice(departureTime);
+            motorcycle.CalculateParkingPrice(vehicleDepartureTime);
         }
 
         public void RemoveVechielFromDB(Motorcycle vehicle)

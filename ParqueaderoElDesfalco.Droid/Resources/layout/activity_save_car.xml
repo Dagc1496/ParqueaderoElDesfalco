@@ -22,7 +22,8 @@
             android:hint="poner pista"
             android:inputType="textEmailAddress"
             android:layout_margin="30dp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:maxLength="20"/>
 
         <Button
             android:layout_width="match_parent"

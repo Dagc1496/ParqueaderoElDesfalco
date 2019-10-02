@@ -44,7 +44,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence
         {
             RealmDatabase.Write(() =>
             {
-                RealmDatabase.Remove(motorcycleEntity);
+                RealmDatabase.Remove(RealmDatabase.Find("MotorcycleEntity", motorcycleEntity.MotorcycleId));
             });
         }
 

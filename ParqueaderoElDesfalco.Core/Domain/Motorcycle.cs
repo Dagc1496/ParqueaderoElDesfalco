@@ -11,8 +11,8 @@ namespace ParqueaderoElDesfalco.Core.Domain
 
         public int Cilindraje { get; private set; }
 
-        public Motorcycle(string carId, DateTimeOffset dateOfEntry, int cilindraje)
-            :base(carId, dateOfEntry)
+        public Motorcycle(string vehicleId, DateTimeOffset dateOfEntry, int cilindraje)
+            :base(vehicleId, dateOfEntry)
         {
             Cilindraje = cilindraje;
         }

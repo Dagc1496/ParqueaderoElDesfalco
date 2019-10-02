@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using ParqueaderoElDesfalco.Core.Domain;
 using ParqueaderoElDesfalco.Core.ServiceDomain;
 using ParqueaderoElDesfalco.Droid.Adapters;
+using ParqueaderoElDesfalco.Droid.Services;
 
 namespace ParqueaderoElDesfalco.Droid.Activities
 {
@@ -19,6 +20,7 @@ namespace ParqueaderoElDesfalco.Droid.Activities
         private RecyclerView carRecyclerView;
         private RecyclerView motorcyclesRecyclerView;
         private CarServiceDomain carServiceDomain;
+        private IDialogsService dialogsService;
         private Button NewCarButton;
         private Button NewMotorcycleButton;
         private MotorcycleServiceDomain motorcycleServiceDomain;
@@ -41,6 +43,12 @@ namespace ParqueaderoElDesfalco.Droid.Activities
             NewCarButton.Click += btnNewCar_Click;
             NewMotorcycleButton = FindViewById<Button>(Resource.Id.btn_park_new_motorcycle);
             NewMotorcycleButton.Click += btnNewMotorcycle_Click;
+            ConfigGeneralRecyclerView();
+            dialogsService.UserDialogsInit(this);
+        }
+
+        private void ConfigGeneralRecyclerView()
+        {
             motorcyclesRecyclerView = FindViewById<RecyclerView>(Resource.Id.motorcycles_recyclerview);
             motorcyclesRecyclerView.NestedScrollingEnabled = false;
             carRecyclerView = FindViewById<RecyclerView>(Resource.Id.cars_recyclerview);
@@ -77,6 +85,7 @@ namespace ParqueaderoElDesfalco.Droid.Activities
         {
             carServiceDomain = ConfigureDependencies().Resolve<CarServiceDomain>();
             motorcycleServiceDomain = ConfigureDependencies().Resolve<MotorcycleServiceDomain>();
+            dialogsService = ConfigureDependencies().Resolve<IDialogsService>();
         }
 
         private void ConfigCarRecyclerView(List<Car> cars)
@@ -109,8 +118,14 @@ namespace ParqueaderoElDesfalco.Droid.Activities
         {
             var intent = new Intent(this, typeof(VehicleExitActivity));
             var extras = new Bundle();
-            extras.PutString("vehicle", JsonConvert.SerializeObject(vehicle));
-
+            if(vehicle.GetType() == typeof(Car))
+            {
+                extras.PutString("car", JsonConvert.SerializeObject(vehicle));
+            }else
+            if(vehicle.GetType() == typeof(Motorcycle))
+            {
+                extras.PutString("motorcycle", JsonConvert.SerializeObject(vehicle));
+            }
             intent.PutExtras(extras);
 
             StartActivity(intent);

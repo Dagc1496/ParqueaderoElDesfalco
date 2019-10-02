@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Acr.UserDialogs.Infrastructure;
 using ParqueaderoElDesfalco.Core.Domain;
 using ParqueaderoElDesfalco.Core.Domain.DomainExeptions;
 using ParqueaderoElDesfalco.Core.Domain.DomainValidators;
@@ -15,7 +14,6 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
         private VehicleIdParkingDayValidator vehicleIdParkingDayValidator;
         private CarParkingSpaceValidator carParkingSpaceValidator;
         private UniqueVehicleIdValidator uniqueVehicleIdValidator;
-        private readonly DateTimeOffset departureTime = DateTimeOffset.Now;
         private bool ParkingSpaceInParkingLot;
         private bool AllowedbyId;
         private bool IsVehicleValidId;
@@ -44,9 +42,9 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
             }
         }
 
-        public void GetPriceOfPark(Car car)
+        public void CalculatePriceOfPark(Car car, DateTimeOffset vechicleDepartureTiem)
         {
-            car.CalculateParkingPrice(departureTime);
+            car.CalculateParkingPrice(vechicleDepartureTiem);
         }
 
         public List<Car> GetAllVehicles()
