@@ -14,6 +14,7 @@ namespace ParqueaderoElDesfalco.Droid.Activities
 
         private Car car;
         private EditText CarIdEditText;
+        private readonly DateTimeOffset dateOfEntryActual = DateTimeOffset.Now;
         private DateTimeOffset dateOfEntry;
         private Button SaveCarButton;
         private CarServiceDomain carServiceDomain;
@@ -34,7 +35,7 @@ namespace ParqueaderoElDesfalco.Droid.Activities
         {
             if(CarIdEditText.Text != string.Empty && CarIdEditText.Text != null)
             {
-                dateOfEntry = DateTimeOffset.Now;
+                dateOfEntry = new DateTimeOffset(dateOfEntryActual.DateTime, TimeSpan.FromHours(0));
                 car = new Car(CarIdEditText.Text, dateOfEntry);
                 carServiceDomain.SaveVechicleOnDb(car);
                 Finish();

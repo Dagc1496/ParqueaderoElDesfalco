@@ -15,6 +15,7 @@ namespace ParqueaderoElDesfalco.Droid.Activities
         private Motorcycle motorcycle;
         private EditText MotorcycleIdEditText;
         private EditText MotorcycleCilindrajeEditText;
+        private readonly DateTimeOffset dateOfEntryActual = DateTimeOffset.Now;
         private DateTimeOffset dateOfEntry;
         private Button SaveMotorcycleButton;
         private MotorcycleServiceDomain motorcycleServiceDomain;
@@ -40,7 +41,7 @@ namespace ParqueaderoElDesfalco.Droid.Activities
         {
             if (EntrysAreOk())
             {
-                dateOfEntry = DateTimeOffset.Now;
+                dateOfEntry = new DateTimeOffset(dateOfEntryActual.DateTime, TimeSpan.FromHours(0));
                 motorcycle = new Motorcycle(MotorcycleIdEditText.Text, dateOfEntry, Convert.ToInt32(MotorcycleCilindrajeEditText.Text));
                 motorcycleServiceDomain.SaveVechicleOnDb(motorcycle);
                 Finish();

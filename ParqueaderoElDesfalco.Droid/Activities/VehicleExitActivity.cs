@@ -17,7 +17,8 @@ namespace ParqueaderoElDesfalco.Droid.Activities
         private TextView LeavingVehicleDateOfEntry;
         private TextView LeavingVehicleDateOfDeparture;
         private TextView LeavingVehiclePriceOfParking;
-        private DateTimeOffset dateOfDepartureActual;
+        private readonly DateTimeOffset dateOfDepartureActual = DateTimeOffset.Now;
+        private DateTimeOffset dateOfDeparture;
         private Button PayAndOutButton;
         private CarServiceDomain carServiceDomain;
         private MotorcycleServiceDomain motorcycleServiceDomain;
@@ -42,7 +43,7 @@ namespace ParqueaderoElDesfalco.Droid.Activities
             LeavingVehiclePriceOfParking = FindViewById<TextView>(Resource.Id.vehicle_price_of_park);
             PayAndOutButton = FindViewById<Button>(Resource.Id.btn_pay_and_out);
             PayAndOutButton.Click += btnPayAndOut_Click;
-            dateOfDepartureActual = DateTimeOffset.Now;
+            dateOfDeparture = new DateTimeOffset(dateOfDepartureActual.DateTime, TimeSpan.FromHours(0));
         }
 
         private void GetExtras()
@@ -67,11 +68,11 @@ namespace ParqueaderoElDesfalco.Droid.Activities
             Vehicle leavingVehicle;
             if (vehicle.GetType() == typeof(Car))
             {
-                carServiceDomain.CalculatePriceOfPark(leavingCar, dateOfDepartureActual);
+                carServiceDomain.CalculatePriceOfPark(leavingCar, dateOfDeparture);
                 leavingVehicle = leavingCar;
             }else
             {
-                motorcycleServiceDomain.CalculatePriceOfPark(leavingMotorcycle, dateOfDepartureActual);
+                motorcycleServiceDomain.CalculatePriceOfPark(leavingMotorcycle, dateOfDeparture);
                 leavingVehicle = leavingMotorcycle;
             }
             LeavingVehicleId.Text = leavingVehicle.VehicleId;
@@ -82,6 +83,15 @@ namespace ParqueaderoElDesfalco.Droid.Activities
 
         private void btnPayAndOut_Click(object sender, EventArgs e)
         {
+            if(carServiceDomain != null)
+            {
+                carServiceDomain.RemoveVechielFromDB(leavingCar);
+            }
+            if(motorcycleServiceDomain != null)
+            {
+                motorcycleServiceDomain.RemoveVechielFromDB(leavingMotorcycle);
+            }
+            Finish();
         }
 
         private void SetDependencies<T>(T vehicle)
