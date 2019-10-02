@@ -8,5 +8,6 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos
         void CreateMotorcycle(Motorcycle motorcycle);
         void RemoveMotorcycle(Motorcycle motorcycle);
         List<Motorcycle> GetAllMotorcycles();
+        List<string> GetAllVehicleIds();
     }
 }

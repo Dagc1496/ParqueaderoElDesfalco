@@ -18,7 +18,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/car_id"
+            android:id="@+id/car_id_entry"
             android:hint="poner pista"
             android:inputType="textEmailAddress"
             android:layout_margin="30dp"
@@ -27,8 +27,8 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Guardar Moto"
-            android:id="@+id/btn_park_motorcycle"
+            android:text="Guardar Carro"
+            android:id="@+id/btn_park_car"
             android:backgroundTint="@color/buttonsColor"
             android:textColor="@android:color/white"
             android:gravity="center"

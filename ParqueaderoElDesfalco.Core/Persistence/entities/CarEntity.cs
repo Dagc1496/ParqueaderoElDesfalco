@@ -11,6 +11,5 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Entities
         public DateTimeOffset DateOfEntry { get; set; }
 
         public CarEntity() { }
-
-    }           
+    }
 }

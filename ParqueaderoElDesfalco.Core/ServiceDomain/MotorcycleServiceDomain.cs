@@ -14,9 +14,11 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
         private readonly IMotorcycleDao MotorCycleDao;
         private VehicleIdParkingDayValidator vehicleIdParkingDayValidator;
         private MotorcycleParkingSpaceValidator motorcycleParkingSpaceValidator;
+        private UniqueVehicleIdValidator uniqueVehicleIdValidator;
         private readonly DateTimeOffset departureTime = DateTimeOffset.Now;
         private bool ParkingSpaceInParkingLot;
         private bool AllowedbyId;
+        private bool IsVehicleValidId;
 
         public MotorcycleServiceDomain(IMotorcycleDao motorCycleDao)
         {
@@ -43,6 +45,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
         {
             vehicleIdParkingDayValidator = new VehicleIdParkingDayValidator();
             motorcycleParkingSpaceValidator = new MotorcycleParkingSpaceValidator(MotorCycleDao);
+            uniqueVehicleIdValidator = new UniqueVehicleIdValidator(MotorCycleDao);
             CheckPermissionsToPark(vehicle);
             if (!ParkingSpaceInParkingLot)
             {
@@ -52,6 +55,10 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
             {
                 throw (new VehicleIdException("Not Allowed Day"));
             }
+            if (!IsVehicleValidId)
+            {
+                throw (new VehicleIdException("Vehicle Id Already Exist"));
+            }
             else
             {
                 MotorCycleDao.CreateMotorcycle(vehicle);
@@ -60,6 +67,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
 
         private void CheckPermissionsToPark(Motorcycle vehicle)
         {
+            IsVehicleValidId = false;
             ParkingSpaceInParkingLot = false;
             AllowedbyId = false;
             if (vehicleIdParkingDayValidator.IsAllowedToPark(vehicle.VehicleId, vehicle.DateOfEntry))
@@ -69,6 +77,10 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
             if (motorcycleParkingSpaceValidator.IsVehicleSpaceInParkingLot())
             {
                 ParkingSpaceInParkingLot = true;
+            }
+            if (uniqueVehicleIdValidator.IsAValidId(vehicle.VehicleId))
+            {
+                IsVehicleValidId = true;
             }
         }
     }

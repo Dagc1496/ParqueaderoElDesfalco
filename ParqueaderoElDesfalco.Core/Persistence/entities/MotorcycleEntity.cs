@@ -9,7 +9,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Entities
 
         [PrimaryKey]
         public string MotorcycleId { get; set; }
-        public int Cilindraje { get; set; }
         public DateTimeOffset DateOfEntry { get; set; }
+        public int Cilindraje { get; set; }
     }
 }

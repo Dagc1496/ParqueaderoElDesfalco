@@ -45,5 +45,10 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Real
             CarEntity carEntity = carMapper.MapObjectToEntity(car);
             DatabaseManagerObject.RemoveFromDB(carEntity);
         }
+
+        public List<string> GetAllVehicleIds()
+        {
+            return DatabaseManagerObject.GetAllVehicleIds();
+        }
     }
 }

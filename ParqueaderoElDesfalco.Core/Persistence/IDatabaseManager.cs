@@ -18,5 +18,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence
         List<CarEntity> GetAllCars();
 
         List<MotorcycleEntity> GetAllMotorcycles();
+
+        List<string> GetAllVehicleIds();
     }
 }

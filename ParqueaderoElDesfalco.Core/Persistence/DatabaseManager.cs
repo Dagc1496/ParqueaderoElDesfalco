@@ -7,7 +7,14 @@ namespace ParqueaderoElDesfalco.Core.Persistence
 {
     public class DatabaseManager : IDatabaseManager
     {
+
         private Realm RealmDatabase;
+        List<string> vehicleIds;
+
+        public DatabaseManager()
+        {
+            InitilizeDB();
+        }
 
         public void InitilizeDB()
         {
@@ -45,7 +52,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence
         {
             RealmDatabase.Write(() =>
             {
-                RealmDatabase.Remove(carEntity);
+                RealmDatabase.Remove(RealmDatabase.Find("CarEntity",carEntity.CarId));
             });
         }
 
@@ -65,6 +72,34 @@ namespace ParqueaderoElDesfalco.Core.Persistence
                 motorcycles = RealmDatabase.All<MotorcycleEntity>().ToList();
             });
             return motorcycles;
+        }
+
+        public List<string> GetAllVehicleIds()
+        {
+            List<MotorcycleEntity> motorcycles = GetAllMotorcycles();
+            List<CarEntity> cars = GetAllCars();
+            vehicleIds = new List<string>();
+            CollectCarIds(cars);
+            CollectMotorcycleIds(motorcycles);
+            return vehicleIds;
+        }
+
+        private void CollectCarIds(List<CarEntity> cars)
+        {
+            for (int i = 0; i < cars.Count; i++)
+            {
+                string vehicleId = cars.ElementAt(i).CarId;
+                vehicleIds.Add(vehicleId);
+            }
+        }
+
+        private void CollectMotorcycleIds(List<MotorcycleEntity> motorcycles)
+        {
+            for (int i = 0; i < motorcycles.Count; i++)
+            {
+                string vehicleId = motorcycles.ElementAt(i).MotorcycleId;
+                vehicleIds.Add(vehicleId);
+            }
         }
     }
 }

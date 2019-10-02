@@ -8,5 +8,6 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos
         void CreateCar(Car car);
         void RemoveCar(Car car);
         List<Car> GetAllCars();
+        List<string> GetAllVehicleIds();
     }
 }

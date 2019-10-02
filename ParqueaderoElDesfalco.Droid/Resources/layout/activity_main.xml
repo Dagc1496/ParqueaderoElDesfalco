@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/AppTheme"
-    android:orientation = "vertical">
+    android:orientation = "vertical"
+    android:paddingHorizontal="10dp">
     
     <LinearLayout
         android:orientation="horizontal"
@@ -22,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Guardar Carro"
-            android:id="@+id/btn_park_car"
+            android:id="@+id/btn_park_new_car"
             android:backgroundTint="@color/buttonsColor"
             android:textColor="@android:color/white"
             android:gravity="center"
@@ -36,37 +37,50 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Guardar Moto"
-            android:id="@+id/btn_park_motorcycle"
+            android:id="@+id/btn_park_new_motorcycle"
             android:backgroundTint="@color/buttonsColor"
             android:textColor="@android:color/white"
             android:gravity="center"
             android:background="@drawable/buttons_shape_corners"/>
     </LinearLayout>
 
-    <TextView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Carros en el parqueadero"
-        android:textStyle="bold"
-        android:textColor = "@color/colorPrimaryDark"
-        android:gravity="center"/>
+        android:layout_height="wrap_content">
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/cars_recyclerview"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Motos en el parqueadero"
-        android:textStyle="bold"
-        android:textColor = "@color/colorPrimaryDark"
-        android:gravity="center"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Carros en el parqueadero"
+                android:textStyle="bold"
+                android:textColor = "@color/colorPrimaryDark"
+                android:gravity="center"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/motorcycles_recyclerview"/>
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cars_recyclerview"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Motos en el parqueadero"
+                android:textStyle="bold"
+                android:textColor = "@color/colorPrimaryDark"
+                android:gravity="center"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/motorcycles_recyclerview"/>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>

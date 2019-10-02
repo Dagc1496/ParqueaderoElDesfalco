@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Acr.UserDialogs.Infrastructure;
 using ParqueaderoElDesfalco.Core.Domain;
 using ParqueaderoElDesfalco.Core.Domain.DomainExeptions;
 using ParqueaderoElDesfalco.Core.Domain.DomainValidators;
@@ -13,9 +14,11 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
         private readonly ICarDao CarDao;
         private VehicleIdParkingDayValidator vehicleIdParkingDayValidator;
         private CarParkingSpaceValidator carParkingSpaceValidator;
+        private UniqueVehicleIdValidator uniqueVehicleIdValidator;
         private readonly DateTimeOffset departureTime = DateTimeOffset.Now;
         private bool ParkingSpaceInParkingLot;
         private bool AllowedbyId;
+        private bool IsVehicleValidId;
 
         public CarServiceDomain(ICarDao carDao)
         {
@@ -24,6 +27,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
 
         private void CheckPermissionsToPark(Car vehicle)
         {
+            IsVehicleValidId = false;
             ParkingSpaceInParkingLot = false;
             AllowedbyId = false;
             if (vehicleIdParkingDayValidator.IsAllowedToPark(vehicle.VehicleId, vehicle.DateOfEntry))
@@ -33,6 +37,10 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
             if (carParkingSpaceValidator.IsVehicleSpaceInParkingLot())
             {
                 ParkingSpaceInParkingLot = true;
+            }
+            if (uniqueVehicleIdValidator.IsAValidId(vehicle.VehicleId))
+            {
+                IsVehicleValidId = true;
             }
         }
 
@@ -56,6 +64,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
         {
             vehicleIdParkingDayValidator = new VehicleIdParkingDayValidator();
             carParkingSpaceValidator = new CarParkingSpaceValidator(CarDao);
+            uniqueVehicleIdValidator = new UniqueVehicleIdValidator(CarDao);
             CheckPermissionsToPark(vehicle);
             if (!ParkingSpaceInParkingLot)
             {
@@ -64,6 +73,10 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
             if (!AllowedbyId)
             {
                 throw (new VehicleIdException("Not Allowed Day"));
+            }
+            if (!IsVehicleValidId)
+            {
+                throw (new VehicleIdException("Vehicle Id Already Exist"));
             }
             else
             {
