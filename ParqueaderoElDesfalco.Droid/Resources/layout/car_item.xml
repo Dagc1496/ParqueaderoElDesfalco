@@ -9,24 +9,24 @@
     android:gravity="center">
     <ImageView
         android:id="@+id/car_imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"/>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="10dp">
-            <TextView
-                android:id="@+id/car_id_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="@tools:sample/full_names" />
-            <TextView
-                android:id="@+id/car_date_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="@tools:sample/full_names" />
-        </LinearLayout>
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/car_image_list"/>
+	<LinearLayout
+		android:layout_width="0dp"
+		android:layout_weight="1"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:paddingLeft="20dp">
+		<TextView
+			android:id="@+id/car_id_textView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			tools:text="@tools:sample/full_names" />
+		<TextView
+			android:id="@+id/car_date_textView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			tools:text="@tools:sample/full_names" />
+	</LinearLayout>
 </LinearLayout>
