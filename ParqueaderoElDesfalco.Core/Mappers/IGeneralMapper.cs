@@ -2,8 +2,8 @@
 {
     public interface IGeneralMapper<T,U>
     {
-        T MapEntityToObject(U entity);
+        T MapEntityToObject(U vehicleEntity);
 
-        U MapObjectToEntity(T obj);
+        U MapObjectToEntity(T vehicleObject);
     }
 }

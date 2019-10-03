@@ -24,12 +24,18 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
 
         public void CalculatePriceOfPark(Motorcycle motorcycle, DateTimeOffset vehicleDepartureTime)
         {
-            motorcycle.CalculateParkingPrice(vehicleDepartureTime);
+            if(motorcycle != null)
+            {
+                motorcycle.CalculateParkingPrice(vehicleDepartureTime);
+            }
         }
 
         public void RemoveVechielFromDB(Motorcycle vehicle)
         {
-            MotorCycleDao.RemoveMotorcycle(vehicle);
+            if(vehicle!= null)
+            {
+                MotorCycleDao.RemoveMotorcycle(vehicle);
+            }
         }
 
         public void SaveVechicleOnDb(Motorcycle vehicle)

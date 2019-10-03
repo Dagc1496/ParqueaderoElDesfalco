@@ -7,7 +7,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Real
 {
     public class CarDao : ICarDao
     {
-        private CarMapper carMapper;
+        private readonly CarMapper carMapper;
 
         private readonly IDatabaseManager DatabaseManagerObject;
 

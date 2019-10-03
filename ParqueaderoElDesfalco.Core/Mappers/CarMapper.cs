@@ -6,17 +6,17 @@ namespace ParqueaderoElDesfalco.Core.Mappers
 {
     public class CarMapper : IGeneralMapper<Car,CarEntity>
     {
-        public Car MapEntityToObject(CarEntity carEntity)
+        public Car MapEntityToObject(CarEntity vehicleEntity)
         {
-            Car car = new Car(carEntity.CarId,carEntity.DateOfEntry);
+            Car car = new Car(vehicleEntity.CarId, vehicleEntity.DateOfEntry);
             return car;
         }
 
-        public CarEntity MapObjectToEntity(Car car)
+        public CarEntity MapObjectToEntity(Car vehicleObject)
         {
             CarEntity carEntity = new CarEntity();
-            carEntity.CarId = car.VehicleId;
-            carEntity.DateOfEntry = car.DateOfEntry;
+            carEntity.CarId = vehicleObject.VehicleId;
+            carEntity.DateOfEntry = vehicleObject.DateOfEntry;
             return carEntity;
         }
     }

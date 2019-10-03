@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="app_name">El Desfalco</string>
+    <string name="car_parking">Ingreso de Carro</string>
+    <string name="motorcycle_parking">Ingreso de moto</string>
+    <string name="pay_activity">Vuelve Pronto</string>
     <string name="action_settings">Settings</string>
     <string name="prueba">prueba</string>
+    <string name="parkinglot_full">El Parquedero se encuentra lleno actualmente</string>
+    <string name="forbidden_day">Hoy no te puedes quedar con nosotros, lo sentimos</string>
+    <string name="incoherent_id">Algo esta mal con la Identificacion de tu Vehiculo</string>
+    <string name="empty_vehicle_id">Recuerda ingresar la placa de tu viheculo</string>
+    <string name="empty_motorcycle_cilindraje">Necesitamos saber el cilindraje de tu moto</string>
+    <string name="pay_and_exit_button">¡Show Me The Money!</string>
+    <string name="textview_carslist">Carros en el parqueadero</string>
+    <string name="textview_motorcycleslist">Motos en el parqueadero</string>
+    <string name="save_car_button">Guardar Carro</string>
+    <string name="save_motorcycle_button">Guardar Moto</string>
 </resources>

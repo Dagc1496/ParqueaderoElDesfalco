@@ -7,11 +7,11 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Mock
     public class MotorcycleDaoMock : IMotorcycleDao
     {
 
-        private List<Motorcycle> motorcycles;
+        private readonly List<Motorcycle> motorcycles;
         private readonly string defaultId = "defaultId";
         private readonly DateTimeOffset defaultDate = DateTimeOffset.Now;
         private const int defaultCilindraje = 200;
-        private List<string> vehicleIds;
+        private readonly List<string> vehicleIds;
 
         public MotorcycleDaoMock()
         {
@@ -23,14 +23,20 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Mock
 
         public void CreateMotorcycle(Motorcycle motorcycle)
         {
-            vehicleIds.Add(motorcycle.VehicleId);
-            motorcycles.Add(motorcycle);
+            if(motorcycle != null)
+            {
+                vehicleIds.Add(motorcycle.VehicleId);
+                motorcycles.Add(motorcycle);
+            }
         }
 
         public void RemoveMotorcycle(Motorcycle motorcycle)
         {
-            vehicleIds.Remove(motorcycle.VehicleId);
-            motorcycles.Remove(motorcycle);
+            if(motorcycle != null)
+            {
+                vehicleIds.Remove(motorcycle.VehicleId);
+                motorcycles.Remove(motorcycle);
+            }
         }
 
         public List<Motorcycle> GetAllMotorcycles()

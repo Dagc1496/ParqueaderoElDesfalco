@@ -5,20 +5,20 @@ namespace ParqueaderoElDesfalco.Core.Mappers
 {
     public class MotorcycleMapper : IGeneralMapper<Motorcycle,MotorcycleEntity>
     {
-        public Motorcycle MapEntityToObject(MotorcycleEntity motorcycleEntity)
+        public Motorcycle MapEntityToObject(MotorcycleEntity vehicleEntity)
         {
-            Motorcycle motorcycle = new Motorcycle(motorcycleEntity.MotorcycleId,
-                                                    motorcycleEntity.DateOfEntry,
-                                                    motorcycleEntity.Cilindraje);
+            Motorcycle motorcycle = new Motorcycle(vehicleEntity.MotorcycleId,
+                                                    vehicleEntity.DateOfEntry,
+                                                    vehicleEntity.Cilindraje);
             return motorcycle;
         }
 
-        public MotorcycleEntity MapObjectToEntity(Motorcycle motorcycle)
+        public MotorcycleEntity MapObjectToEntity(Motorcycle vehicleObject)
         {
             MotorcycleEntity motorcycleEntity = new MotorcycleEntity();
-            motorcycleEntity.MotorcycleId = motorcycle.VehicleId;
-            motorcycleEntity.DateOfEntry = motorcycle.DateOfEntry;
-            motorcycleEntity.Cilindraje = motorcycle.Cilindraje;
+            motorcycleEntity.MotorcycleId = vehicleObject.VehicleId;
+            motorcycleEntity.DateOfEntry = vehicleObject.DateOfEntry;
+            motorcycleEntity.Cilindraje = vehicleObject.Cilindraje;
             return motorcycleEntity;
         }
     }

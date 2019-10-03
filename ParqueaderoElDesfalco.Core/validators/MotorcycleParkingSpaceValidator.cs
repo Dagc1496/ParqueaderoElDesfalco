@@ -7,7 +7,7 @@ namespace ParqueaderoElDesfalco.Core.Validators
     public class MotorcycleParkingSpaceValidator
     {
 
-        private IMotorcycleDao MotorcycleDaoObject;
+        private readonly IMotorcycleDao MotorcycleDaoObject;
         private readonly int LimitOfMotorcycle = 10;
 
         public MotorcycleParkingSpaceValidator(IMotorcycleDao motorcycleDao)

@@ -7,7 +7,7 @@ namespace ParqueaderoElDesfalco.Core.Validators
     public class CarParkingSpaceValidator
     {
 
-        private ICarDao CarDaoObject;
+        private readonly ICarDao CarDaoObject;
 
         private readonly int LimitOfCars = 20;
 

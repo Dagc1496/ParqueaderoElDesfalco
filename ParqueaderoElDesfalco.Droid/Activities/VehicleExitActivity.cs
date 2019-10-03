@@ -10,7 +10,7 @@ using ParqueaderoElDesfalco.Droid.Services;
 
 namespace ParqueaderoElDesfalco.Droid.Activities
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme")]
+    [Activity(Label = "@string/pay_activity", Theme = "@style/AppTheme")]
     public class VehicleExitActivity : BaseActivity
     {
         private TextView LeavingVehicleId;

@@ -44,7 +44,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Guardar Moto"
+            android:text="@string/save_motorcycle_button"
             android:id="@+id/btn_park_motorcycle"
             android:backgroundTint="@color/buttonsColor"
             android:textColor="@android:color/white"

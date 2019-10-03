@@ -32,33 +32,27 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
             {
                 IsVehicleValidId = true;
             }
-            if (vehicle.GetType() == typeof(Car))
+            if (vehicle.GetType() == typeof(Car) && carParkingSpaceValidator.IsVehicleSpaceInParkingLot())
             {
-                if (carParkingSpaceValidator.IsVehicleSpaceInParkingLot())
-                {
-                    ParkingSpaceInParkingLot = true;
-                }
+                ParkingSpaceInParkingLot = true;
             }
-            if (vehicle.GetType() == typeof(Motorcycle))
+            if (vehicle.GetType() == typeof(Motorcycle) && motorcycleParkingSpaceValidator.IsVehicleSpaceInParkingLot())
             {
-                if (motorcycleParkingSpaceValidator.IsVehicleSpaceInParkingLot())
-                {
-                    ParkingSpaceInParkingLot = true;
-                }
+                ParkingSpaceInParkingLot = true;
             }
         }
 
         protected void SetUpValidators<T>(Vehicle vehicle, T VehicleDao)
         {
             vehicleIdParkingDayValidator = new VehicleIdParkingDayValidator();
-            if(vehicle.GetType() == typeof(Car))
+            if(vehicle != null && vehicle.GetType() == typeof(Car))
             {
                 CarDao = (ICarDao)VehicleDao;
                 carParkingSpaceValidator = new CarParkingSpaceValidator(CarDao);
                 uniqueVehicleIdValidator = new UniqueVehicleIdValidator(CarDao);
                 CheckPermissionsToPark(vehicle);
             }
-            if(vehicle.GetType() == typeof(Motorcycle))
+            if(vehicle != null && vehicle.GetType() == typeof(Motorcycle))
             {
                 MotorcycleDao = (IMotorcycleDao)VehicleDao;
                 motorcycleParkingSpaceValidator = new MotorcycleParkingSpaceValidator(MotorcycleDao);

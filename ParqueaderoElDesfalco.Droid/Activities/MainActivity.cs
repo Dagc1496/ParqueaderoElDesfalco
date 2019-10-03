@@ -10,7 +10,6 @@ using Newtonsoft.Json;
 using ParqueaderoElDesfalco.Core.Domain;
 using ParqueaderoElDesfalco.Core.ServiceDomain;
 using ParqueaderoElDesfalco.Droid.Adapters;
-using ParqueaderoElDesfalco.Droid.Services;
 
 namespace ParqueaderoElDesfalco.Droid.Activities
 {

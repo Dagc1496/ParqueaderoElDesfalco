@@ -9,7 +9,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Real
     {
         private readonly IDatabaseManager DatabaseManagerObject;
 
-        private MotorcycleMapper MotorcycleMapperObject;
+        private readonly MotorcycleMapper MotorcycleMapperObject;
 
         public MotorcycleDao(IDatabaseManager databaseManager)
         {

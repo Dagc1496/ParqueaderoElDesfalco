@@ -10,7 +10,7 @@ namespace ParqueaderoElDesfalco.Core.Validators
     {
 
         private readonly ICarDao CarDao;
-        IMotorcycleDao MotorcycleDao;
+        private readonly IMotorcycleDao MotorcycleDao;
         List<string> vehicleIds;
 
         public UniqueVehicleIdValidator(ICarDao carDao)

@@ -7,10 +7,10 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Mock
     public class CarDaoMock : ICarDao
     {
 
-        private List<Car> cars;
+        private readonly List<Car> cars;
         private readonly string defaultId = "defaultId";
         private readonly DateTimeOffset defaultDate = DateTimeOffset.Now;
-        private List<string> vehicleIds;
+        private readonly List<string> vehicleIds;
 
         public CarDaoMock()
         {
@@ -22,8 +22,11 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Mock
 
         public void CreateCar(Car car)
         {
-            vehicleIds.Add(car.VehicleId);
-            cars.Add(car);
+            if(car != null)
+            {
+                vehicleIds.Add(car.VehicleId);
+                cars.Add(car);
+            }
         }
 
         public List<Car> GetAllCars()
@@ -33,8 +36,11 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Mock
 
         public void RemoveCar(Car car)
         {
-            vehicleIds.Remove(car.VehicleId);
-            cars.Remove(car);
+            if(car != null)
+            {
+                vehicleIds.Remove(car.VehicleId);
+                cars.Remove(car);
+            }
         }
 
         public List<string> GetAllVehicleIds()

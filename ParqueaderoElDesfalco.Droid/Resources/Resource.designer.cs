@@ -7008,49 +7008,88 @@ namespace ParqueaderoElDesfalco.Droid
 			public const int bottom_sheet_behavior = 2131623978;
 			
 			// aapt resource value: 0x7F0E002B
-			public const int character_counter_content_description = 2131623979;
+			public const int car_parking = 2131623979;
 			
 			// aapt resource value: 0x7F0E002C
-			public const int character_counter_pattern = 2131623980;
+			public const int character_counter_content_description = 2131623980;
 			
 			// aapt resource value: 0x7F0E002D
-			public const int fab_transformation_scrim_behavior = 2131623981;
+			public const int character_counter_pattern = 2131623981;
 			
 			// aapt resource value: 0x7F0E002E
-			public const int fab_transformation_sheet_behavior = 2131623982;
+			public const int empty_motorcycle_cilindraje = 2131623982;
 			
 			// aapt resource value: 0x7F0E002F
-			public const int hide_bottom_view_on_scroll_behavior = 2131623983;
+			public const int empty_vehicle_id = 2131623983;
 			
 			// aapt resource value: 0x7F0E0030
-			public const int library_name = 2131623984;
+			public const int fab_transformation_scrim_behavior = 2131623984;
 			
 			// aapt resource value: 0x7F0E0031
-			public const int mtrl_chip_close_icon_content_description = 2131623985;
+			public const int fab_transformation_sheet_behavior = 2131623985;
 			
 			// aapt resource value: 0x7F0E0032
-			public const int password_toggle_content_description = 2131623986;
+			public const int forbidden_day = 2131623986;
 			
 			// aapt resource value: 0x7F0E0033
-			public const int path_password_eye = 2131623987;
+			public const int hide_bottom_view_on_scroll_behavior = 2131623987;
 			
 			// aapt resource value: 0x7F0E0034
-			public const int path_password_eye_mask_strike_through = 2131623988;
+			public const int incoherent_id = 2131623988;
 			
 			// aapt resource value: 0x7F0E0035
-			public const int path_password_eye_mask_visible = 2131623989;
+			public const int library_name = 2131623989;
 			
 			// aapt resource value: 0x7F0E0036
-			public const int path_password_strike_through = 2131623990;
+			public const int motorcycle_parking = 2131623990;
 			
 			// aapt resource value: 0x7F0E0037
-			public const int prueba = 2131623991;
+			public const int mtrl_chip_close_icon_content_description = 2131623991;
 			
 			// aapt resource value: 0x7F0E0038
-			public const int search_menu_title = 2131623992;
+			public const int parkinglot_full = 2131623992;
 			
 			// aapt resource value: 0x7F0E0039
-			public const int status_bar_notification_info_overflow = 2131623993;
+			public const int password_toggle_content_description = 2131623993;
+			
+			// aapt resource value: 0x7F0E003A
+			public const int path_password_eye = 2131623994;
+			
+			// aapt resource value: 0x7F0E003B
+			public const int path_password_eye_mask_strike_through = 2131623995;
+			
+			// aapt resource value: 0x7F0E003C
+			public const int path_password_eye_mask_visible = 2131623996;
+			
+			// aapt resource value: 0x7F0E003D
+			public const int path_password_strike_through = 2131623997;
+			
+			// aapt resource value: 0x7F0E003E
+			public const int pay_activity = 2131623998;
+			
+			// aapt resource value: 0x7F0E003F
+			public const int pay_and_exit_button = 2131623999;
+			
+			// aapt resource value: 0x7F0E0040
+			public const int prueba = 2131624000;
+			
+			// aapt resource value: 0x7F0E0041
+			public const int save_car_button = 2131624001;
+			
+			// aapt resource value: 0x7F0E0042
+			public const int save_motorcycle_button = 2131624002;
+			
+			// aapt resource value: 0x7F0E0043
+			public const int search_menu_title = 2131624003;
+			
+			// aapt resource value: 0x7F0E0044
+			public const int status_bar_notification_info_overflow = 2131624004;
+			
+			// aapt resource value: 0x7F0E0045
+			public const int textview_carslist = 2131624005;
+			
+			// aapt resource value: 0x7F0E0046
+			public const int textview_motorcycleslist = 2131624006;
 			
 			static String()
 			{

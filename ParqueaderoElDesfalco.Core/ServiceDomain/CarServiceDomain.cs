@@ -17,7 +17,10 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
 
         public void CalculatePriceOfPark(Car car, DateTimeOffset vechicleDepartureTiem)
         {
-            car.CalculateParkingPrice(vechicleDepartureTiem);
+            if(car != null)
+            {
+                car.CalculateParkingPrice(vechicleDepartureTiem);
+            }
         }
 
         public List<Car> GetAllVehicles()
@@ -28,7 +31,10 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
 
         public void RemoveVechielFromDB(Car vehicle)
         {
-            CarDao.RemoveCar(vehicle);
+            if(vehicle != null)
+            {
+                CarDao.RemoveCar(vehicle);
+            }
         }
 
         public void SaveVechicleOnDb(Car vehicle)

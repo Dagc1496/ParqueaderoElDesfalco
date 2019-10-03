@@ -10,7 +10,7 @@ using ParqueaderoElDesfalco.Droid.Services;
 
 namespace ParqueaderoElDesfalco.Droid.Activities
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme")]
+    [Activity(Label = "@string/car_parking", Theme = "@style/AppTheme")]
     public class CarSaveActivity : BaseActivity
     {
         private IDialogsService dialogsService;
@@ -46,23 +46,22 @@ namespace ParqueaderoElDesfalco.Droid.Activities
                 }
                 catch (ParkingLotException)
                 {
-                    dialogsService.ShowMessage("Ups", "El Parquedero se encuentra lleno actualmente");
+                    dialogsService.ShowMessage("Ups", Resources.GetString(Resource.String.parkinglot_full));
                 }catch (VehicleIdException exceptionById)
                 {
-                    if(exceptionById.Message == "ByDay")
+                    if (exceptionById.Message == "ByDay")
                     {
-                        dialogsService.ShowMessage("Ups", "Hoy no te puedes quedar con nosotros, lo sentimos");
+                        dialogsService.ShowMessage("Ups", Resources.GetString(Resource.String.forbidden_day));
                     }
                     else
                     {
-                        dialogsService.ShowMessage("Hmmm", "Algo esta mal con la Identificacion de tu Vehiculo");
+                        dialogsService.ShowMessage("Hmmm", Resources.GetString(Resource.String.incoherent_id));
                     }
-                    
                 }
             }
             else
             {
-                CarIdEditText.Error = "Recordar poner strings";
+                CarIdEditText.Error = Resources.GetString(Resource.String.empty_vehicle_id);
             }
         }
 

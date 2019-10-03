@@ -4,13 +4,19 @@ namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
 {
     public class VehicleIdParkingDayValidator
     {
+
         private readonly string notAllowedLetter = "A";
         private readonly DayOfWeek[] allowedDays = {DayOfWeek.Monday, DayOfWeek.Sunday};
+        private string vehicleIdUpperLetters;
 
         public bool IsAllowedToPark(string vehicleId, DateTimeOffset dateOfEntry)
         {
             bool canPark = true;
-            string vehicleIdUpperLetters = vehicleId.ToUpper();
+            vehicleIdUpperLetters = string.Empty;
+            if(vehicleId != null)
+            {
+                vehicleIdUpperLetters = vehicleId.ToUpper();
+            }
             if (vehicleIdUpperLetters.StartsWith(notAllowedLetter))
             {
                 canPark = checkDaysForNotAllowedVehicleId(dateOfEntry);           

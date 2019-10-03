@@ -61,7 +61,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pagar y Salir"
+            android:text="@string/pay_and_exit_button"
             android:id="@+id/btn_pay_and_out"
             android:backgroundTint="@color/buttonsColor"
             android:textColor="@android:color/white"
