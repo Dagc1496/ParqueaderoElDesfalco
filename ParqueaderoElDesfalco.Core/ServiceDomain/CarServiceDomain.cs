@@ -52,6 +52,11 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
             {
                 throw (new VehicleIdException("ById"));
             }
+
+            if (HaveEmojis)
+            {
+                throw (new VehicleIdException("ById"));
+            }
             else
             {
                 CarDao.CreateCar(vehicle);

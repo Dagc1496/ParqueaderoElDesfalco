@@ -13,14 +13,17 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
         private UniqueVehicleIdValidator uniqueVehicleIdValidator;
         private CarParkingSpaceValidator carParkingSpaceValidator;
         private MotorcycleParkingSpaceValidator motorcycleParkingSpaceValidator;
+        private EmojiValidator emojiValidator;
         private ICarDao CarDao;
         private IMotorcycleDao MotorcycleDao;
         protected bool ParkingSpaceInParkingLot;
         protected bool AllowedbyId;
         protected bool IsVehicleValidId;
+        protected bool HaveEmojis;
 
         private void CheckPermissionsToPark(Vehicle vehicle)
         {
+            HaveEmojis = false;
             IsVehicleValidId = false;
             ParkingSpaceInParkingLot = false;
             AllowedbyId = false;
@@ -32,6 +35,10 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
             {
                 IsVehicleValidId = true;
             }
+            if (emojiValidator.VehicleIdHasEmojis(vehicle.VehicleId))
+            {
+                HaveEmojis = true;
+            }
             if (vehicle.GetType() == typeof(Car) && carParkingSpaceValidator.IsVehicleSpaceInParkingLot())
             {
                 ParkingSpaceInParkingLot = true;
@@ -40,11 +47,13 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
             {
                 ParkingSpaceInParkingLot = true;
             }
+
         }
 
         protected void SetUpValidators<T>(Vehicle vehicle, T VehicleDao)
         {
             vehicleIdParkingDayValidator = new VehicleIdParkingDayValidator();
+            emojiValidator = new EmojiValidator();
             if(vehicle != null && vehicle.GetType() == typeof(Car))
             {
                 CarDao = (ICarDao)VehicleDao;

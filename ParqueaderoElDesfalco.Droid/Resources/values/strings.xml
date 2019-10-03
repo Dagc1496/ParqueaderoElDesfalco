@@ -16,4 +16,6 @@
     <string name="textview_motorcycleslist">Motos en el parqueadero</string>
     <string name="save_car_button">Guardar Carro</string>
     <string name="save_motorcycle_button">Guardar Moto</string>
+    <string name="vehicle_id_hint">Ingresa la placa de tu vehiculo</string>
+    <string name="motorcycle_cilindraje_hint">Ingresa el Cilindraje de tu moto</string>
 </resources>

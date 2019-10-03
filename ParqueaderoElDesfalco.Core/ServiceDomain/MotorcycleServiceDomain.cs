@@ -47,11 +47,15 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
             }
             if (!AllowedbyId)
             {
-                throw (new VehicleIdException("Not Allowed Day"));
+                throw (new VehicleIdException("ByDay"));
             }
             if (!IsVehicleValidId)
             {
-                throw (new VehicleIdException("Vehicle Id Already Exist"));
+                throw (new VehicleIdException("ById"));
+            }
+            if (HaveEmojis)
+            {
+                throw (new VehicleIdException("ById"));
             }
             else
             {

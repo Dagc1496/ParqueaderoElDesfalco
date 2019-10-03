@@ -25,21 +25,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/motorcycle_id_entry"
-            android:hint="poner pista"
+            android:hint="@string/vehicle_id_hint"
             android:inputType="textPersonName"
             android:gravity="center"
             android:layout_marginHorizontal="30dp"
-            android:maxLength="20"/>
+            android:maxLength="20"
+            AutomationId="motorcycle_id_entry"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/motorcycle_cilindraje_entry"
-            android:hint="poner pista"
+            android:hint="@string/motorcycle_cilindraje_hint"
             android:inputType="number"
             android:layout_margin="30dp"
             android:gravity="center"
-            android:maxLength="5"/>
+            android:maxLength="5"
+            AutomationId="motorcycle_cilindraje_entry"/>
 
         <Button
             android:layout_width="match_parent"
@@ -50,7 +52,8 @@
             android:textColor="@android:color/white"
             android:gravity="center"
             android:background="@drawable/buttons_shape_corners"
-            android:layout_marginHorizontal="60dp"/>
+            android:layout_marginHorizontal="60dp"
+            AutomationId="btn_park_motorcycle"/>
 
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

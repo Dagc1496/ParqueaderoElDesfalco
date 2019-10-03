@@ -27,7 +27,9 @@
             android:backgroundTint="@color/buttonsColor"
             android:textColor="@android:color/white"
             android:gravity="center"
-            android:background="@drawable/buttons_shape_corners"/>
+            android:background="@drawable/buttons_shape_corners"
+            AutomationId="btn_park_new_car"/>
+
         <Space
             android:layout_width="10dp"
             android:layout_height="wrap_content"/>
@@ -41,7 +43,9 @@
             android:backgroundTint="@color/buttonsColor"
             android:textColor="@android:color/white"
             android:gravity="center"
-            android:background="@drawable/buttons_shape_corners"/>
+            android:background="@drawable/buttons_shape_corners"
+            AutomationId="btn_park_new_motorcycle"/>
+
     </LinearLayout>
 
     <android.support.v4.widget.NestedScrollView
@@ -51,7 +55,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:id="@+id/layout_vehicles_list">
 
             <TextView
                 android:layout_width="match_parent"

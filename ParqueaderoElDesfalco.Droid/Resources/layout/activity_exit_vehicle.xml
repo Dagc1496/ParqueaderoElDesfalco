@@ -67,7 +67,8 @@
             android:textColor="@android:color/white"
             android:gravity="center"
             android:background="@drawable/buttons_shape_corners"
-            android:layout_marginHorizontal="60dp"/>
+            android:layout_marginHorizontal="60dp"
+            AutomationId="btn_pay_and_out"/>
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

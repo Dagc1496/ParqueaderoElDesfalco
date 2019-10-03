@@ -9,3 +9,6 @@ ParqueaderoElDesfalco.Droid/bin/Debug/co.com.ceiba.el_desfalco-Signed.apk
 ParqueaderoElDesfalco.Droid/bin/Debug/co.com.ceiba.el_desfalco.apk
 ParqueaderoElDesfalco.Droid/bin/Debug/ParqueaderoElDesfalco.Core.dll
 ParqueaderoElDesfalco.Droid/bin/Debug/ParqueaderoElDesfalco.Core.pdb
+*.blob
+ParqueaderoElDesfalco.UITest/bin
+ParqueaderoElDesfalco.UITest/obj

@@ -121,10 +121,6 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\activity_exit_vehicle.xml">
-      <SubType></SubType>
-      <Generator></Generator>
-    </AndroidResource>
     <AndroidResource Include="Resources\layout\car_item.xml">
       <SubType></SubType>
       <Generator></Generator>
@@ -146,6 +142,10 @@
       <Generator></Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\vehicle_image_exit_view.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\activity_exit_vehicle.xml">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
