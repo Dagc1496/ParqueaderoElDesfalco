@@ -22,6 +22,7 @@
   <ItemGroup>
     <Folder Include="ValidatorTests\" />
     <Folder Include="DomainTests\" />
-    <Folder Include="DaoTests\" />
+    <Folder Include="DependencyInjection\" />
+    <Folder Include="ServiceDomainTest\" />
   </ItemGroup>
 </Project>

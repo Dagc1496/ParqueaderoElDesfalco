@@ -7,10 +7,10 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Mock
     public class CarDaoMock : ICarDao
     {
 
-        private readonly List<Car> cars;
+        private List<Car> cars;
         private readonly string defaultId = "defaultId";
         private readonly DateTimeOffset defaultDate = DateTimeOffset.Now;
-        private readonly List<string> vehicleIds;
+        private List<string> vehicleIds;
 
         public CarDaoMock()
         {
