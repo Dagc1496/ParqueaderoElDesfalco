@@ -9,11 +9,11 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Real
     {
         private readonly CarMapper carMapper;
 
-        private readonly DatabaseManager databaseManager;
+        private readonly DatabaseManager<CarEntity> databaseManager;
 
         public CarDao()
         {
-            databaseManager = new DatabaseManager();
+            databaseManager = new DatabaseManager<CarEntity>();
             databaseManager.InitilizeDB();
             carMapper = new CarMapper();
         }
@@ -43,7 +43,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Real
         public void RemoveCar(Car car)
         {
             CarEntity carEntity = carMapper.MapObjectToEntity(car);
-            databaseManager.RemoveFromDB(carEntity);
+            databaseManager.RemoveFromDB(carEntity.GetType().Name, carEntity.CarId);
         }
 
         public List<string> GetAllVehicleIds()

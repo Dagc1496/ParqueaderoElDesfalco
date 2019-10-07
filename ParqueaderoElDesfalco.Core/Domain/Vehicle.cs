@@ -4,6 +4,7 @@ namespace ParqueaderoElDesfalco.Core.Domain
 {
     public abstract class Vehicle
     {
+
         #region Class vars and constants
 
         private const int secondsInHour = 3600;

@@ -10,7 +10,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
     public class CarServiceDomain : VehicleServiceDomain
     {
 
-        private readonly ICarDao CarDao;
+        private readonly ICarDao carDao;
 
         private CarParkingSpaceValidator carParkingSpaceValidator;
 
@@ -18,7 +18,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
 
         public CarServiceDomain(ICarDao carDao)
         {
-            CarDao = carDao;
+            this.carDao = carDao;
         }
 
         public void CalculatePriceOfPark(Car car, DateTimeOffset vechicleDepartureTiem)
@@ -31,7 +31,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
 
         public List<Car> GetAllVehicles()
         {
-            List<Car> cars = CarDao.GetAllCars();
+            List<Car> cars = carDao.GetAllCars();
             return cars;
         }
 
@@ -39,7 +39,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
         {
             if(vehicle != null)
             {
-                CarDao.RemoveCar(vehicle);
+                carDao.RemoveCar(vehicle);
             }
         }
 
@@ -65,7 +65,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
             }
             else
             {
-                CarDao.CreateCar(vehicle);
+                carDao.CreateCar(vehicle);
             }
         }
 
@@ -85,10 +85,10 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
         protected override void SetUpValidators(Vehicle vehicle)
         {
             base.SetUpValidators(vehicle);
-            if (vehicle != null && vehicle.GetType() == typeof(Car))
+            if (vehicle != null)
             {
-                carParkingSpaceValidator = new CarParkingSpaceValidator(CarDao);
-                uniqueVehicleIdValidator = new UniqueVehicleIdValidator(CarDao);
+                carParkingSpaceValidator = new CarParkingSpaceValidator(carDao);
+                uniqueVehicleIdValidator = new UniqueVehicleIdValidator(carDao);
                 CheckPermissionsToPark(vehicle);
             }
         }

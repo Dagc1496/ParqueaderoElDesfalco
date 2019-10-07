@@ -7,13 +7,13 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Real
 {
     public class MotorcycleDao : IMotorcycleDao
     {
-        private readonly DatabaseManager databaseManager;
+        private readonly DatabaseManager<MotorcycleEntity> databaseManager;
 
         private readonly MotorcycleMapper MotorcycleMapperObject;
 
         public MotorcycleDao()
         {
-            databaseManager = new DatabaseManager();
+            databaseManager = new DatabaseManager<MotorcycleEntity>();
             databaseManager.InitilizeDB();
             MotorcycleMapperObject = new MotorcycleMapper();
         }
@@ -43,7 +43,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Real
         public void RemoveMotorcycle(Motorcycle motorcycle)
         {
             MotorcycleEntity motorcycleEntity = MotorcycleMapperObject.MapObjectToEntity(motorcycle);
-            databaseManager.RemoveFromDB(motorcycleEntity);
+            databaseManager.RemoveFromDB(motorcycleEntity.GetType().Name, motorcycleEntity.MotorcycleId);
         }
 
         public List<string> GetAllVehicleIds()

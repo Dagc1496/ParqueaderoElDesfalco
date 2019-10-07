@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using ParqueaderoElDesfalco.Core.Domain;
 using ParqueaderoElDesfalco.Core.Persistence.Daos;
 
 namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
@@ -7,18 +6,18 @@ namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
     public class MotorcycleParkingSpaceValidator
     {
 
-        private readonly IMotorcycleDao MotorcycleDaoObject;
-        private readonly int LimitOfMotorcycle = 10;
+        private readonly IMotorcycleDao motorcycleDao;
+        private readonly int limitOfMotorcycle = 10;
 
         public MotorcycleParkingSpaceValidator(IMotorcycleDao motorcycleDao)
         {
-            MotorcycleDaoObject = motorcycleDao;
+            this.motorcycleDao = motorcycleDao;
         }
 
         public bool IsVehicleSpaceInParkingLot()
         {
-            List<Motorcycle> motorcycles = MotorcycleDaoObject.GetAllMotorcycles();
-            if (motorcycles.Count == LimitOfMotorcycle)
+            List<Motorcycle> motorcycles = motorcycleDao.GetAllMotorcycles();
+            if (motorcycles.Count == limitOfMotorcycle)
             {
                 return false;
             }

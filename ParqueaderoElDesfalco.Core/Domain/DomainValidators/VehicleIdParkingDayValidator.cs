@@ -20,12 +20,12 @@ namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
             }
             if (vehicleIdUpperLetters.StartsWith(notAllowedLetter, StringComparison.CurrentCulture))
             {
-                canPark = checkDaysForNotAllowedVehicleId(dateOfEntry);           
+                canPark = CheckDaysForNotAllowedVehicleId(dateOfEntry);           
             }
             return canPark;
         }
 
-        private bool checkDaysForNotAllowedVehicleId(DateTimeOffset dateToCheck)
+        private bool CheckDaysForNotAllowedVehicleId(DateTimeOffset dateToCheck)
         {
             return allowedDays.Any(x => dateToCheck.DayOfWeek.Equals(x));
         }

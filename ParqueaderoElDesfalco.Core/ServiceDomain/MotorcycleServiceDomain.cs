@@ -84,7 +84,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
         protected override void SetUpValidators(Vehicle vehicle)
         {
             base.SetUpValidators(vehicle);
-            if (vehicle != null && vehicle.GetType() == typeof(Motorcycle))
+            if (vehicle != null)
             {
                 motorcycleParkingSpaceValidator = new MotorcycleParkingSpaceValidator(motorcycleDao);
                 uniqueVehicleIdValidator = new UniqueVehicleIdValidator(motorcycleDao);

@@ -7,18 +7,18 @@ namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
     public class UniqueVehicleIdValidator
     {
 
-        private readonly ICarDao CarDao;
-        private readonly IMotorcycleDao MotorcycleDao;
-        List<string> vehicleIds;
+        private readonly ICarDao carDao;
+        private readonly IMotorcycleDao motorcycleDao;
+        private List<string> vehicleIds;
 
         public UniqueVehicleIdValidator(ICarDao carDao)
         {
-            CarDao = carDao;
+            this.carDao = carDao;
         }
 
         public UniqueVehicleIdValidator(IMotorcycleDao motorcycleDao)
         {
-            MotorcycleDao = motorcycleDao;
+            this.motorcycleDao = motorcycleDao;
         }
 
         public bool IsAValidId(string vehicleId)
@@ -37,13 +37,13 @@ namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
         private void GetAllIdsInParkingLot()
         {
             vehicleIds = new List<string>();
-            if (CarDao == null)
+            if (carDao == null)
             {
-                vehicleIds = MotorcycleDao.GetAllVehicleIds();
+                vehicleIds = motorcycleDao.GetAllVehicleIds();
             }
             else
             {
-                vehicleIds = CarDao.GetAllVehicleIds();
+                vehicleIds = carDao.GetAllVehicleIds();
             }
         }
     }

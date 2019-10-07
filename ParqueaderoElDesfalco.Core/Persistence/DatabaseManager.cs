@@ -5,62 +5,42 @@ using System.Linq;
 
 namespace ParqueaderoElDesfalco.Core.Persistence
 {
-    public class DatabaseManager
+    public class DatabaseManager<T>
     {
 
-        private Realm RealmDatabase;
-        List<string> vehicleIds;
-
-        public DatabaseManager()
-        {
-            InitilizeDB();
-        }
+        private Realm realmDatabase;
+        private List<string> vehicleIds;
 
         public void InitilizeDB()
         {
-            if(RealmDatabase == null)
+            if(realmDatabase == null)
             {
-                RealmDatabase = Realm.GetInstance();
+                realmDatabase = Realm.GetInstance();
             }
         }
 
-        public void SaveOnDB(MotorcycleEntity motorcycleEntity)
+        public void SaveOnDB(T entity)
         {
-            RealmDatabase.Write(() =>
+            RealmObject realmObject = entity as RealmObject;
+            realmDatabase.Write(() =>
             {
-                    RealmDatabase.Add(motorcycleEntity);
+                    realmDatabase.Add(realmObject);
             });
         }
 
-        public void SaveOnDB(CarEntity carEntity)
+        public void RemoveFromDB(string entityName, string vehicleId)
         {
-            RealmDatabase.Write(() =>
+            realmDatabase.Write(() =>
             {
-                RealmDatabase.Add(carEntity);
-            });
-        }
-
-        public void RemoveFromDB(MotorcycleEntity motorcycleEntity)
-        {
-            RealmDatabase.Write(() =>
-            {
-                RealmDatabase.Remove(RealmDatabase.Find("MotorcycleEntity", motorcycleEntity.MotorcycleId));
-            });
-        }
-
-        public void RemoveFromDB(CarEntity carEntity)
-        {
-            RealmDatabase.Write(() =>
-            {
-                RealmDatabase.Remove(RealmDatabase.Find("CarEntity",carEntity.CarId));
+                realmDatabase.Remove(realmDatabase.Find(entityName, vehicleId));
             });
         }
 
         public List<CarEntity> GetAllCars()
         {
             List<CarEntity> cars = new List<CarEntity>();
-            RealmDatabase.Write(() => {
-                cars = RealmDatabase.All<CarEntity>().ToList();
+            realmDatabase.Write(() => {
+                cars = realmDatabase.All<CarEntity>().ToList();
             });
             return cars;
         }
@@ -68,8 +48,8 @@ namespace ParqueaderoElDesfalco.Core.Persistence
         public List<MotorcycleEntity> GetAllMotorcycles()
         {
             List<MotorcycleEntity> motorcycles = new List<MotorcycleEntity>();
-            RealmDatabase.Write(() => {
-                motorcycles = RealmDatabase.All<MotorcycleEntity>().ToList();
+            realmDatabase.Write(() => {
+                motorcycles = realmDatabase.All<MotorcycleEntity>().ToList();
             });
             return motorcycles;
         }
