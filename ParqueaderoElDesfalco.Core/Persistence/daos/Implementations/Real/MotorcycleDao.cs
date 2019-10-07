@@ -7,20 +7,20 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Real
 {
     public class MotorcycleDao : IMotorcycleDao
     {
-        private readonly DatabaseManager<MotorcycleEntity> databaseManager;
 
-        private readonly MotorcycleMapper MotorcycleMapperObject;
+        private readonly DatabaseManager<MotorcycleEntity> databaseManager;
+        private readonly MotorcycleMapper motorcycleMapper;
 
         public MotorcycleDao()
         {
             databaseManager = new DatabaseManager<MotorcycleEntity>();
             databaseManager.InitilizeDB();
-            MotorcycleMapperObject = new MotorcycleMapper();
+            motorcycleMapper = new MotorcycleMapper();
         }
 
         public void CreateMotorcycle(Motorcycle motorcycle)
         {
-            MotorcycleEntity motorcycleEntity = MotorcycleMapperObject.MapObjectToEntity(motorcycle);
+            MotorcycleEntity motorcycleEntity = motorcycleMapper.MapObjectToEntity(motorcycle);
             databaseManager.SaveOnDB(motorcycleEntity);
         }
 
@@ -34,7 +34,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Real
             }
             foreach (MotorcycleEntity motorcycleEntity in motorcycleEntities)
             {
-                Motorcycle motorcycle = MotorcycleMapperObject.MapEntityToObject(motorcycleEntity);
+                Motorcycle motorcycle = motorcycleMapper.MapEntityToObject(motorcycleEntity);
                 motorcycles.Add(motorcycle);
             }
             return motorcycles; 
@@ -42,7 +42,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Real
 
         public void RemoveMotorcycle(Motorcycle motorcycle)
         {
-            MotorcycleEntity motorcycleEntity = MotorcycleMapperObject.MapObjectToEntity(motorcycle);
+            MotorcycleEntity motorcycleEntity = motorcycleMapper.MapObjectToEntity(motorcycle);
             databaseManager.RemoveFromDB(motorcycleEntity.GetType().Name, motorcycleEntity.MotorcycleId);
         }
 

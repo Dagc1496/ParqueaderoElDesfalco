@@ -11,9 +11,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
     {
 
         private readonly IMotorcycleDao motorcycleDao;
-
         private MotorcycleParkingSpaceValidator motorcycleParkingSpaceValidator;
-
         private UniqueVehicleIdValidator uniqueVehicleIdValidator;
 
         public MotorcycleServiceDomain(IMotorcycleDao motorcycleDao)

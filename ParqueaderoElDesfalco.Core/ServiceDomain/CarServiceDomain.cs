@@ -11,9 +11,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
     {
 
         private readonly ICarDao carDao;
-
         private CarParkingSpaceValidator carParkingSpaceValidator;
-
         private UniqueVehicleIdValidator uniqueVehicleIdValidator;
 
         public CarServiceDomain(ICarDao carDao)

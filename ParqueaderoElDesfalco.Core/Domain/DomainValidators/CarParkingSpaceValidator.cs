@@ -8,7 +8,7 @@ namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
 
         private readonly ICarDao carDao;
 
-        private readonly int LimitOfCars = 20;
+        private readonly int limitOfCars = 20;
 
         public CarParkingSpaceValidator(ICarDao carDao)
         {
@@ -18,7 +18,7 @@ namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
         public bool IsVehicleSpaceInParkingLot()
         {
             List<Car> cars = carDao.GetAllCars();
-            if (cars.Count == LimitOfCars)
+            if (cars.Count == limitOfCars)
             {
                 return false;
             }
