@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ParqueaderoElDesfalco.Core.Domain;
 using ParqueaderoElDesfalco.Core.Domain.DomainExeptions;
+using ParqueaderoElDesfalco.Core.Domain.DomainValidators;
 using ParqueaderoElDesfalco.Core.Persistence.Daos;
 
 namespace ParqueaderoElDesfalco.Core.ServiceDomain
@@ -9,16 +10,20 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
     public class MotorcycleServiceDomain : VehicleServiceDomain
     {
 
-        private readonly IMotorcycleDao MotorCycleDao;
+        private readonly IMotorcycleDao motorcycleDao;
 
-        public MotorcycleServiceDomain(IMotorcycleDao motorCycleDao)
+        private MotorcycleParkingSpaceValidator motorcycleParkingSpaceValidator;
+
+        private UniqueVehicleIdValidator uniqueVehicleIdValidator;
+
+        public MotorcycleServiceDomain(IMotorcycleDao motorcycleDao)
         {
-            MotorCycleDao = motorCycleDao;
+            this.motorcycleDao = motorcycleDao;
         }
 
         public List<Motorcycle> GetAllVehicles()
         {
-            List<Motorcycle> motorcycles = MotorCycleDao.GetAllMotorcycles();
+            List<Motorcycle> motorcycles = motorcycleDao.GetAllMotorcycles();
             return motorcycles;
         }
 
@@ -34,13 +39,13 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
         {
             if(vehicle!= null)
             {
-                MotorCycleDao.RemoveMotorcycle(vehicle);
+                motorcycleDao.RemoveMotorcycle(vehicle);
             }
         }
 
         public void SaveVechicleOnDb(Motorcycle vehicle)
         {
-            SetUpValidators(vehicle,MotorCycleDao);
+            SetUpValidators(vehicle);
             if (!ParkingSpaceInParkingLot)
             {
                 throw (new ParkingLotException("No Space"));
@@ -59,7 +64,31 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
             }
             else
             {
-                MotorCycleDao.CreateMotorcycle(vehicle);
+                motorcycleDao.CreateMotorcycle(vehicle);
+            }
+        }
+
+        protected override void CheckPermissionsToPark(Vehicle vehicle)
+        {
+            base.CheckPermissionsToPark(vehicle);
+            if (motorcycleParkingSpaceValidator.IsVehicleSpaceInParkingLot())
+            {
+                ParkingSpaceInParkingLot = true;
+            }
+            if (uniqueVehicleIdValidator.IsAValidId(vehicle.VehicleId))
+            {
+                IsVehicleValidId = true;
+            }
+        }
+
+        protected override void SetUpValidators(Vehicle vehicle)
+        {
+            base.SetUpValidators(vehicle);
+            if (vehicle != null && vehicle.GetType() == typeof(Motorcycle))
+            {
+                motorcycleParkingSpaceValidator = new MotorcycleParkingSpaceValidator(motorcycleDao);
+                uniqueVehicleIdValidator = new UniqueVehicleIdValidator(motorcycleDao);
+                CheckPermissionsToPark(vehicle);
             }
         }
     }

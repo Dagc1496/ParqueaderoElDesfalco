@@ -6,14 +6,14 @@ using Autofac;
 using ParqueaderoElDesfalco.Core.Domain;
 using ParqueaderoElDesfalco.Core.Domain.DomainExeptions;
 using ParqueaderoElDesfalco.Core.ServiceDomain;
-using ParqueaderoElDesfalco.Droid.Services;
+using ParqueaderoElDesfalco.Droid.Helpers.UserDialogsHelper;
 
 namespace ParqueaderoElDesfalco.Droid.Activities
 {
-    [Activity(Label = "@string/car_parking", Theme = "@style/AppTheme")]
+    [Activity]
     public class CarSaveActivity : BaseActivity
     {
-        private IDialogsService dialogsService;
+        private IUserDialogsHelper userDialogsManager;
         private Car car;
         private EditText CarIdEditText;
         private readonly DateTimeOffset dateOfEntryActual = DateTimeOffset.Now;
@@ -46,16 +46,16 @@ namespace ParqueaderoElDesfalco.Droid.Activities
                 }
                 catch (ParkingLotException)
                 {
-                    dialogsService.ShowMessage("Ups", Resources.GetString(Resource.String.parkinglot_full));
+                    userDialogsManager.ShowMessage("Ups", Resources.GetString(Resource.String.parkinglot_full));
                 }catch (VehicleIdException exceptionById)
                 {
                     if (exceptionById.Message == "ByDay")
                     {
-                        dialogsService.ShowMessage("Ups", Resources.GetString(Resource.String.forbidden_day));
+                        userDialogsManager.ShowMessage("Ups", Resources.GetString(Resource.String.forbidden_day));
                     }
                     else
                     {
-                        dialogsService.ShowMessage("Hmmm", Resources.GetString(Resource.String.incoherent_id));
+                        userDialogsManager.ShowMessage("Hmmm", Resources.GetString(Resource.String.incoherent_id));
                     }
                 }
             }
@@ -68,8 +68,8 @@ namespace ParqueaderoElDesfalco.Droid.Activities
         private void SetDependencies()
         {
             carServiceDomain = ConfigureDependencies().Resolve<CarServiceDomain>();
-            dialogsService = ConfigureDependencies().Resolve<IDialogsService>();
-            dialogsService.UserDialogsInit(this);
+            userDialogsManager = ConfigureDependencies().Resolve<IUserDialogsHelper>();
+            userDialogsManager.UserDialogsInit(this);
         }
 
         protected override void OnSaveInstanceState(Bundle outState)

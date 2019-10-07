@@ -28,14 +28,14 @@ namespace ParqueaderoElDesfalco.Core.Test.DaoTests
         public void GetAllMotorcycleFromDbTest()
         {
             //Arrange
-            var mockedDb = Mock.Create<IDatabaseManager>();
+            var mockedDb = Mock.Create<DatabaseManager>();
             motorcycleEntities = new List<MotorcycleEntity>();
             Mock.Arrange(() => mockedDb.InitilizeDB()).DoNothing().MustBeCalled();
             Mock.Arrange(() => mockedDb.GetAllMotorcycles()).Returns(motorcycleEntities);
 
             int numberOfMotorcyclesInParkingLot = 5;
             PopulateMotorcyclesEntitiesList(numberOfMotorcyclesInParkingLot);
-            MotorcycleDao motorcycleDao = new MotorcycleDao(mockedDb);
+            MotorcycleDao motorcycleDao = new MotorcycleDao();
 
             //Act
             List<Motorcycle> actualResult = motorcycleDao.GetAllMotorcycles();
@@ -49,11 +49,11 @@ namespace ParqueaderoElDesfalco.Core.Test.DaoTests
         public void GetCarsFromEmptyDatabase()
         {
             //Arrange
-            var mockedDb = Mock.Create<IDatabaseManager>();
+            var mockedDb = Mock.Create<DatabaseManager>();
             motorcycleEntities = new List<MotorcycleEntity>();
             Mock.Arrange(() => mockedDb.InitilizeDB()).DoNothing().MustBeCalled();
             Mock.Arrange(() => mockedDb.GetAllMotorcycles()).Returns(motorcycleEntities);
-            MotorcycleDao motorcycleDao = new MotorcycleDao(mockedDb);
+            MotorcycleDao motorcycleDao = new MotorcycleDao();
             int expectedResult = 0;
 
             //Act
@@ -68,13 +68,13 @@ namespace ParqueaderoElDesfalco.Core.Test.DaoTests
         public void DataBaseReturnsNullList()
         {
             //Arrange
-            var mockedDb = Mock.Create<IDatabaseManager>();
+            var mockedDb = Mock.Create<DatabaseManager>();
 
             //We are not initilizing the carEntities List to make GetAllCars Method return null
 
             Mock.Arrange(() => mockedDb.InitilizeDB()).DoNothing().MustBeCalled();
             Mock.Arrange(() => mockedDb.GetAllMotorcycles()).Returns(motorcycleEntities);
-            MotorcycleDao motorcycleDao = new MotorcycleDao(mockedDb);
+            MotorcycleDao motorcycleDao = new MotorcycleDao();
             int expectedResult = 0;
 
             //Act
@@ -89,11 +89,11 @@ namespace ParqueaderoElDesfalco.Core.Test.DaoTests
         public void SaveCarOnDatabase()
         {
             //Arrange
-            var mockedDb = Mock.Create<IDatabaseManager>();
+            var mockedDb = Mock.Create<DatabaseManager>();
             motorcycleEntities = new List<MotorcycleEntity>();
             Motorcycle motorcycle = new Motorcycle(defaultVehicleId, defaultDateOfentry, defaulCilindraje);
             Mock.Arrange(() => mockedDb.SaveOnDB(defaultMotorcycleEntity)).IgnoreArguments().DoNothing().MustBeCalled();
-            MotorcycleDao motorcycleDao = new MotorcycleDao(mockedDb);
+            MotorcycleDao motorcycleDao = new MotorcycleDao();
 
             //Act
             motorcycleDao.CreateMotorcycle(motorcycle);
@@ -106,11 +106,11 @@ namespace ParqueaderoElDesfalco.Core.Test.DaoTests
         public void RemoveCarFromDatabase()
         {
             //Arrange
-            var mockedDb = Mock.Create<IDatabaseManager>();
+            var mockedDb = Mock.Create<DatabaseManager>();
             motorcycleEntities = new List<MotorcycleEntity>();
             Motorcycle motorcycle = new Motorcycle(defaultVehicleId, defaultDateOfentry, defaulCilindraje);
             Mock.Arrange(() => mockedDb.RemoveFromDB(defaultMotorcycleEntity)).IgnoreArguments().DoNothing().MustBeCalled();
-            MotorcycleDao motorcycleDao = new MotorcycleDao(mockedDb);
+            MotorcycleDao motorcycleDao = new MotorcycleDao();
 
             //Act
             motorcycleDao.RemoveMotorcycle(motorcycle);

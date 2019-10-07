@@ -69,9 +69,9 @@
     <Compile Include="Activities\MotorcycleSaveActivity.cs" />
     <Compile Include="Activities\CarSaveActivity.cs" />
     <Compile Include="Activities\VehicleExitActivity.cs" />
-    <Compile Include="Services\IDialogsService.cs" />
-    <Compile Include="Services\DialogsService.cs" />
     <Compile Include="DependencyInjection\PlatformIoCContainer.cs" />
+    <Compile Include="Helpers\UserDialogsHelper\IUserDialogsHelper.cs" />
+    <Compile Include="Helpers\UserDialogsHelper\UserDialogsHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -170,8 +170,9 @@
     <Folder Include="Activities\" />
     <Folder Include="ViewHolders\" />
     <Folder Include="Adapters\" />
-    <Folder Include="Services\" />
+    <Folder Include="Helpers\" />
     <Folder Include="DependencyInjection\" />
+    <Folder Include="Helpers\UserDialogsHelper\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ParqueaderoElDesfalco.Core\ParqueaderoElDesfalco.Core.csproj">

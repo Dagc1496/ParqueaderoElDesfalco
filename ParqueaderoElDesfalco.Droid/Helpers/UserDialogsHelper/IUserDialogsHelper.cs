@@ -1,11 +1,10 @@
 ﻿using Android.App;
 
-namespace ParqueaderoElDesfalco.Droid.Services
+namespace ParqueaderoElDesfalco.Droid.Helpers.UserDialogsHelper
 {
-    public interface IDialogsService
+    public interface IUserDialogsHelper
     {
         void ShowMessage(string title, string message);
-        bool ShowConfirmation(string title, string message, string acceptText, string cancelText);
         void ShowLoading();
         void HideLoading();
         void UserDialogsInit(Activity activity);

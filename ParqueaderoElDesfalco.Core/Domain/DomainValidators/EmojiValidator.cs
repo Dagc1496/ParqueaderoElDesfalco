@@ -1,5 +1,5 @@
 ﻿using System;
-namespace ParqueaderoElDesfalco.Core.Validators
+namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
 {
     public class EmojiValidator
     {

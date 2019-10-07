@@ -27,14 +27,14 @@ namespace ParqueaderoElDesfalco.Core.Test.DaoTest
         public void GetAllCarFromDbTest()
         {
             //Arrange
-            var mockedDb = Mock.Create<IDatabaseManager>();
+            var mockedDb = Mock.Create<DatabaseManager>();
             carEntities = new List<CarEntity>();
             Mock.Arrange(() => mockedDb.InitilizeDB()).DoNothing().MustBeCalled();
             Mock.Arrange(() => mockedDb.GetAllCars()).Returns(carEntities);
 
             int numberOfCarsInParkingLot = 5;
             PopulateCarEntitiesList(numberOfCarsInParkingLot);
-            CarDao carDao = new CarDao(mockedDb);
+            CarDao carDao = new CarDao();
 
             //Act
             List<Car> actualResult = carDao.GetAllCars();
@@ -48,11 +48,11 @@ namespace ParqueaderoElDesfalco.Core.Test.DaoTest
         public void GetCarsFromEmptyDatabase()
         {
             //Arrange
-            var mockedDb = Mock.Create<IDatabaseManager>();
+            var mockedDb = Mock.Create<DatabaseManager>();
             carEntities = new List<CarEntity>();
             Mock.Arrange(() => mockedDb.InitilizeDB()).DoNothing().MustBeCalled();
             Mock.Arrange(() => mockedDb.GetAllCars()).Returns(carEntities);
-            CarDao carDao = new CarDao(mockedDb);
+            CarDao carDao = new CarDao();
             int expectedResult = 0;
 
             //Act
@@ -67,13 +67,13 @@ namespace ParqueaderoElDesfalco.Core.Test.DaoTest
         public void DataBaseReturnsNullList()
         {
             //Arrange
-            var mockedDb = Mock.Create<IDatabaseManager>();
+            var mockedDb = Mock.Create<DatabaseManager>();
 
             //We are not initilizing the carEntities List to make GetAllCars Method return null
 
             Mock.Arrange(() => mockedDb.InitilizeDB()).DoNothing().MustBeCalled();
             Mock.Arrange(() => mockedDb.GetAllCars()).Returns(carEntities);
-            CarDao carDao = new CarDao(mockedDb);
+            CarDao carDao = new CarDao();
             int expectedResult = 0;
 
             //Act
@@ -88,11 +88,11 @@ namespace ParqueaderoElDesfalco.Core.Test.DaoTest
         public void SaveCarOnDatabase()
         {
             //Arrange
-            var mockedDb = Mock.Create<IDatabaseManager>();
+            var mockedDb = Mock.Create<DatabaseManager>();
             carEntities = new List<CarEntity>();
             Car car = new Car(defaultVehicleId, defaultDateOfentry);
             Mock.Arrange(() => mockedDb.SaveOnDB(defaultCarEntity)).IgnoreArguments().DoNothing().MustBeCalled();
-            CarDao carDao = new CarDao(mockedDb);
+            CarDao carDao = new CarDao();
 
             //Act
             carDao.CreateCar(car);
@@ -105,11 +105,11 @@ namespace ParqueaderoElDesfalco.Core.Test.DaoTest
         public void RemoveCarFromDatabase()
         {
             //Arrange
-            var mockedDb = Mock.Create<IDatabaseManager>();
+            var mockedDb = Mock.Create<DatabaseManager>();
             carEntities = new List<CarEntity>();
             Car car = new Car(defaultVehicleId, defaultDateOfentry);
             Mock.Arrange(() => mockedDb.RemoveFromDB(defaultCarEntity)).IgnoreArguments().DoNothing().MustBeCalled();
-            CarDao carDao = new CarDao(mockedDb);
+            CarDao carDao = new CarDao();
 
             //Act
             carDao.RemoveCar(car);

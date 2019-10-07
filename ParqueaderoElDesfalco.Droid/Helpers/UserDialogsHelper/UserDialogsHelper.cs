@@ -1,20 +1,14 @@
 ﻿using System;
 using Acr.UserDialogs;
 using Android.App;
-using Android.Content;
 
-namespace ParqueaderoElDesfalco.Droid.Services
+namespace ParqueaderoElDesfalco.Droid.Helpers.UserDialogsHelper
 {
-    public class DialogsService : IDialogsService
+    public class UserDialogsHelper : IUserDialogsHelper
     {
         public void HideLoading()
         {
             UserDialogs.Instance.HideLoading();
-        }
-
-        public bool ShowConfirmation(string title, string message, string acceptText, string cancelText)
-        {
-            throw new NotImplementedException();
         }
 
         public void ShowLoading()

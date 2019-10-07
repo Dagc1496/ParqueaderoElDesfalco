@@ -14,7 +14,6 @@
     <DefineConstants>TRACE;MOCK;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Validators\" />
     <Folder Include="Persistence\Entities\" />
     <Folder Include="Persistence\Daos\" />
     <Folder Include="Mappers\" />

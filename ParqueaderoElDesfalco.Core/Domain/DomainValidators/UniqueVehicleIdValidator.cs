@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using ParqueaderoElDesfalco.Core.Domain;
 using ParqueaderoElDesfalco.Core.Persistence.Daos;
 
-namespace ParqueaderoElDesfalco.Core.Validators
+namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
 {
     public class UniqueVehicleIdValidator
     {

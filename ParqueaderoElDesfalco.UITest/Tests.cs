@@ -20,14 +20,6 @@ namespace ParqueaderoElDesfalco.UITest
             app = AppInitializer.StartApp();
         }
 
-        /*
-        [Test]
-        public void AppLaunches()
-        {
-            app.Repl();
-        }
-        */
-
         [Test]
         public void SaveCarTest()
         {

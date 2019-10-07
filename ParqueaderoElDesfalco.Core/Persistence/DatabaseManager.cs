@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace ParqueaderoElDesfalco.Core.Persistence
 {
-    public class DatabaseManager : IDatabaseManager
+    public class DatabaseManager
     {
 
         private Realm RealmDatabase;

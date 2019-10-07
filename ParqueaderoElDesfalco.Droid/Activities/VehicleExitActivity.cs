@@ -6,7 +6,7 @@ using Autofac;
 using Newtonsoft.Json;
 using ParqueaderoElDesfalco.Core.Domain;
 using ParqueaderoElDesfalco.Core.ServiceDomain;
-using ParqueaderoElDesfalco.Droid.Services;
+using ParqueaderoElDesfalco.Droid.Helpers.UserDialogsHelper;
 
 namespace ParqueaderoElDesfalco.Droid.Activities
 {
@@ -24,7 +24,7 @@ namespace ParqueaderoElDesfalco.Droid.Activities
         private MotorcycleServiceDomain motorcycleServiceDomain;
         private Car leavingCar;
         private Motorcycle leavingMotorcycle;
-        private IDialogsService dialogsService;
+        private IUserDialogsHelper userDialogsManager;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -95,8 +95,8 @@ namespace ParqueaderoElDesfalco.Droid.Activities
 
         private void SetDependencies<T>(T vehicle)
         {
-            dialogsService = ConfigureDependencies().Resolve<IDialogsService>();
-            dialogsService.UserDialogsInit(this);
+            userDialogsManager = ConfigureDependencies().Resolve<IUserDialogsHelper>();
+            userDialogsManager.UserDialogsInit(this);
             if (vehicle.GetType() == typeof(Car))
             {
                 carServiceDomain = ConfigureDependencies().Resolve<CarServiceDomain>();

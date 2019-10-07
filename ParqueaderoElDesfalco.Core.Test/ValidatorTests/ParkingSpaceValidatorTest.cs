@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using ParqueaderoElDesfalco.Core.Domain;
+using ParqueaderoElDesfalco.Core.Domain.DomainValidators;
 using ParqueaderoElDesfalco.Core.Persistence.Daos;
-using ParqueaderoElDesfalco.Core.Validators;
 using Telerik.JustMock;
 using Xunit;
 

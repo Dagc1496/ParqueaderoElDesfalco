@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using ParqueaderoElDesfalco.Core.Domain;
 using ParqueaderoElDesfalco.Core.Domain.DomainExeptions;
+using ParqueaderoElDesfalco.Core.Domain.DomainValidators;
 using ParqueaderoElDesfalco.Core.Persistence.Daos;
 
 namespace ParqueaderoElDesfalco.Core.ServiceDomain
 {
     public class CarServiceDomain : VehicleServiceDomain
     {
+
         private readonly ICarDao CarDao;
+
+        private CarParkingSpaceValidator carParkingSpaceValidator;
+
+        private UniqueVehicleIdValidator uniqueVehicleIdValidator;
 
         public CarServiceDomain(ICarDao carDao)
         {
@@ -39,7 +45,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
 
         public void SaveVechicleOnDb(Car vehicle)
         {
-            SetUpValidators(vehicle,CarDao);
+            SetUpValidators(vehicle);
             if (!ParkingSpaceInParkingLot)
             {
                 throw (new ParkingLotException("No Space"));
@@ -60,6 +66,30 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
             else
             {
                 CarDao.CreateCar(vehicle);
+            }
+        }
+
+        protected override void CheckPermissionsToPark(Vehicle vehicle)
+        {
+            base.CheckPermissionsToPark(vehicle);
+            if (carParkingSpaceValidator.IsVehicleSpaceInParkingLot())
+            {
+                ParkingSpaceInParkingLot = true;
+            }
+            if (uniqueVehicleIdValidator.IsAValidId(vehicle.VehicleId))
+            {
+                IsVehicleValidId = true;
+            }
+        }
+
+        protected override void SetUpValidators(Vehicle vehicle)
+        {
+            base.SetUpValidators(vehicle);
+            if (vehicle != null && vehicle.GetType() == typeof(Car))
+            {
+                carParkingSpaceValidator = new CarParkingSpaceValidator(CarDao);
+                uniqueVehicleIdValidator = new UniqueVehicleIdValidator(CarDao);
+                CheckPermissionsToPark(vehicle);
             }
         }
     }

@@ -7,26 +7,26 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Real
 {
     public class MotorcycleDao : IMotorcycleDao
     {
-        private readonly IDatabaseManager DatabaseManagerObject;
+        private readonly DatabaseManager databaseManager;
 
         private readonly MotorcycleMapper MotorcycleMapperObject;
 
-        public MotorcycleDao(IDatabaseManager databaseManager)
+        public MotorcycleDao()
         {
-            DatabaseManagerObject = databaseManager;
-            DatabaseManagerObject.InitilizeDB();
+            databaseManager = new DatabaseManager();
+            databaseManager.InitilizeDB();
             MotorcycleMapperObject = new MotorcycleMapper();
         }
 
         public void CreateMotorcycle(Motorcycle motorcycle)
         {
             MotorcycleEntity motorcycleEntity = MotorcycleMapperObject.MapObjectToEntity(motorcycle);
-            DatabaseManagerObject.SaveOnDB(motorcycleEntity);
+            databaseManager.SaveOnDB(motorcycleEntity);
         }
 
         public List<Motorcycle> GetAllMotorcycles()
         {
-            List<MotorcycleEntity> motorcycleEntities = DatabaseManagerObject.GetAllMotorcycles();
+            List<MotorcycleEntity> motorcycleEntities = databaseManager.GetAllMotorcycles();
             List<Motorcycle> motorcycles = new List<Motorcycle>();
             if (motorcycleEntities == null || motorcycleEntities.Count == 0)
             {
@@ -43,12 +43,12 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Real
         public void RemoveMotorcycle(Motorcycle motorcycle)
         {
             MotorcycleEntity motorcycleEntity = MotorcycleMapperObject.MapObjectToEntity(motorcycle);
-            DatabaseManagerObject.RemoveFromDB(motorcycleEntity);
+            databaseManager.RemoveFromDB(motorcycleEntity);
         }
 
         public List<string> GetAllVehicleIds()
         {
-            return DatabaseManagerObject.GetAllVehicleIds();
+            return databaseManager.GetAllVehicleIds();
         }
     }
 }

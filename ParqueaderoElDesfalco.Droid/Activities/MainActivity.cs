@@ -13,7 +13,7 @@ using ParqueaderoElDesfalco.Droid.Adapters;
 
 namespace ParqueaderoElDesfalco.Droid.Activities
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
+    [Activity(MainLauncher = true, ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class MainActivity : BaseActivity
     {
         private RecyclerView carRecyclerView;

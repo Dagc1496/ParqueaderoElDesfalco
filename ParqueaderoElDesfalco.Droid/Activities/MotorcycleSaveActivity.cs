@@ -7,14 +7,14 @@ using Autofac;
 using ParqueaderoElDesfalco.Core.Domain;
 using ParqueaderoElDesfalco.Core.Domain.DomainExeptions;
 using ParqueaderoElDesfalco.Core.ServiceDomain;
-using ParqueaderoElDesfalco.Droid.Services;
+using ParqueaderoElDesfalco.Droid.Helpers.UserDialogsHelper;
 
 namespace ParqueaderoElDesfalco.Droid.Activities
 {
     [Activity(Label = "@string/motorcycle_parking", Theme = "@style/AppTheme")]
     public class MotorcycleSaveActivity : BaseActivity
     {
-        private IDialogsService dialogsService;
+        private IUserDialogsHelper userDialogsManager;
         private Motorcycle motorcycle;
         private EditText MotorcycleIdEditText;
         private EditText MotorcycleCilindrajeEditText;
@@ -53,17 +53,17 @@ namespace ParqueaderoElDesfalco.Droid.Activities
                 }
                 catch (ParkingLotException)
                 {
-                    dialogsService.ShowMessage("Ups", Resources.GetString(Resource.String.parkinglot_full));
+                    userDialogsManager.ShowMessage("Ups", Resources.GetString(Resource.String.parkinglot_full));
                 }
                 catch (VehicleIdException exceptionById)
                 {
                     if (exceptionById.Message == "ByDay")
                     {
-                        dialogsService.ShowMessage("Ups", Resources.GetString(Resource.String.forbidden_day));
+                        userDialogsManager.ShowMessage("Ups", Resources.GetString(Resource.String.forbidden_day));
                     }
                     else
                     {
-                        dialogsService.ShowMessage("Hmmm", Resources.GetString(Resource.String.incoherent_id));
+                        userDialogsManager.ShowMessage("Hmmm", Resources.GetString(Resource.String.incoherent_id));
                     }
                 }
             }
@@ -72,8 +72,8 @@ namespace ParqueaderoElDesfalco.Droid.Activities
         private void SetDependencies()
         {
             motorcycleServiceDomain = ConfigureDependencies().Resolve<MotorcycleServiceDomain>();
-            dialogsService = ConfigureDependencies().Resolve<IDialogsService>();
-            dialogsService.UserDialogsInit(this);
+            userDialogsManager = ConfigureDependencies().Resolve<IUserDialogsHelper>();
+            userDialogsManager.UserDialogsInit(this);
         }
 
         protected override void OnSaveInstanceState(Bundle outState)

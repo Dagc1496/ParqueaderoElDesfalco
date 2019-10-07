@@ -17,7 +17,6 @@ namespace ParqueaderoElDesfalco.Core.DependencyInjection
 #else
             builder.RegisterType<CarDao>().As<ICarDao>();
             builder.RegisterType<MotorcycleDao>().As<IMotorcycleDao>();
-            builder.RegisterType<DatabaseManager>().As<IDatabaseManager>();
 #endif
         }
     }

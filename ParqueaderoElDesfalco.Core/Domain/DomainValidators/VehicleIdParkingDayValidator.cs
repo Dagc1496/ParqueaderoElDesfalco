@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
 {
@@ -17,7 +18,7 @@ namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
             {
                 vehicleIdUpperLetters = vehicleId.ToUpper();
             }
-            if (vehicleIdUpperLetters.StartsWith(notAllowedLetter))
+            if (vehicleIdUpperLetters.StartsWith(notAllowedLetter, StringComparison.CurrentCulture))
             {
                 canPark = checkDaysForNotAllowedVehicleId(dateOfEntry);           
             }
@@ -26,14 +27,7 @@ namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
 
         private bool checkDaysForNotAllowedVehicleId(DateTimeOffset dateToCheck)
         {
-            for (int i = 0; i < allowedDays.Length; i++)
-            {
-                if (dateToCheck.DayOfWeek == allowedDays[i])
-                {
-                    return true;
-                }
-            }
-            return false;
+            return allowedDays.Any(x => dateToCheck.DayOfWeek.Equals(x));
         }
     }
 }

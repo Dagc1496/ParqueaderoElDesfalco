@@ -1,9 +1,9 @@
 ﻿namespace ParqueaderoElDesfalco.Core.Mappers
 {
-    public interface IGeneralMapper<T,U>
+    public interface IGeneralMapper<TModel, TEntity>
     {
-        T MapEntityToObject(U vehicleEntity);
+        TModel MapEntityToObject(TEntity vehicleEntity);
 
-        U MapObjectToEntity(T vehicleObject);
+        TEntity MapObjectToEntity(TModel vehicleObject);
     }
 }
