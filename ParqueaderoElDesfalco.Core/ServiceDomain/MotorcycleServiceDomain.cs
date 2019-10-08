@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Autofac;
 using ParqueaderoElDesfalco.Core.Domain;
 using ParqueaderoElDesfalco.Core.Domain.DomainExeptions;
+using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
 using ParqueaderoElDesfalco.Core.Domain.DomainValidators;
 using ParqueaderoElDesfalco.Core.Persistence.Daos;
 
@@ -21,7 +23,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
 
         public List<Motorcycle> GetAllVehicles()
         {
-            List<Motorcycle> motorcycles = motorcycleDao.GetAllMotorcycles();
+            List<Motorcycle> motorcycles = motorcycleDao.GetAllVehicles();
             return motorcycles;
         }
 
@@ -84,10 +86,15 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
             base.SetUpValidators(vehicle);
             if (vehicle != null)
             {
-                motorcycleParkingSpaceValidator = new MotorcycleParkingSpaceValidator(motorcycleDao);
-                uniqueVehicleIdValidator = new UniqueVehicleIdValidator(motorcycleDao);
+                SetDependencies();
                 CheckPermissionsToPark(vehicle);
             }
+        }
+
+        private void SetDependencies()
+        {
+            motorcycleParkingSpaceValidator = ConfigureDependencies().Resolve<MotorcycleParkingSpaceValidator>();
+            uniqueVehicleIdValidator = ConfigureDependencies().Resolve<UniqueVehicleIdValidator>();
         }
     }
 }

@@ -2,7 +2,7 @@
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
-using ParqueaderoElDesfalco.Core.Domain;
+using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
 
 namespace ParqueaderoElDesfalco.Droid.ViewHolders
 {

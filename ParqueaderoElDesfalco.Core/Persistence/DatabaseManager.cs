@@ -5,11 +5,10 @@ using System.Linq;
 
 namespace ParqueaderoElDesfalco.Core.Persistence
 {
-    public class DatabaseManager<T>
+    public class DatabaseManager
     {
 
         private Realm realmDatabase;
-        private List<string> vehicleIds;
 
         public void InitilizeDB()
         {
@@ -19,12 +18,11 @@ namespace ParqueaderoElDesfalco.Core.Persistence
             }
         }
 
-        public void SaveOnDB(T entity)
+        public void SaveOnDB<T> (T entity) where T: RealmObject
         {
-            RealmObject realmObject = entity as RealmObject;
             realmDatabase.Write(() =>
             {
-                    realmDatabase.Add(realmObject);
+                realmDatabase.Add(entity);
             });
         }
 
@@ -36,50 +34,13 @@ namespace ParqueaderoElDesfalco.Core.Persistence
             });
         }
 
-        public List<CarEntity> GetAllCars()
+        public List<T> GetAllVehicles<T>() where T : RealmObject
         {
-            List<CarEntity> cars = new List<CarEntity>();
+            List<T> vehicles = new List<T>();
             realmDatabase.Write(() => {
-                cars = realmDatabase.All<CarEntity>().ToList();
+                vehicles = realmDatabase.All<T>().ToList();
             });
-            return cars;
-        }
-
-        public List<MotorcycleEntity> GetAllMotorcycles()
-        {
-            List<MotorcycleEntity> motorcycles = new List<MotorcycleEntity>();
-            realmDatabase.Write(() => {
-                motorcycles = realmDatabase.All<MotorcycleEntity>().ToList();
-            });
-            return motorcycles;
-        }
-
-        public List<string> GetAllVehicleIds()
-        {
-            List<MotorcycleEntity> motorcycles = GetAllMotorcycles();
-            List<CarEntity> cars = GetAllCars();
-            vehicleIds = new List<string>();
-            CollectCarIds(cars);
-            CollectMotorcycleIds(motorcycles);
-            return vehicleIds;
-        }
-
-        private void CollectCarIds(List<CarEntity> cars)
-        {
-            for (int i = 0; i < cars.Count; i++)
-            {
-                string vehicleId = cars.ElementAt(i).CarId;
-                vehicleIds.Add(vehicleId);
-            }
-        }
-
-        private void CollectMotorcycleIds(List<MotorcycleEntity> motorcycles)
-        {
-            for (int i = 0; i < motorcycles.Count; i++)
-            {
-                string vehicleId = motorcycles.ElementAt(i).MotorcycleId;
-                vehicleIds.Add(vehicleId);
-            }
+            return vehicles;
         }
     }
 }

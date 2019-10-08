@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ParqueaderoElDesfalco.Core.Domain;
+using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
 using ParqueaderoElDesfalco.Core.Mappers;
 using ParqueaderoElDesfalco.Core.Persistence.Entities;
 
@@ -9,11 +10,11 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Real
     {
 
         private readonly CarMapper carMapper;
-        private readonly DatabaseManager<CarEntity> databaseManager;
+        private readonly DatabaseManager databaseManager;
 
         public CarDao()
         {
-            databaseManager = new DatabaseManager<CarEntity>();
+            databaseManager = new DatabaseManager();
             databaseManager.InitilizeDB();
             carMapper = new CarMapper();
         }
@@ -24,9 +25,9 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Real
             databaseManager.SaveOnDB(carEntity);
         }
 
-        public List<Car> GetAllCars()
+        public List<Car> GetAllVehicles()
         {
-            List<CarEntity> carEntities = databaseManager.GetAllCars();
+            List<CarEntity> carEntities = databaseManager.GetAllVehicles<CarEntity>();
             List<Car> cars = new List<Car>();
             if (carEntities == null || carEntities.Count == 0)
             {
@@ -44,11 +45,6 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Real
         {
             CarEntity carEntity = carMapper.MapObjectToEntity(car);
             databaseManager.RemoveFromDB(carEntity.GetType().Name, carEntity.CarId);
-        }
-
-        public List<string> GetAllVehicleIds()
-        {
-            return databaseManager.GetAllVehicleIds();
         }
     }
 }

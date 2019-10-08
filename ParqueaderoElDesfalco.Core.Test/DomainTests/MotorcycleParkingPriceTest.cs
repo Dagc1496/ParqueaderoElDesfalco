@@ -1,5 +1,5 @@
 ﻿using System;
-using ParqueaderoElDesfalco.Core.Domain;
+using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
 using Xunit;
 
 namespace ParqueaderoElDesfalco.Core.Test.DomainTests

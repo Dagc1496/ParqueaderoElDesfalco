@@ -17,6 +17,7 @@ namespace ParqueaderoElDesfalco.Core.DependencyInjection
         {
             containerBuilder.RegisterModule<DomainModule>();
             containerBuilder.RegisterModule<DaoModule>();
+            containerBuilder.RegisterModule<ValidatorModule>();
         }
 
         protected abstract void RegisterDependencies(ContainerBuilder containerBuilder);

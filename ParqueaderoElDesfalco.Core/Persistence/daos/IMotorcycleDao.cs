@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using ParqueaderoElDesfalco.Core.Domain;
+using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
 
 namespace ParqueaderoElDesfalco.Core.Persistence.Daos
 {
@@ -7,7 +7,6 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos
     {
         void CreateMotorcycle(Motorcycle motorcycle);
         void RemoveMotorcycle(Motorcycle motorcycle);
-        List<Motorcycle> GetAllMotorcycles();
-        List<string> GetAllVehicleIds();
+        List<Motorcycle> GetAllVehicles();
     }
 }

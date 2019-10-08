@@ -1,13 +1,13 @@
 ﻿using System;
 using Autofac;
-using ParqueaderoElDesfalco.Core.Domain;
+using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
 using ParqueaderoElDesfalco.Core.Persistence.Daos;
 using ParqueaderoElDesfalco.Core.ServiceDomain;
 using Xunit;
 
 namespace ParqueaderoElDesfalco.Core.Test.ServiceDomainTest
 {
-    public class CarServiceDomainTest : BaseServiceDomain
+    public class CarServiceDomainTest : BaseServiceDomainTest
     {
         private readonly DateTimeOffset defaultDate = DateTimeOffset.Now;
         private readonly string defaultCarId = "onecarid";
@@ -20,13 +20,13 @@ namespace ParqueaderoElDesfalco.Core.Test.ServiceDomainTest
             SetDependencies();
             Car car = new Car(defaultCarId, defaultDate);
             CarServiceDomain carServiceDomain = new CarServiceDomain(carDao);
-            int actualCars = carDao.GetAllCars().Count;
+            int actualCars = carDao.GetAllVehicles().Count;
 
             //Act
             carServiceDomain.SaveVechicleOnDb(car);
 
             //Assert
-            Assert.Equal(actualCars+1, carDao.GetAllCars().Count);
+            Assert.Equal(actualCars+1, carDao.GetAllVehicles().Count);
         }
 
         private void SetDependencies()

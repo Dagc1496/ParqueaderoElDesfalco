@@ -8,12 +8,13 @@ using Android.Widget;
 using Autofac;
 using Newtonsoft.Json;
 using ParqueaderoElDesfalco.Core.Domain;
+using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
 using ParqueaderoElDesfalco.Core.ServiceDomain;
 using ParqueaderoElDesfalco.Droid.Adapters;
 
 namespace ParqueaderoElDesfalco.Droid.Activities
 {
-    [Activity(MainLauncher = true, ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
+    [Activity(MainLauncher = true)]
     public class MainActivity : BaseActivity
     {
         private RecyclerView carRecyclerView;

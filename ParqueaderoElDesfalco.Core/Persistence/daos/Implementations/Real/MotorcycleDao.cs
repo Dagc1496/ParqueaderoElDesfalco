@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ParqueaderoElDesfalco.Core.Domain;
+using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
 using ParqueaderoElDesfalco.Core.Mappers;
 using ParqueaderoElDesfalco.Core.Persistence.Entities;
 
@@ -8,12 +9,12 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Real
     public class MotorcycleDao : IMotorcycleDao
     {
 
-        private readonly DatabaseManager<MotorcycleEntity> databaseManager;
+        private readonly DatabaseManager databaseManager;
         private readonly MotorcycleMapper motorcycleMapper;
 
         public MotorcycleDao()
         {
-            databaseManager = new DatabaseManager<MotorcycleEntity>();
+            databaseManager = new DatabaseManager();
             databaseManager.InitilizeDB();
             motorcycleMapper = new MotorcycleMapper();
         }
@@ -24,9 +25,9 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Real
             databaseManager.SaveOnDB(motorcycleEntity);
         }
 
-        public List<Motorcycle> GetAllMotorcycles()
+        public List<Motorcycle> GetAllVehicles()
         {
-            List<MotorcycleEntity> motorcycleEntities = databaseManager.GetAllMotorcycles();
+            List<MotorcycleEntity> motorcycleEntities = databaseManager.GetAllVehicles<MotorcycleEntity>();
             List<Motorcycle> motorcycles = new List<Motorcycle>();
             if (motorcycleEntities == null || motorcycleEntities.Count == 0)
             {
@@ -44,11 +45,6 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Real
         {
             MotorcycleEntity motorcycleEntity = motorcycleMapper.MapObjectToEntity(motorcycle);
             databaseManager.RemoveFromDB(motorcycleEntity.GetType().Name, motorcycleEntity.MotorcycleId);
-        }
-
-        public List<string> GetAllVehicleIds()
-        {
-            return databaseManager.GetAllVehicleIds();
         }
     }
 }

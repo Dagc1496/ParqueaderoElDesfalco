@@ -25,6 +25,8 @@
     <Folder Include="Persistence\Daos\Implementations\" />
     <Folder Include="Persistence\Daos\Implementations\Mock\" />
     <Folder Include="Persistence\Daos\Implementations\Real\" />
+    <Folder Include="Domain\DomainObjects\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Realm" Version="4.1.0" />

@@ -1,5 +1,4 @@
-﻿using System;
-using ParqueaderoElDesfalco.Core.Domain;
+﻿using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
 using ParqueaderoElDesfalco.Core.Persistence.Entities;
 
 namespace ParqueaderoElDesfalco.Core.Mappers

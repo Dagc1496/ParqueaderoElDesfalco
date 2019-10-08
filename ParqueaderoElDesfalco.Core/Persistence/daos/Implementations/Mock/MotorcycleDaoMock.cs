@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ParqueaderoElDesfalco.Core.Domain;
+using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
 
 namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Mock
 {
@@ -39,7 +40,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Mock
             }
         }
 
-        public List<Motorcycle> GetAllMotorcycles()
+        public List<Motorcycle> GetAllVehicles()
         {
             return motorcycles;
         }

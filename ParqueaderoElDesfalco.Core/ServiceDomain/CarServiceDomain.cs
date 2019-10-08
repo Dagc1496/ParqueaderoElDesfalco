@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using ParqueaderoElDesfalco.Core.Domain;
+using Autofac;
 using ParqueaderoElDesfalco.Core.Domain.DomainExeptions;
+using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
 using ParqueaderoElDesfalco.Core.Domain.DomainValidators;
 using ParqueaderoElDesfalco.Core.Persistence.Daos;
 
@@ -29,7 +30,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
 
         public List<Car> GetAllVehicles()
         {
-            List<Car> cars = carDao.GetAllCars();
+            List<Car> cars = carDao.GetAllVehicles();
             return cars;
         }
 
@@ -85,10 +86,15 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
             base.SetUpValidators(vehicle);
             if (vehicle != null)
             {
-                carParkingSpaceValidator = new CarParkingSpaceValidator(carDao);
-                uniqueVehicleIdValidator = new UniqueVehicleIdValidator(carDao);
+                SetDependencies();
                 CheckPermissionsToPark(vehicle);
             }
+        }
+
+        private void SetDependencies()
+        {
+            carParkingSpaceValidator = ConfigureDependencies().Resolve<CarParkingSpaceValidator>();
+            uniqueVehicleIdValidator = ConfigureDependencies().Resolve<UniqueVehicleIdValidator>();
         }
     }
 }

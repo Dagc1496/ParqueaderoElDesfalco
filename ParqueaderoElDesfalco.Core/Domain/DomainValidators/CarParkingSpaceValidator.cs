@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
 using ParqueaderoElDesfalco.Core.Persistence.Daos;
 
 namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
@@ -17,7 +18,7 @@ namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
 
         public bool IsVehicleSpaceInParkingLot()
         {
-            List<Car> cars = carDao.GetAllCars();
+            List<Car> cars = carDao.GetAllVehicles();
             if (cars.Count == limitOfCars)
             {
                 return false;

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ParqueaderoElDesfalco.Core.Domain
+namespace ParqueaderoElDesfalco.Core.Domain.DomainObjects
 {
     public class Car : Vehicle
     {

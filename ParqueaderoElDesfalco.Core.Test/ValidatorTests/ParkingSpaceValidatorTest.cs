@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using ParqueaderoElDesfalco.Core.Domain;
+using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
 using ParqueaderoElDesfalco.Core.Domain.DomainValidators;
 using ParqueaderoElDesfalco.Core.Persistence.Daos;
 using Telerik.JustMock;
@@ -33,7 +33,7 @@ namespace ParqueaderoElDesfalco.Core.Test.ValidatorTests
             //Arrange
             var carsPakingLot = Mock.Create<ICarDao>();
             cars = new List<Car>();
-            Mock.Arrange(() => carsPakingLot.GetAllCars()).Returns(cars);
+            Mock.Arrange(() => carsPakingLot.GetAllVehicles()).Returns(cars);
             CarParkingSpaceValidator carParkingSpaceValidator = new CarParkingSpaceValidator(carsPakingLot);
 
             //Act
@@ -49,7 +49,7 @@ namespace ParqueaderoElDesfalco.Core.Test.ValidatorTests
             //Arrange
             var carsPakingLot = Mock.Create<ICarDao>();
             PopulateCarsParkingLot(limitOfCarsParkingLot);
-            Mock.Arrange(() => carsPakingLot.GetAllCars()).Returns(cars);
+            Mock.Arrange(() => carsPakingLot.GetAllVehicles()).Returns(cars);
             CarParkingSpaceValidator carParkingSpaceValidator = new CarParkingSpaceValidator(carsPakingLot);
 
             //Act
@@ -65,7 +65,7 @@ namespace ParqueaderoElDesfalco.Core.Test.ValidatorTests
             //Arrange
             var motorcyclesPakingLot = Mock.Create<IMotorcycleDao>();
             motorcycles = new List<Motorcycle>();
-            Mock.Arrange(() => motorcyclesPakingLot.GetAllMotorcycles()).Returns(motorcycles);
+            Mock.Arrange(() => motorcyclesPakingLot.GetAllVehicles()).Returns(motorcycles);
             MotorcycleParkingSpaceValidator motorcycleParkingSpaceValidator = new MotorcycleParkingSpaceValidator(motorcyclesPakingLot);
 
             //Act
@@ -81,7 +81,7 @@ namespace ParqueaderoElDesfalco.Core.Test.ValidatorTests
             //Arrange
             var motorcyclesPakingLot = Mock.Create<IMotorcycleDao>();
             PopulateMotorcycleParkingLot(limitOfMotorcyclesParkingLot);
-            Mock.Arrange(() => motorcyclesPakingLot.GetAllMotorcycles()).Returns(motorcycles);
+            Mock.Arrange(() => motorcyclesPakingLot.GetAllVehicles()).Returns(motorcycles);
             MotorcycleParkingSpaceValidator motorcycleParkingSpaceValidator = new MotorcycleParkingSpaceValidator(motorcyclesPakingLot);
 
             //Act

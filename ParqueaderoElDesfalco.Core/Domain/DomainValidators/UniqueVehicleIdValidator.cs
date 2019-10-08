@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using ParqueaderoElDesfalco.Core.Helpers;
 using ParqueaderoElDesfalco.Core.Persistence.Daos;
 
 namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
@@ -10,14 +11,11 @@ namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
         private readonly ICarDao carDao;
         private readonly IMotorcycleDao motorcycleDao;
         private List<string> vehicleIds;
+        private VehiclesOnParkingLotHelper VehiclesOnParkingLotHelper;
 
-        public UniqueVehicleIdValidator(ICarDao carDao)
+        public UniqueVehicleIdValidator(ICarDao carDao, IMotorcycleDao motorcycleDao)
         {
             this.carDao = carDao;
-        }
-
-        public UniqueVehicleIdValidator(IMotorcycleDao motorcycleDao)
-        {
             this.motorcycleDao = motorcycleDao;
         }
 
@@ -37,14 +35,8 @@ namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
         private void GetAllIdsInParkingLot()
         {
             vehicleIds = new List<string>();
-            if (carDao == null)
-            {
-                vehicleIds = motorcycleDao.GetAllVehicleIds();
-            }
-            else
-            {
-                vehicleIds = carDao.GetAllVehicleIds();
-            }
+            VehiclesOnParkingLotHelper = new VehiclesOnParkingLotHelper(carDao,motorcycleDao);
+            vehicleIds = VehiclesOnParkingLotHelper.GetAllVehicleIds();
         }
     }
 }
