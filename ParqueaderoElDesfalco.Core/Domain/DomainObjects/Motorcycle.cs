@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace ParqueaderoElDesfalco.Core.Domain.DomainObjects
 {
@@ -8,11 +9,13 @@ namespace ParqueaderoElDesfalco.Core.Domain.DomainObjects
         private const int costPerDay = 4000;
         private const int extraCostByCilindraje = 2000;
         private const int limitOfCilindraje = 500;
+        private static string motortcycleIdFormat = "[A-Z|a-z]{3}-([0-9]{2}|[0-9]{2}[a-z|A-Z]{1})";
+
 
         public int Cilindraje { get; private set; }
 
         public Motorcycle(string vehicleId, DateTimeOffset dateOfEntry, int cilindraje)
-            :base(vehicleId, dateOfEntry)
+            :base(vehicleId, dateOfEntry, motortcycleIdFormat)
         {
             Cilindraje = cilindraje;
         }

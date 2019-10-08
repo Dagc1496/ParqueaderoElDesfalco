@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using NUnit.Framework;
+using ParqueaderoElDesfalco.UITest.PageObjects;
 using Xamarin.UITest;
 using Xamarin.UITest.Android;
 using Xamarin.UITest.Queries;
@@ -11,25 +12,28 @@ namespace ParqueaderoElDesfalco.UITest
     [TestFixture]
     public class Tests
     {
-        IApp app;
-        private string carToSaveId;
 
-        [SetUp]
-        public void BeforeEachTest()
-        {
-            app = AppInitializer.StartApp();
-        }
+        private string idToSaveCar = "Placa automatica";
+        private MainPageObject mainPageObject;
+        private SaveCarPageObject saveCarPageObject;
 
         [Test]
         public void SaveCarTest()
         {
-            //Arrange, Act
-            SaveCar();
+            //Arrange
+            mainPageObject = new MainPageObject();
+            saveCarPageObject = new SaveCarPageObject();
+            mainPageObject.GoToSaveCarActivity();
+            saveCarPageObject.WriteCarId(idToSaveCar);
+
+            //Act
+            saveCarPageObject.TapSaveCarButton();
 
             //Assert
-            Assert.AreEqual(carToSaveId, app.Query(q => q.Marked("car_id_textView")).First().Text);
+            mainPageObject.CheckCarListForCreated(idToSaveCar);
         }
 
+        /*
         [Test]
         public void RemoveCarTest()
         {
@@ -54,5 +58,6 @@ namespace ParqueaderoElDesfalco.UITest
 
             app.Tap(x => x.Marked("btn_park_car"));
         }
+        */
     }
 }

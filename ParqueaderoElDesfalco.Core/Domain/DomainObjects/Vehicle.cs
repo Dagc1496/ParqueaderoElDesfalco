@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text.RegularExpressions;
+using ParqueaderoElDesfalco.Core.Domain.DomainExeptions;
 
 namespace ParqueaderoElDesfalco.Core.Domain.DomainObjects
 {
@@ -25,14 +27,18 @@ namespace ParqueaderoElDesfalco.Core.Domain.DomainObjects
 
         public int ParkingPrice { get; protected set; }
 
+        public string VehicleIdFormat { get; protected set; }
+
         #endregion
 
         #region Constructor
 
-        protected Vehicle(string vehicleId, DateTimeOffset dateOfEntry)
+        protected Vehicle(string vehicleId, DateTimeOffset dateOfEntry, string vehicleIdformat)
         {
             VehicleId = vehicleId;
             DateOfEntry = dateOfEntry;
+            VehicleIdFormat = vehicleIdformat;
+            CheckVehicleIdFormat();
         }
 
         #endregion
@@ -60,6 +66,14 @@ namespace ParqueaderoElDesfalco.Core.Domain.DomainObjects
             if (DateOfDeparture <= DateOfEntry)
             {
                 HoursOfParking = 0;
+            }
+        }
+
+        private void CheckVehicleIdFormat()
+        {
+            if (!Regex.IsMatch(VehicleId, VehicleIdFormat))
+            {
+                throw new VehicleIdException();
             }
         }
 

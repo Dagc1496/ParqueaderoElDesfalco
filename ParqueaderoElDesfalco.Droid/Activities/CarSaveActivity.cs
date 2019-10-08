@@ -3,7 +3,6 @@ using Android.App;
 using Android.OS;
 using Android.Widget;
 using Autofac;
-using ParqueaderoElDesfalco.Core.Domain;
 using ParqueaderoElDesfalco.Core.Domain.DomainExeptions;
 using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
 using ParqueaderoElDesfalco.Core.ServiceDomain;
@@ -39,9 +38,9 @@ namespace ParqueaderoElDesfalco.Droid.Activities
             if(CarIdEditText.Text != string.Empty && CarIdEditText.Text != null)
             {
                 dateOfEntry = new DateTimeOffset(dateOfEntryActual.DateTime, TimeSpan.FromHours(0));
-                car = new Car(CarIdEditText.Text, dateOfEntry);
                 try
                 {
+                    car = new Car(CarIdEditText.Text, dateOfEntry);
                     carServiceDomain.SaveVechicleOnDb(car);
                     Finish();
                 }

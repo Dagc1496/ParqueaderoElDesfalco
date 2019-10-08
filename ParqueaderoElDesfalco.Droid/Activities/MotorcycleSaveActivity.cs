@@ -45,9 +45,9 @@ namespace ParqueaderoElDesfalco.Droid.Activities
             if (EntrysAreOk())
             {
                 dateOfEntry = new DateTimeOffset(dateOfEntryActual.DateTime, TimeSpan.FromHours(0));
-                motorcycle = new Motorcycle(MotorcycleIdEditText.Text, dateOfEntry, Convert.ToInt32(MotorcycleCilindrajeEditText.Text));
                 try
                 {
+                    motorcycle = new Motorcycle(MotorcycleIdEditText.Text, dateOfEntry, Convert.ToInt32(MotorcycleCilindrajeEditText.Text));
                     motorcycleServiceDomain.SaveVechicleOnDb(motorcycle);
                     Finish();
                 }

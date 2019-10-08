@@ -1,6 +1,4 @@
-﻿using Autofac;
-using ParqueaderoElDesfalco.Core.DependencyInjection;
-using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
+﻿using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
 using ParqueaderoElDesfalco.Core.Domain.DomainValidators;
 
 namespace ParqueaderoElDesfalco.Core.ServiceDomain
@@ -29,20 +27,12 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
             {
                 HaveEmojis = true;
             }
-            
         }
 
         protected virtual void SetUpValidators(Vehicle vehicle)
         {
             vehicleIdParkingDayValidator = new VehicleIdParkingDayValidator();
             emojiValidator = new EmojiValidator();
-        }
-
-        public ILifetimeScope ConfigureDependencies()
-        {
-            var concreteIoCContainer = new CoreIoCContainer();
-            IContainer container = concreteIoCContainer.CreateContainer();
-            return container.BeginLifetimeScope();
         }
     }
 }

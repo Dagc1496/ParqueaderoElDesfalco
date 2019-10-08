@@ -38,6 +38,9 @@
   <ItemGroup>
     <Compile Include="Tests.cs" />
     <Compile Include="AppInitializer.cs" />
+    <Compile Include="PageObjects\MainPageObject.cs" />
+    <Compile Include="PageObjects\SaveCarPageObject.cs" />
+    <Compile Include="PageObjects\BasePageObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -49,6 +52,9 @@
       <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
       <Private>False</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PageObjects\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

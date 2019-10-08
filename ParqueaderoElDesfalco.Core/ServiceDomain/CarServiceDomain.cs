@@ -86,15 +86,9 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
             base.SetUpValidators(vehicle);
             if (vehicle != null)
             {
-                SetDependencies();
+                carParkingSpaceValidator = new CarParkingSpaceValidator(carDao);
                 CheckPermissionsToPark(vehicle);
             }
-        }
-
-        private void SetDependencies()
-        {
-            carParkingSpaceValidator = ConfigureDependencies().Resolve<CarParkingSpaceValidator>();
-            uniqueVehicleIdValidator = ConfigureDependencies().Resolve<UniqueVehicleIdValidator>();
         }
     }
 }
