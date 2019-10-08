@@ -12,3 +12,4 @@ ParqueaderoElDesfalco.Droid/bin/Debug/ParqueaderoElDesfalco.Core.pdb
 *.blob
 ParqueaderoElDesfalco.UITest/bin
 ParqueaderoElDesfalco.UITest/obj
+packages
