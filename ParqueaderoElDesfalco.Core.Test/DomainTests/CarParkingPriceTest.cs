@@ -12,7 +12,7 @@ namespace ParqueaderoElDesfalco.Core.Test.DomainTests
         private const int PriceOfDay = 8000;
 
         private readonly DateTimeOffset defaultDate = DateTimeOffset.Now;
-        private readonly string defaultCarId = "onecarid";
+        private readonly string defaultCarId = "one-000";
 
         #endregion
 

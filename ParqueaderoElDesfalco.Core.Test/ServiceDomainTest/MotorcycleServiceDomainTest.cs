@@ -10,7 +10,7 @@ namespace ParqueaderoElDesfalco.Core.Test.ServiceDomainTest
     public class MotorcycleServiceDomainTest : BaseServiceDomainTest
     {
         private readonly DateTimeOffset defaultDate = DateTimeOffset.Now;
-        private readonly string defaultCarId = "onecarid";
+        private readonly string defaultCarId = "one-00";
         private const int defaultCilindraje = 200;
         private IMotorcycleDao motorcycleDao;
 

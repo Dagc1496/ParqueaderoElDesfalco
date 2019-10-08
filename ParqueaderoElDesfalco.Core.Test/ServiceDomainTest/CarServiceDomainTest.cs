@@ -10,7 +10,7 @@ namespace ParqueaderoElDesfalco.Core.Test.ServiceDomainTest
     public class CarServiceDomainTest : BaseServiceDomainTest
     {
         private readonly DateTimeOffset defaultDate = DateTimeOffset.Now;
-        private readonly string defaultCarId = "onecarid";
+        private readonly string defaultCarId = "one-000";
         private ICarDao carDao;
 
         [Fact]

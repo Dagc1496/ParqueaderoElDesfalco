@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using NUnit.Framework;
-using Xamarin.UITest;
+
 using Query = System.Func<Xamarin.UITest.Queries.AppQuery, Xamarin.UITest.Queries.AppQuery>;
 
 namespace ParqueaderoElDesfalco.UITest.PageObjects
@@ -24,6 +24,7 @@ namespace ParqueaderoElDesfalco.UITest.PageObjects
 
         public MainPageObject CheckCarListForCreated(string createdCar)
         {
+            app.WaitForElement(carIdtextView);
             Assert.AreEqual(createdCar, app.Query(carIdtextView).First().Text);
             return this;
         }

@@ -12,7 +12,8 @@ namespace ParqueaderoElDesfalco.Core.Test.ValidatorTests
     {
         #region Vars and const of TestClass
 
-        private string defaultVehicleId = "onevehicleid";
+        private string defaultCarId = "one-00";
+        private string defaultMotorcycleId = "one-0";
         private const int defaultMotorcycleCilindraje = 300;
         private const int limitOfCarsParkingLot = 20;
         private const int limitOfMotorcyclesParkingLot = 10;
@@ -100,8 +101,8 @@ namespace ParqueaderoElDesfalco.Core.Test.ValidatorTests
             cars = new List<Car>();
             for (int i = 0; i < numberOfCars; i++)
             {
-                defaultVehicleId += i.ToString();
-                defaultCar = new Car(defaultVehicleId,defaultDate);
+                defaultCarId += i.ToString();
+                defaultCar = new Car(defaultCarId,defaultDate);
                 cars.Add(defaultCar);
             }
         }
@@ -111,8 +112,8 @@ namespace ParqueaderoElDesfalco.Core.Test.ValidatorTests
             motorcycles = new List<Motorcycle>();
             for (int i = 0; i < numberOfMotorcycles; i++)
             {
-                defaultVehicleId += i.ToString();
-                defaultMotorcycle = new Motorcycle(defaultVehicleId, defaultDate, defaultMotorcycleCilindraje);
+                defaultMotorcycleId += i.ToString();
+                defaultMotorcycle = new Motorcycle(defaultMotorcycleId, defaultDate, defaultMotorcycleCilindraje);
                 motorcycles.Add(defaultMotorcycle);
             }
         }

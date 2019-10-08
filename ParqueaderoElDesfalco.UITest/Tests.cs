@@ -13,7 +13,7 @@ namespace ParqueaderoElDesfalco.UITest
     public class Tests
     {
 
-        private string idToSaveCar = "Placa automatica";
+        private string idToSaveCar = "but-000";
         private MainPageObject mainPageObject;
         private SaveCarPageObject saveCarPageObject;
 
@@ -32,32 +32,5 @@ namespace ParqueaderoElDesfalco.UITest
             //Assert
             mainPageObject.CheckCarListForCreated(idToSaveCar);
         }
-
-        /*
-        [Test]
-        public void RemoveCarTest()
-        {
-            //Arrange
-            SaveCar();
-            app.Tap(x => x.Marked(app.Query(q => q.Marked("car_id_textView")).First().Text));
-
-            //Act
-            app.Tap(x => x.Marked("btn_pay_and_out"));
-
-            //Assert
-            Assert.IsEmpty(app.Query(q => q.Marked("car_id_textView")));
-        }
-
-        private void SaveCar()
-        {
-            carToSaveId = "Placa Automatica";
-            app.Tap(x => x.Marked("btn_park_new_car"));
-            app.Tap(x => x.Marked("car_id_entry"));
-            app.EnterText(x => x.Marked("car_id_entry"), carToSaveId);
-            app.DismissKeyboard();
-
-            app.Tap(x => x.Marked("btn_park_car"));
-        }
-        */
     }
 }

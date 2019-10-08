@@ -14,7 +14,7 @@ namespace ParqueaderoElDesfalco.Core.Test.DomainTests
         private const int defaultCilindraje = 300;
 
         private readonly DateTimeOffset defaultDate = DateTimeOffset.Now;
-        private readonly string defaultMotorcycleId = "onecarid";
+        private readonly string defaultMotorcycleId = "one-00";
 
         #endregion
 

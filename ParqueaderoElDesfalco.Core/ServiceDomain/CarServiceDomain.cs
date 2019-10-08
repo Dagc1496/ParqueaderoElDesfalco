@@ -13,7 +13,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
 
         private readonly ICarDao carDao;
         private CarParkingSpaceValidator carParkingSpaceValidator;
-        private UniqueVehicleIdValidator uniqueVehicleIdValidator;
+        private CarUniqueIdValidator carUniqueIdValidator;
 
         public CarServiceDomain(ICarDao carDao)
         {
@@ -75,7 +75,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
             {
                 ParkingSpaceInParkingLot = true;
             }
-            if (uniqueVehicleIdValidator.IsAValidId(vehicle.VehicleId))
+            if (carUniqueIdValidator.IsAValidId(vehicle.VehicleId))
             {
                 IsVehicleValidId = true;
             }
@@ -87,6 +87,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
             if (vehicle != null)
             {
                 carParkingSpaceValidator = new CarParkingSpaceValidator(carDao);
+                carUniqueIdValidator = new CarUniqueIdValidator(carDao);
                 CheckPermissionsToPark(vehicle);
             }
         }

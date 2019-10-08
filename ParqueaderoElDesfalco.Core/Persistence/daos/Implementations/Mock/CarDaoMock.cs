@@ -8,7 +8,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Mock
     {
 
         private List<Car> cars;
-        private readonly string defaultId = "defaultId";
+        private readonly string defaultId = "def-000";
         private readonly DateTimeOffset defaultDate = DateTimeOffset.Now;
         private List<string> vehicleIds;
 

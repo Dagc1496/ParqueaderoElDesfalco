@@ -9,7 +9,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Mock
     {
 
         private readonly List<Motorcycle> motorcycles;
-        private readonly string defaultId = "defaultId";
+        private readonly string defaultId = "def-00d";
         private readonly DateTimeOffset defaultDate = DateTimeOffset.Now;
         private const int defaultCilindraje = 200;
         private readonly List<string> vehicleIds;
