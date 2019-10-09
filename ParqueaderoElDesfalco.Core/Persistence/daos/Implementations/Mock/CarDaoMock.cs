@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
-
+using ParqueaderoElDesfalco.Core.Domain.Models;
 namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Mock
 {
     public class CarDaoMock : ICarDao
     {
 
+        #region Class vars and constants
+
         private List<Car> cars;
         private readonly string defaultId = "def-000";
         private readonly DateTimeOffset defaultDate = DateTimeOffset.Now;
         private List<string> vehicleIds;
+
+        #endregion
+
+        #region Constructor
 
         public CarDaoMock()
         {
@@ -20,9 +25,13 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Mock
             cars.Add(car);
         }
 
+        #endregion
+
+        #region Class methods
+
         public void CreateCar(Car car)
         {
-            if(car != null)
+            if (car != null)
             {
                 vehicleIds.Add(car.VehicleId);
                 cars.Add(car);
@@ -36,7 +45,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Mock
 
         public void RemoveCar(Car car)
         {
-            if(car != null)
+            if (car != null)
             {
                 vehicleIds.Remove(car.VehicleId);
                 cars.Remove(car);
@@ -47,5 +56,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Mock
         {
             return vehicleIds;
         }
+
+        #endregion
     }
 }

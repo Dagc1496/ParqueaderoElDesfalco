@@ -7,12 +7,8 @@ namespace ParqueaderoElDesfalco.Droid.Activities
 {
     public class BaseActivity: AppCompatActivity
     {
-        protected override void OnCreate(Bundle savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
 
-            ConfigureDependencies();
-        }
+        #region Class methods
 
         public ILifetimeScope ConfigureDependencies()
         {
@@ -21,6 +17,17 @@ namespace ParqueaderoElDesfalco.Droid.Activities
             return container.BeginLifetimeScope();
         }
 
+        #endregion
 
+        #region Protected methods
+
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+
+            ConfigureDependencies();
+        }
+
+        #endregion
     }
 }

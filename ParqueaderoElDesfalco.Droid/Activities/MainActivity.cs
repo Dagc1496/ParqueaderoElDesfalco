@@ -7,8 +7,7 @@ using Android.Support.V7.Widget;
 using Android.Widget;
 using Autofac;
 using Newtonsoft.Json;
-using ParqueaderoElDesfalco.Core.Domain;
-using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
+using ParqueaderoElDesfalco.Core.Domain.Models;
 using ParqueaderoElDesfalco.Core.ServiceDomain;
 using ParqueaderoElDesfalco.Droid.Adapters;
 
@@ -17,6 +16,9 @@ namespace ParqueaderoElDesfalco.Droid.Activities
     [Activity(MainLauncher = true)]
     public class MainActivity : BaseActivity
     {
+
+        #region Class vars and constants
+
         private RecyclerView carRecyclerView;
         private RecyclerView motorcyclesRecyclerView;
         private CarServiceDomain carServiceDomain;
@@ -26,15 +28,9 @@ namespace ParqueaderoElDesfalco.Droid.Activities
         private List<Car> carList;
         private List<Motorcycle> motorcycleList;
 
-        protected override void OnCreate(Bundle savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
-            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            SetContentView(Resource.Layout.activity_main);
+        #endregion
 
-            SetDependencies();
-            ConfigViews();
-        }
+        #region Class methods
 
         private void ConfigViews()
         {
@@ -51,14 +47,6 @@ namespace ParqueaderoElDesfalco.Droid.Activities
             motorcyclesRecyclerView.NestedScrollingEnabled = false;
             carRecyclerView = FindViewById<RecyclerView>(Resource.Id.cars_recyclerview);
             carRecyclerView.NestedScrollingEnabled = false;
-        }
-
-        protected override void OnStart()
-        {
-            base.OnStart();
-            GetVehiclesList();
-            ConfigCarRecyclerView(carList);
-            ConfigMotorcycleRecyclerView(motorcycleList);
         }
 
         private void btnNewCar_Click(object sender, EventArgs e)
@@ -79,12 +67,6 @@ namespace ParqueaderoElDesfalco.Droid.Activities
             motorcycleList = motorcycleServiceDomain.GetAllVehicles();
         }
 
-        private void SetDependencies()
-        {
-            carServiceDomain = ConfigureDependencies().Resolve<CarServiceDomain>();
-            motorcycleServiceDomain = ConfigureDependencies().Resolve<MotorcycleServiceDomain>();
-        }
-
         private void ConfigCarRecyclerView(List<Car> cars)
         {
             var adapter = new CarAdapter(cars);
@@ -93,7 +75,7 @@ namespace ParqueaderoElDesfalco.Droid.Activities
             carRecyclerView.SetAdapter(adapter);
         }
 
-        private void CarAdapterOnItemClick(object sender,Car car)
+        private void CarAdapterOnItemClick(object sender, Car car)
         {
             GoToVehicleExitActivity(car);
         }
@@ -115,11 +97,12 @@ namespace ParqueaderoElDesfalco.Droid.Activities
         {
             var intent = new Intent(this, typeof(VehicleExitActivity));
             var extras = new Bundle();
-            if(vehicle.GetType() == typeof(Car))
+            if (vehicle.GetType() == typeof(Car))
             {
                 extras.PutString("car", JsonConvert.SerializeObject(vehicle));
-            }else
-            if(vehicle.GetType() == typeof(Motorcycle))
+            }
+            else
+            if (vehicle.GetType() == typeof(Motorcycle))
             {
                 extras.PutString("motorcycle", JsonConvert.SerializeObject(vehicle));
             }
@@ -127,5 +110,39 @@ namespace ParqueaderoElDesfalco.Droid.Activities
 
             StartActivity(intent);
         }
+
+        #endregion
+
+        #region Lifecycle Methods
+
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            SetContentView(Resource.Layout.activity_main);
+
+            SetDependencies();
+            ConfigViews();
+        }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+            GetVehiclesList();
+            ConfigCarRecyclerView(carList);
+            ConfigMotorcycleRecyclerView(motorcycleList);
+        }
+
+        #endregion
+
+        #region Dependency Injection
+
+        private void SetDependencies()
+        {
+            carServiceDomain = ConfigureDependencies().Resolve<CarServiceDomain>();
+            motorcycleServiceDomain = ConfigureDependencies().Resolve<MotorcycleServiceDomain>();
+        }
+
+        #endregion
     }
 }

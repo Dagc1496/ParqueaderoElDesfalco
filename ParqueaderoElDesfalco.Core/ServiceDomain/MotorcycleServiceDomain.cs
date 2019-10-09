@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ParqueaderoElDesfalco.Core.Domain.DomainExeptions;
-using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
+using ParqueaderoElDesfalco.Core.Domain.Models;
 using ParqueaderoElDesfalco.Core.Domain.DomainValidators;
 using ParqueaderoElDesfalco.Core.Persistence.Daos;
 
@@ -10,14 +10,24 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
     public class MotorcycleServiceDomain : VehicleServiceDomain
     {
 
+        #region Class vars and constants
+
         private readonly IMotorcycleDao motorcycleDao;
         private MotorcycleParkingSpaceValidator motorcycleParkingSpaceValidator;
         private MotorcycleUniqueIdValidator motorcycleUniqueIdValidator;
+
+        #endregion
+
+        #region Constructor
 
         public MotorcycleServiceDomain(IMotorcycleDao motorcycleDao)
         {
             this.motorcycleDao = motorcycleDao;
         }
+
+        #endregion
+
+        #region Class methods
 
         public List<Motorcycle> GetAllVehicles()
         {
@@ -27,7 +37,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
 
         public void CalculatePriceOfPark(Motorcycle motorcycle, DateTimeOffset vehicleDepartureTime)
         {
-            if(motorcycle != null)
+            if (motorcycle != null)
             {
                 motorcycle.CalculateParkingPrice(vehicleDepartureTime);
             }
@@ -35,7 +45,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
 
         public void RemoveVechielFromDB(Motorcycle vehicle)
         {
-            if(vehicle!= null)
+            if (vehicle != null)
             {
                 motorcycleDao.RemoveMotorcycle(vehicle);
             }
@@ -56,15 +66,15 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
             {
                 throw (new VehicleIdException("ById"));
             }
-            if (HaveEmojis)
-            {
-                throw (new VehicleIdException("ById"));
-            }
             else
             {
                 motorcycleDao.CreateMotorcycle(vehicle);
             }
         }
+
+        #endregion
+
+        #region Protected methods
 
         protected override void CheckPermissionsToPark(Vehicle vehicle)
         {
@@ -89,5 +99,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
                 CheckPermissionsToPark(vehicle);
             }
         }
+
+        #endregion
     }
 }

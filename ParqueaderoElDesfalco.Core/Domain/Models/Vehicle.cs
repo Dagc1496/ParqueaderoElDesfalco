@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 using ParqueaderoElDesfalco.Core.Domain.DomainExeptions;
 
-namespace ParqueaderoElDesfalco.Core.Domain.DomainObjects
+namespace ParqueaderoElDesfalco.Core.Domain.Models
 {
     public abstract class Vehicle
     {
@@ -43,7 +43,7 @@ namespace ParqueaderoElDesfalco.Core.Domain.DomainObjects
 
         #endregion
 
-        #region Class methdos
+        #region Class methods
 
         protected void CalculateTimeOfParking()
         {

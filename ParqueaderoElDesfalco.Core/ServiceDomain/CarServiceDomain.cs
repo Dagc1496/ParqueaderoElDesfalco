@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Autofac;
 using ParqueaderoElDesfalco.Core.Domain.DomainExeptions;
-using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
+using ParqueaderoElDesfalco.Core.Domain.Models;
 using ParqueaderoElDesfalco.Core.Domain.DomainValidators;
 using ParqueaderoElDesfalco.Core.Persistence.Daos;
 
@@ -11,18 +10,28 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
     public class CarServiceDomain : VehicleServiceDomain
     {
 
+        #region Class vars and constants
+
         private readonly ICarDao carDao;
         private CarParkingSpaceValidator carParkingSpaceValidator;
         private CarUniqueIdValidator carUniqueIdValidator;
+
+        #endregion
+
+        #region Constructor
 
         public CarServiceDomain(ICarDao carDao)
         {
             this.carDao = carDao;
         }
 
+        #endregion
+
+        #region Class methods
+
         public void CalculatePriceOfPark(Car car, DateTimeOffset vechicleDepartureTiem)
         {
-            if(car != null)
+            if (car != null)
             {
                 car.CalculateParkingPrice(vechicleDepartureTiem);
             }
@@ -36,7 +45,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
 
         public void RemoveVechielFromDB(Car vehicle)
         {
-            if(vehicle != null)
+            if (vehicle != null)
             {
                 carDao.RemoveCar(vehicle);
             }
@@ -57,16 +66,15 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
             {
                 throw (new VehicleIdException("ById"));
             }
-
-            if (HaveEmojis)
-            {
-                throw (new VehicleIdException("ById"));
-            }
             else
             {
                 carDao.CreateCar(vehicle);
             }
         }
+
+        #endregion
+
+        #region Protected methods
 
         protected override void CheckPermissionsToPark(Vehicle vehicle)
         {
@@ -91,5 +99,7 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
                 CheckPermissionsToPark(vehicle);
             }
         }
+
+        #endregion
     }
 }

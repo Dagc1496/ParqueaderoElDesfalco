@@ -25,11 +25,11 @@
     <Folder Include="Persistence\Daos\Implementations\" />
     <Folder Include="Persistence\Daos\Implementations\Mock\" />
     <Folder Include="Persistence\Daos\Implementations\Real\" />
-    <Folder Include="Domain\DomainObjects\" />
-    <Folder Include="Helpers\" />
+    <Folder Include="Domain\Models\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Realm" Version="4.1.0" />
     <PackageReference Include="Autofac" Version="4.9.4" />
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
   </ItemGroup>
 </Project>

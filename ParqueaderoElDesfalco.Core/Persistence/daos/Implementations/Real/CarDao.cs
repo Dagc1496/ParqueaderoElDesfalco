@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using ParqueaderoElDesfalco.Core.Domain;
-using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
+using ParqueaderoElDesfalco.Core.Domain.Models;
 using ParqueaderoElDesfalco.Core.Mappers;
 using ParqueaderoElDesfalco.Core.Persistence.Entities;
 
@@ -9,8 +8,14 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Real
     public class CarDao : ICarDao
     {
 
+        #region Class vars and constants
+
         private readonly CarMapper carMapper;
         private readonly DatabaseManager databaseManager;
+
+        #endregion
+
+        #region Constructor
 
         public CarDao()
         {
@@ -18,6 +23,10 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Real
             databaseManager.InitilizeDB();
             carMapper = new CarMapper();
         }
+
+        #endregion
+
+        #region Class methods
 
         public void CreateCar(Car car)
         {
@@ -46,5 +55,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Real
             CarEntity carEntity = carMapper.MapObjectToEntity(car);
             databaseManager.RemoveFromDB(carEntity.GetType().Name, carEntity.CarId);
         }
+
+        #endregion
     }
 }

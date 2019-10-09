@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Android.Support.V7.Widget;
 using Android.Views;
-using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
+using ParqueaderoElDesfalco.Core.Domain.Models;
 using ParqueaderoElDesfalco.Droid.ViewHolders;
 
 namespace ParqueaderoElDesfalco.Droid.Adapters

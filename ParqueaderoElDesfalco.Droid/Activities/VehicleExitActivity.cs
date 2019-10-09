@@ -4,7 +4,7 @@ using Android.OS;
 using Android.Widget;
 using Autofac;
 using Newtonsoft.Json;
-using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
+using ParqueaderoElDesfalco.Core.Domain.Models;
 using ParqueaderoElDesfalco.Core.ServiceDomain;
 using ParqueaderoElDesfalco.Droid.Helpers.UserDialogsHelper;
 
@@ -13,6 +13,9 @@ namespace ParqueaderoElDesfalco.Droid.Activities
     [Activity(Label = "@string/pay_activity", Theme = "@style/AppTheme")]
     public class VehicleExitActivity : BaseActivity
     {
+
+        #region Class vars and constants
+
         private TextView LeavingVehicleId;
         private TextView LeavingVehicleDateOfEntry;
         private TextView LeavingVehicleDateOfDeparture;
@@ -26,14 +29,9 @@ namespace ParqueaderoElDesfalco.Droid.Activities
         private Motorcycle leavingMotorcycle;
         private IUserDialogsHelper userDialogsManager;
 
-        protected override void OnCreate(Bundle savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.activity_exit_vehicle);
+        #endregion
 
-            ConfigViews();
-            GetExtras();            
-        }
+        #region Class methods
 
         private void ConfigViews()
         {
@@ -48,13 +46,13 @@ namespace ParqueaderoElDesfalco.Droid.Activities
 
         private void GetExtras()
         {
-            if(Intent.Extras.GetString("car") != null)
+            if (Intent.Extras.GetString("car") != null)
             {
                 leavingCar = JsonConvert.DeserializeObject<Car>(Intent.Extras.GetString("car"));
                 SetDependencies(leavingCar);
                 SetLabels(leavingCar);
             }
-            if(Intent.Extras.GetString("motorcycle") != null)
+            if (Intent.Extras.GetString("motorcycle") != null)
             {
                 leavingMotorcycle = JsonConvert.DeserializeObject<Motorcycle>(Intent.Extras.GetString("motorcycle"));
                 SetDependencies(leavingMotorcycle);
@@ -69,7 +67,8 @@ namespace ParqueaderoElDesfalco.Droid.Activities
             {
                 carServiceDomain.CalculatePriceOfPark(leavingCar, dateOfDeparture);
                 leavingVehicle = leavingCar;
-            }else
+            }
+            else
             {
                 motorcycleServiceDomain.CalculatePriceOfPark(leavingMotorcycle, dateOfDeparture);
                 leavingVehicle = leavingMotorcycle;
@@ -82,16 +81,33 @@ namespace ParqueaderoElDesfalco.Droid.Activities
 
         private void btnPayAndOut_Click(object sender, EventArgs e)
         {
-            if(carServiceDomain != null)
+            if (carServiceDomain != null)
             {
                 carServiceDomain.RemoveVechielFromDB(leavingCar);
             }
-            if(motorcycleServiceDomain != null)
+            if (motorcycleServiceDomain != null)
             {
                 motorcycleServiceDomain.RemoveVechielFromDB(leavingMotorcycle);
             }
             Finish();
         }
+
+        #endregion
+
+        #region Lifecycle Methods
+
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+            SetContentView(Resource.Layout.activity_exit_vehicle);
+
+            ConfigViews();
+            GetExtras();
+        }
+
+        #endregion
+
+        #region Dependency Injection
 
         private void SetDependencies<T>(T vehicle)
         {
@@ -106,6 +122,8 @@ namespace ParqueaderoElDesfalco.Droid.Activities
                 motorcycleServiceDomain = ConfigureDependencies().Resolve<MotorcycleServiceDomain>();
             }
         }
+
+        #endregion
     }
 }
 

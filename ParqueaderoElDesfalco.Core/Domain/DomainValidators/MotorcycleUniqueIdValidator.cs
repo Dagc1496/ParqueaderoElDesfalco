@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
+using ParqueaderoElDesfalco.Core.Domain.Models;
 using ParqueaderoElDesfalco.Core.Persistence.Daos;
 
 namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
@@ -8,25 +8,28 @@ namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
     public class MotorcycleUniqueIdValidator
     {
 
+        #region Class vars and constants
+
         private readonly IMotorcycleDao motorcycleDao;
         private List<string> motorcycleIds;
+
+        #endregion
+
+        #region Constructor
 
         public MotorcycleUniqueIdValidator(IMotorcycleDao motorcycleDao)
         {
             this.motorcycleDao = motorcycleDao;
         }
 
+        #endregion
+
+        #region Class methods
+
         public bool IsAValidId(string vehicleId)
         {
             GetAllIdsInParkingLot();
-            for (int i = 0; i < motorcycleIds.Count; i++)
-            {
-                if (motorcycleIds.ElementAt(i).Equals(vehicleId))
-                {
-                    return false;
-                }
-            }
-            return true;
+            return !motorcycleIds.Any(vehicleId.Equals);
         }
 
         private void GetAllIdsInParkingLot()
@@ -44,5 +47,7 @@ namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
             }
             return motorcycleIds;
         }
+
+        #endregion
     }
 }

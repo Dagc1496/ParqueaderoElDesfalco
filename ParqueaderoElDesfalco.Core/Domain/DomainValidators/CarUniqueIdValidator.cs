@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
+using ParqueaderoElDesfalco.Core.Domain.Models;
 using ParqueaderoElDesfalco.Core.Persistence.Daos;
 
 namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
@@ -9,25 +8,28 @@ namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
     public class CarUniqueIdValidator
     {
 
+        #region Class vars and constants
+
         private readonly ICarDao carDao;
         private List<string> carIds;
+
+        #endregion
+
+        #region Constructor
 
         public CarUniqueIdValidator(ICarDao carDao)
         {
             this.carDao = carDao;
         }
 
+        #endregion
+
+        #region Class methods
+
         public bool IsAValidId(string vehicleId)
         {
             GetAllIdsInParkingLot();
-            for (int i = 0; i < carIds.Count; i++)
-            {
-                if (carIds.ElementAt(i).Equals(vehicleId))
-                {
-                    return false;
-                }
-            }
-            return true;
+            return !carIds.Any(vehicleId.Equals);
         }
 
         private void GetAllIdsInParkingLot()
@@ -45,5 +47,7 @@ namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
             }
             return carIds;
         }
+
+        #endregion
     }
 }

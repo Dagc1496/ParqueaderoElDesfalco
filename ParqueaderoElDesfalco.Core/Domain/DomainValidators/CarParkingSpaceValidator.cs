@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
+using ParqueaderoElDesfalco.Core.Domain.Models;
 using ParqueaderoElDesfalco.Core.Persistence.Daos;
 
 namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
@@ -7,14 +7,23 @@ namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
     public class CarParkingSpaceValidator
     {
 
-        private readonly ICarDao carDao;
+        #region Class vars and constants
 
+        private readonly ICarDao carDao;
         private readonly int limitOfCars = 20;
+
+        #endregion
+
+        #region Constructor
 
         public CarParkingSpaceValidator(ICarDao carDao)
         {
             this.carDao = carDao;
         }
+
+        #endregion
+
+        #region Class methods
 
         public bool IsVehicleSpaceInParkingLot()
         {
@@ -25,5 +34,7 @@ namespace ParqueaderoElDesfalco.Core.Domain.DomainValidators
             }
             return true;
         }
+
+        #endregion
     }
 }

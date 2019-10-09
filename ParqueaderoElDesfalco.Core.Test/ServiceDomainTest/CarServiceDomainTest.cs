@@ -1,6 +1,6 @@
 ﻿using System;
 using Autofac;
-using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
+using ParqueaderoElDesfalco.Core.Domain.Models;
 using ParqueaderoElDesfalco.Core.Persistence.Daos;
 using ParqueaderoElDesfalco.Core.ServiceDomain;
 using Xunit;

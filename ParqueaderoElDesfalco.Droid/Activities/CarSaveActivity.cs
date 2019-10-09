@@ -4,7 +4,7 @@ using Android.OS;
 using Android.Widget;
 using Autofac;
 using ParqueaderoElDesfalco.Core.Domain.DomainExeptions;
-using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
+using ParqueaderoElDesfalco.Core.Domain.Models;
 using ParqueaderoElDesfalco.Core.ServiceDomain;
 using ParqueaderoElDesfalco.Droid.Helpers.UserDialogsHelper;
 
@@ -13,6 +13,9 @@ namespace ParqueaderoElDesfalco.Droid.Activities
     [Activity]
     public class CarSaveActivity : BaseActivity
     {
+
+        #region Class vars and constants
+
         private IUserDialogsHelper userDialogsManager;
         private Car car;
         private EditText CarIdEditText;
@@ -21,21 +24,13 @@ namespace ParqueaderoElDesfalco.Droid.Activities
         private Button SaveCarButton;
         private CarServiceDomain carServiceDomain;
 
-        protected override void OnCreate(Bundle savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.activity_save_car);
+        #endregion
 
-            CarIdEditText = FindViewById<EditText>(Resource.Id.car_id_entry);
-            SaveCarButton = FindViewById<Button>(Resource.Id.btn_park_car);
-            SaveCarButton.Click += btnSaveCar_Click;
-
-            SetDependencies();
-        }
+        #region Class methods
 
         private void btnSaveCar_Click(object sender, EventArgs e)
         {
-            if(CarIdEditText.Text != string.Empty && CarIdEditText.Text != null)
+            if (CarIdEditText.Text != string.Empty && CarIdEditText.Text != null)
             {
                 dateOfEntry = new DateTimeOffset(dateOfEntryActual.DateTime, TimeSpan.FromHours(0));
                 try
@@ -47,7 +42,8 @@ namespace ParqueaderoElDesfalco.Droid.Activities
                 catch (ParkingLotException)
                 {
                     userDialogsManager.ShowMessage("Ups", Resources.GetString(Resource.String.parkinglot_full));
-                }catch (VehicleIdException exceptionById)
+                }
+                catch (VehicleIdException exceptionById)
                 {
                     if (exceptionById.Message == "ByDay")
                     {
@@ -65,17 +61,26 @@ namespace ParqueaderoElDesfalco.Droid.Activities
             }
         }
 
-        private void SetDependencies()
+        #endregion
+
+        #region Lifecycle Methods
+
+        protected override void OnCreate(Bundle savedInstanceState)
         {
-            carServiceDomain = ConfigureDependencies().Resolve<CarServiceDomain>();
-            userDialogsManager = ConfigureDependencies().Resolve<IUserDialogsHelper>();
-            userDialogsManager.UserDialogsInit(this);
+            base.OnCreate(savedInstanceState);
+            SetContentView(Resource.Layout.activity_save_car);
+
+            CarIdEditText = FindViewById<EditText>(Resource.Id.car_id_entry);
+            SaveCarButton = FindViewById<Button>(Resource.Id.btn_park_car);
+            SaveCarButton.Click += btnSaveCar_Click;
+
+            SetDependencies();
         }
 
         protected override void OnSaveInstanceState(Bundle outState)
         {
             base.OnSaveInstanceState(outState);
-            if(CarIdEditText.Text != string.Empty)
+            if (CarIdEditText.Text != string.Empty)
             {
                 outState.PutString("entryValue", CarIdEditText.Text);
             }
@@ -89,5 +94,18 @@ namespace ParqueaderoElDesfalco.Droid.Activities
                 CarIdEditText.Text = savedInstanceState.GetString("entryValue");
             }
         }
+
+        #endregion
+
+        #region Dependency Injection
+
+        private void SetDependencies()
+        {
+            carServiceDomain = ConfigureDependencies().Resolve<CarServiceDomain>();
+            userDialogsManager = ConfigureDependencies().Resolve<IUserDialogsHelper>();
+            userDialogsManager.UserDialogsInit(this);
+        }
+
+        #endregion
     }
 }

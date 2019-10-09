@@ -1,18 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using ParqueaderoElDesfalco.Core.Domain;
-using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
+using ParqueaderoElDesfalco.Core.Domain.Models;
 
 namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Mock
 {
     public class MotorcycleDaoMock : IMotorcycleDao
     {
 
-        private readonly List<Motorcycle> motorcycles;
+        #region Class vars and constants
+
+        private List<Motorcycle> motorcycles;
         private readonly string defaultId = "def-00d";
         private readonly DateTimeOffset defaultDate = DateTimeOffset.Now;
         private const int defaultCilindraje = 200;
-        private readonly List<string> vehicleIds;
+        private List<string> vehicleIds;
+
+        #endregion
+
+        #region Constructor
 
         public MotorcycleDaoMock()
         {
@@ -22,9 +27,13 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Mock
             motorcycles.Add(motorcycle);
         }
 
+        #endregion
+
+        #region Class methods
+
         public void CreateMotorcycle(Motorcycle motorcycle)
         {
-            if(motorcycle != null)
+            if (motorcycle != null)
             {
                 vehicleIds.Add(motorcycle.VehicleId);
                 motorcycles.Add(motorcycle);
@@ -33,7 +42,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Mock
 
         public void RemoveMotorcycle(Motorcycle motorcycle)
         {
-            if(motorcycle != null)
+            if (motorcycle != null)
             {
                 vehicleIds.Remove(motorcycle.VehicleId);
                 motorcycles.Remove(motorcycle);
@@ -49,5 +58,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence.Daos.Implementations.Mock
         {
             return vehicleIds;
         }
+
+        #endregion
     }
 }

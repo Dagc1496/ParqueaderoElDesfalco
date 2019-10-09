@@ -2,8 +2,7 @@
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
-using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
-
+using ParqueaderoElDesfalco.Core.Domain.Models;
 namespace ParqueaderoElDesfalco.Droid.ViewHolders
 {
     public class CarViewHolder : RecyclerView.ViewHolder

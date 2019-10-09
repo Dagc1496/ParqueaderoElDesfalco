@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
-
+using ParqueaderoElDesfalco.Core.Domain.Models;
 namespace ParqueaderoElDesfalco.Core.Persistence.Daos
 {
     public interface IMotorcycleDao

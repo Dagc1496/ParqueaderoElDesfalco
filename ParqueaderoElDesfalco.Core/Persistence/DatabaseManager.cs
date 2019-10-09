@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using ParqueaderoElDesfalco.Core.Persistence.Entities;
 using Realms;
 using System.Linq;
 
@@ -8,17 +7,23 @@ namespace ParqueaderoElDesfalco.Core.Persistence
     public class DatabaseManager
     {
 
+        #region Class vars and constants
+
         private Realm realmDatabase;
+
+        #endregion
+
+        #region Class methods
 
         public void InitilizeDB()
         {
-            if(realmDatabase == null)
+            if (realmDatabase == null)
             {
                 realmDatabase = Realm.GetInstance();
             }
         }
 
-        public void SaveOnDB<T> (T entity) where T: RealmObject
+        public void SaveOnDB<T>(T entity) where T : RealmObject
         {
             realmDatabase.Write(() =>
             {
@@ -42,5 +47,7 @@ namespace ParqueaderoElDesfalco.Core.Persistence
             });
             return vehicles;
         }
+
+        #endregion
     }
 }

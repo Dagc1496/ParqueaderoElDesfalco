@@ -5,7 +5,7 @@ using Android.OS;
 using Android.Widget;
 using Autofac;
 using ParqueaderoElDesfalco.Core.Domain.DomainExeptions;
-using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
+using ParqueaderoElDesfalco.Core.Domain.Models;
 using ParqueaderoElDesfalco.Core.ServiceDomain;
 using ParqueaderoElDesfalco.Droid.Helpers.UserDialogsHelper;
 
@@ -14,6 +14,9 @@ namespace ParqueaderoElDesfalco.Droid.Activities
     [Activity(Label = "@string/motorcycle_parking", Theme = "@style/AppTheme")]
     public class MotorcycleSaveActivity : BaseActivity
     {
+
+        #region Class vars and constants
+
         private IUserDialogsHelper userDialogsManager;
         private Motorcycle motorcycle;
         private EditText MotorcycleIdEditText;
@@ -23,14 +26,9 @@ namespace ParqueaderoElDesfalco.Droid.Activities
         private Button SaveMotorcycleButton;
         private MotorcycleServiceDomain motorcycleServiceDomain;
 
-        protected override void OnCreate(Bundle savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.activity_save_motorcycle);
+        #endregion
 
-            SetDependencies();
-            ConfigViews();
-        }
+        #region Class methods
 
         private void ConfigViews()
         {
@@ -69,11 +67,31 @@ namespace ParqueaderoElDesfalco.Droid.Activities
             }
         }
 
-        private void SetDependencies()
+        private bool EntrysAreOk()
         {
-            motorcycleServiceDomain = ConfigureDependencies().Resolve<MotorcycleServiceDomain>();
-            userDialogsManager = ConfigureDependencies().Resolve<IUserDialogsHelper>();
-            userDialogsManager.UserDialogsInit(this);
+            if (!string.IsNullOrEmpty(MotorcycleIdEditText.Text))
+            {
+                if (!string.IsNullOrEmpty(MotorcycleCilindrajeEditText.Text) && Regex.IsMatch(MotorcycleCilindrajeEditText.Text, @"^\d+$"))
+                {
+                    return true;
+                }
+                MotorcycleCilindrajeEditText.Error = Resources.GetString(Resource.String.empty_motorcycle_cilindraje);
+            }
+            MotorcycleIdEditText.Error = Resources.GetString(Resource.String.empty_vehicle_id);
+            return false;
+        }
+
+        #endregion
+
+        #region Lifecycle Methods
+
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+            SetContentView(Resource.Layout.activity_save_motorcycle);
+
+            SetDependencies();
+            ConfigViews();
         }
 
         protected override void OnSaveInstanceState(Bundle outState)
@@ -96,18 +114,17 @@ namespace ParqueaderoElDesfalco.Droid.Activities
             }
         }
 
-        private bool EntrysAreOk()
+        #endregion
+
+        #region Dependency Injection
+
+        private void SetDependencies()
         {
-            if (!string.IsNullOrEmpty(MotorcycleIdEditText.Text))
-            {
-                if (!string.IsNullOrEmpty(MotorcycleCilindrajeEditText.Text) && Regex.IsMatch(MotorcycleCilindrajeEditText.Text, @"^\d+$"))
-                {
-                    return true;
-                }
-                MotorcycleCilindrajeEditText.Error = Resources.GetString(Resource.String.empty_motorcycle_cilindraje);
-            }
-            MotorcycleIdEditText.Error = Resources.GetString(Resource.String.empty_vehicle_id);
-            return false;
+            motorcycleServiceDomain = ConfigureDependencies().Resolve<MotorcycleServiceDomain>();
+            userDialogsManager = ConfigureDependencies().Resolve<IUserDialogsHelper>();
+            userDialogsManager.UserDialogsInit(this);
         }
+
+        #endregion
     }
 }

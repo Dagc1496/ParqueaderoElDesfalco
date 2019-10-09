@@ -1,4 +1,4 @@
-﻿using ParqueaderoElDesfalco.Core.Domain.DomainObjects;
+﻿using ParqueaderoElDesfalco.Core.Domain.Models;
 using ParqueaderoElDesfalco.Core.Domain.DomainValidators;
 
 namespace ParqueaderoElDesfalco.Core.ServiceDomain
@@ -6,16 +6,19 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
     public abstract class VehicleServiceDomain
     {
 
+        #region Class vars and constants
+
         private VehicleIdParkingDayValidator vehicleIdParkingDayValidator;
-        private EmojiValidator emojiValidator;
         protected bool ParkingSpaceInParkingLot;
         protected bool AllowedbyId;
         protected bool IsVehicleValidId;
-        protected bool HaveEmojis;
+
+        #endregion
+
+        #region Protected methods
 
         protected virtual void CheckPermissionsToPark(Vehicle vehicle)
         {
-            HaveEmojis = false;
             IsVehicleValidId = false;
             ParkingSpaceInParkingLot = false;
             AllowedbyId = false;
@@ -23,16 +26,13 @@ namespace ParqueaderoElDesfalco.Core.ServiceDomain
             {
                 AllowedbyId = true;
             }
-            if (emojiValidator.VehicleIdHasEmojis(vehicle.VehicleId))
-            {
-                HaveEmojis = true;
-            }
         }
 
         protected virtual void SetUpValidators(Vehicle vehicle)
         {
             vehicleIdParkingDayValidator = new VehicleIdParkingDayValidator();
-            emojiValidator = new EmojiValidator();
         }
+
+        #endregion
     }
 }
